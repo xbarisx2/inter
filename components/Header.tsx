@@ -37,7 +37,7 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
         <li className="relative group" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <button
                 onClick={handleMainLinkClick}
-                className={`w-full text-left md:w-auto px-4 py-2 text-sm font-medium transition-colors duration-300 ${currentPage === link.name ? 'text-brand-blue-600' : 'text-gray-700 hover:text-brand-blue-600'} ${hasSublinks ? 'flex items-center gap-1' : ''}`}
+                className={`w-full text-left md:w-auto px-4 py-2 text-sm font-medium transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-gray-700 hover:text-brand-red-600'} ${hasSublinks ? 'flex items-center gap-1' : ''}`}
                  aria-haspopup={hasSublinks}
                  aria-expanded={isDropdownOpen}
             >
@@ -46,10 +46,10 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
             </button>
             {hasSublinks && isDropdownOpen && (
                 <div className="md:absolute z-20 left-0 pt-2 w-48">
-                    <ul className="bg-white rounded-md shadow-lg py-1">
+                    <ul className="bg-white rounded-md shadow-lg py-1 border-t-4 border-brand-red-600">
                         {link.subLinks?.map((subLink) => (
                             <li key={subLink.name}>
-                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue-50 hover:text-brand-blue-700">
+                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue-50 hover:text-brand-red-600">
                                     {subLink.name}
                                 </a>
                             </li>
@@ -74,23 +74,23 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     }, []);
 
     return (
-        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-md' : 'bg-white'}`}>
+        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white'}`}>
             {/* Top Contact Bar */}
             <div className="bg-gray-100 border-b border-gray-200 hidden md:block">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-2 text-sm text-gray-700">
                         <div className="flex items-center space-x-6">
                             <div className="flex items-center space-x-2">
-                                <PhoneIcon className="w-4 h-4 text-brand-blue-700" />
-                                <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:text-brand-blue-700 transition-colors">{COMPANY_INFO.phone1}</a>
+                                <PhoneIcon className="w-4 h-4 text-brand-red-600" />
+                                <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:text-brand-red-600 transition-colors">{COMPANY_INFO.phone1}</a>
                             </div>
                             <div className="flex items-center space-x-2">
-                                <MailIcon className="w-4 h-4 text-brand-blue-700" />
-                                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-blue-700 transition-colors">{COMPANY_INFO.email}</a>
+                                <MailIcon className="w-4 h-4 text-brand-red-600" />
+                                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-red-600 transition-colors">{COMPANY_INFO.email}</a>
                             </div>
                         </div>
                         <div className="flex items-center">
-                             <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-blue-600 transition-colors">
+                             <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-red-600 transition-colors">
                                 <InstagramIcon className="w-5 h-5" />
                             </a>
                         </div>
@@ -100,10 +100,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
             {/* Main Header */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
+                <div className="flex items-center justify-between h-24">
                     <div className="flex-shrink-0">
-                        <button onClick={() => setCurrentPage('Ana Sayfa')} className="text-2xl font-extrabold text-brand-blue-900 tracking-tight">
-                            İNTER AKDENİZ ALÜMİNYUM
+                        <button onClick={() => setCurrentPage('Ana Sayfa')} className="flex items-center">
+                            <img 
+                                src="https://github.com/xbarisx2/logo/blob/main/inter%20logo.jpg?raw=true" 
+                                alt="İNTER AKDENİZ ALÜMİNYUM" 
+                                className="h-20 md:h-24 w-auto object-contain py-2"
+                            />
                         </button>
                     </div>
 
@@ -113,10 +117,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                 <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                             ))}
                         </ul>
+                         <button onClick={() => setCurrentPage('İletişim')} className="ml-6 bg-brand-red-600 text-white px-5 py-2 rounded-full font-medium hover:bg-brand-red-700 transition-colors shadow-md">
+                            Teklif Al
+                        </button>
                     </nav>
                     
                     <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-brand-blue-600 focus:outline-none">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-brand-red-600 focus:outline-none">
                             {isMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
                         </button>
                     </div>
@@ -130,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                         {NAVIGATION_LINKS.map(link => (
                            <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} closeMenu={() => setIsMenuOpen(false)} />
                         ))}
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-brand-blue-600">
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-brand-red-600">
                            <InstagramIcon className="w-5 h-5 mr-2"/> Instagram
                         </a>
                     </nav>
