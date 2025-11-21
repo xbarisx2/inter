@@ -1,3 +1,4 @@
+
 import type { NavLink, Product, Reference, BlogPost, Partner } from './types';
 
 export const COMPANY_INFO = {
@@ -6,7 +7,7 @@ export const COMPANY_INFO = {
     phone1: "0501 250 43 03",
     phone2: "0242 324 04 24",
     email: "info@interakdenizaluminyum.com",
-    instagram: "https://instagram.com/interakdenizaluminyum",
+    instagram: "https://www.instagram.com/interakdenizlinearossa/",
     whatsapp: "https://wa.me/905012504303",
 };
 
@@ -41,38 +42,39 @@ export const LINEA_ROSSA_PRODUCTS: Product[] = [
 
 
 export const PARTNERS: Partner[] = [
-    { name: 'Linea Rossa', logo: 'https://picsum.photos/seed/linearossa-logo/200/100' },
-    { name: 'Pimapen', logo: 'https://picsum.photos/seed/pimapen-logo/200/100' },
-    { name: 'Europen', logo: 'https://picsum.photos/seed/europen-logo/200/100' },
+    { name: 'Linea Rossa', logo: 'https://file-service-pixel-bylm.aistudio.google.com/asset/74920572-3a98-40b8-b228-4866a9976632' },
+    { name: 'Pimapen', logo: 'https://file-service-pixel-bylm.aistudio.google.com/asset/6f5e612e-a161-4f5c-b494-805453a45037' },
+    { name: 'Europen', logo: 'https://file-service-pixel-bylm.aistudio.google.com/asset/b062f1cf-3f15-49c7-af89-8249c2333873' },
     { name: 'Albert Genau', logo: 'https://picsum.photos/seed/albertgenau-logo/200/100' },
-    { name: 'Schüco', logo: 'https://picsum.photos/seed/schuco-logo/200/100' },
+    { name: 'Schüco', logo: 'https://file-service-pixel-bylm.aistudio.google.com/asset/3150852f-1353-4a45-849e-44f7e5e06b8f' },
 ];
 
 export const REFERENCES: Reference[] = [
-    { name: "BİNBİR İNŞAAT", logo: "https://picsum.photos/seed/BINBIR/240/120" }, 
-    { name: "ERDEM PETROL İNŞAAT", logo: "https://picsum.photos/seed/ERDEM/240/120" }, 
-    { name: "SOHO İNŞAAT", logo: "https://picsum.photos/seed/SOHO/240/120" },
-    { name: "BİLEM OTEL – BOTTEGA RESTAURANT & NİGHT CLUB", logo: "https://picsum.photos/seed/BILEM/240/120" }, 
-    { name: "WALKERS CAFE", logo: "https://picsum.photos/seed/WALKERS/240/120" }, 
-    { name: "OPAL YAPI A.Ş", logo: "https://picsum.photos/seed/OPAL/240/120" },
+    { name: "BİNBİR İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/53a5a816-711a-4a1b-8141-091009664b0f" }, 
+    { name: "ERDEM PETROL İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/b6276c34-6c96-4c41-9723-54536994d04f" }, 
+    { name: "SOHO İNŞAAT", logo: "https://www.sohoinsaat.com/medya/soho_logo_1.png" },
+    { name: "BİLEM OTEL", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/2e7758b2-2030-4a9b-84e6-f71895692f82" },
+    { name: "BOTTEGA", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/b8a1b0f2-7496-4d41-a355-336660f5485a" },
+    { name: "WALKERS CAFE", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/7b528c01-614f-4c7b-a991-2d60651119d1" }, 
+    { name: "OPAL YAPI A.Ş", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/c9204f06-414b-4c52-869c-18c014439742" },
     { name: "HASAN AKALIN", logo: "https://picsum.photos/seed/HASAN/240/120" }, 
     { name: "ADLIHAN DERE", logo: "https://picsum.photos/seed/ADLIHAN/240/120" }, 
-    { name: "ÖZDEN GRUP İNŞAAT", logo: "https://picsum.photos/seed/OZDEN/240/120" },
+    { name: "ÖZDEN GRUP İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/07265018-1662-4d1e-871c-091180994c58" },
     { name: "AHG GRUP İNŞAAT", logo: "https://picsum.photos/seed/AHG/240/120" }, 
-    { name: "ÇERÇİLER MİMARLIK", logo: "https://picsum.photos/seed/CERCILER/240/120" }, 
+    { name: "HASAN ÇERÇİLER MİMARLIK", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/3160061a-e61e-496e-b362-26180499661b" }, 
     { name: "KEMPAŞ A.Ş.", logo: "https://picsum.photos/seed/KEMPAS/240/120" },
-    { name: "KÖRFEZ İNŞAAT", logo: "https://picsum.photos/seed/KORFEZ/240/120" }, 
-    { name: "SEMUS RESTORAN", logo: "https://picsum.photos/seed/SEMUS/240/120" }, 
-    { name: "İLHANLAR İNŞAAT", logo: "https://picsum.photos/seed/ILHANLAR/240/120" },
+    { name: "KÖRFEZ İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/530296e0-069e-4c66-9798-2e560881812b" }, 
+    { name: "SEMUS RESTORAN", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/46598155-94a3-4e97-b712-013506090697" }, 
+    { name: "İLHANLAR İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/93188693-820d-4c99-9289-1f146608639e" },
     { name: "KÜSTÜR MİMARLIK", logo: "https://picsum.photos/seed/KUSTUR/240/120" }, 
-    { name: "İDEA MİMARLIK", logo: "https://picsum.photos/seed/IDEA/240/120" }, 
-    { name: "SERTSAN İNŞAAT", logo: "https://picsum.photos/seed/SERTSAN/240/120" },
+    { name: "İDEA MİMARLIK", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/19046f44-9610-4724-921a-840798641665" }, 
+    { name: "SERTSAN İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/51985434-e607-45d6-bd2b-755631f687c7" },
     { name: "TK İNŞAAT", logo: "https://picsum.photos/seed/TKINSAAT/240/120" }, 
-    { name: "CAMSAŞ A.Ş", logo: "https://picsum.photos/seed/CAMSAS/240/120" }, 
-    { name: "PİCCO MİMARLIK", logo: "https://picsum.photos/seed/PICCO/240/120" },
-    { name: "DORUK YAPIM", logo: "https://picsum.photos/seed/DORUK/240/120" }, 
-    { name: "ÖZAY KUYUMCULUK GRUBU", logo: "https://picsum.photos/seed/OZAY/240/120" }, 
-    { name: "İHSAN ÖZKOÇ KUYUMCULUK", logo: "https://picsum.photos/seed/IHSAN/240/120" },
+    { name: "CAMSAŞ A.Ş", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/41190355-f811-449e-9b0f-933397194990" }, 
+    { name: "PİCCO MİMARLIK", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/d3489345-962f-4c82-9581-902611643832" },
+    { name: "DORUK YAPIM", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/2365696f-697a-4066-8202-7501e96120b3" }, 
+    { name: "ÖZAY KUYUMCULUK GRUBU", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/f0991e18-764f-4d08-b102-c79301555e53" }, 
+    { name: "İHSAN ÖZKOÇ KUYUMCULUK", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/07827194-e448-4f79-a804-004808794e08" },
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
