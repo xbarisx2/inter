@@ -71,6 +71,9 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
 
                 <div className="mt-12 border-t border-brand-blue-900 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                     <p className="text-sm text-brand-blue-300">&copy; {new Date().getFullYear()} {COMPANY_INFO.name} Tüm hakları saklıdır.</p>
+                    <p className="text-sm text-brand-blue-400 mt-2 md:mt-0 opacity-70 hover:opacity-100 transition-opacity">
+                        Web Tasarım: <a href="mailto:barisyldrm@pm.me" className="hover:text-white transition-colors">barisyldrm@pm.me</a>
+                    </p>
                 </div>
             </div>
         </footer>

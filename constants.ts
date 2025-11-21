@@ -23,21 +23,21 @@ export const NAVIGATION_LINKS: NavLink[] = [
 ];
 
 export const PRODUCTS: Product[] = [
-    { name: "Alüminyum Doğrama", description: "Yüksek yalıtım ve dayanıklılık sunan, modern mimariye uygun estetik alüminyum kapı ve pencere sistemleri.", image: "https://picsum.photos/seed/aludograma/600/400" },
-    { name: "PVC Doğrama", description: "Enerji verimliliği ve üstün ses yalıtımı sağlayan, her bütçeye uygun, uzun ömürlü PVC kapı ve pencere çözümleri.", image: "https://picsum.photos/seed/pvcdograma/600/400" },
-    { name: "Cephe Giydirme", description: "Binalara estetik ve modern bir görünüm kazandıran, ısı ve su yalıtımı sağlayan, dayanıklı kompozit ve alüminyum cephe sistemleri.", image: "https://picsum.photos/seed/cephe/600/400" },
-    { name: "Cam Balkon / Kış Bahçesi", description: "Balkonlarınızı ve teraslarınızı dört mevsim yaşanabilir alanlara dönüştüren, fonksiyonel ve şık katlanır ve sürme cam sistemleri.", image: "https://picsum.photos/seed/cambalkon/600/400" },
-    { name: "Pergola / Tente", description: "Dış mekanlarınıza gölge ve konfor katan, otomatik açılır-kapanır, modern tasarımlı bioklimatik pergola ve tente sistemleri.", image: "https://picsum.photos/seed/pergola/600/400" },
-    { name: "Korkuluk", description: "Güvenliği estetikle birleştiren, paslanmaz çelik, alüminyum ve cam malzemelerden üretilmiş modern merdiven ve balkon korkulukları.", image: "https://picsum.photos/seed/korkuluk/600/400" },
-    { name: "Sineklik", description: "Yaz aylarında haşerelerden korunurken doğal havalandırmayı kesmeyen, pratik ve dayanıklı pileli, stor ve sabit sineklik sistemleri.", image: "https://picsum.photos/seed/sineklik/600/400" },
-    { name: "Panjur", description: "Güvenlik, ısı yalıtımı ve mahremiyet sağlayan, manuel veya motorlu seçenekleriyle modern ve kullanışlı alüminyum panjur sistemleri.", image: "https://picsum.photos/seed/panjur/600/400" },
+    { name: "Alüminyum Doğrama", description: "Yüksek yalıtım ve dayanıklılık sunan, modern mimariye uygun estetik alüminyum kapı ve pencere sistemleri.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" },
+    { name: "PVC Doğrama", description: "Enerji verimliliği ve üstün ses yalıtımı sağlayan, her bütçeye uygun, uzun ömürlü PVC kapı ve pencere çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
+    { name: "Cephe Giydirme", description: "Binalara estetik ve modern bir görünüm kazandıran, ısı ve su yalıtımı sağlayan, dayanıklı kompozit ve alüminyum cephe sistemleri.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
+    { name: "Cam Balkon / Kış Bahçesi", description: "Balkonlarınızı ve teraslarınızı dört mevsim yaşanabilir alanlara dönüştüren, fonksiyonel ve şık katlanır ve sürme cam sistemleri.", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" },
+    { name: "Pergola / Tente", description: "Dış mekanlarınıza gölge ve konfor katan, otomatik açılır-kapanır, modern tasarımlı bioklimatik pergola ve tente sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
+    { name: "Korkuluk", description: "Güvenliği estetikle birleştiren, paslanmaz çelik, alüminyum ve cam malzemelerden üretilmiş modern merdiven ve balkon korkulukları.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true" },
+    { name: "Sineklik", description: "Yaz aylarında haşerelerden korunurken doğal havalandırmayı kesmeyen, pratik ve dayanıklı pileli, stor ve sabit sineklik sistemleri.", image: "https://images.unsplash.com/photo-1505926853236-14bd2390a66b?auto=format&fit=crop&w=600&q=80" },
+    { name: "Panjur", description: "Güvenlik, ısı yalıtımı ve mahremiyet sağlayan, manuel veya motorlu seçenekleriyle modern ve kullanışlı alüminyum panjur sistemleri.", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9af?auto=format&fit=crop&w=600&q=80" },
 ];
 
 export const LINEA_ROSSA_PRODUCTS: Product[] = [
-    { name: "LR-3200 Sürme Sistemi", description: "Minimalist tasarımı ve geniş cam yüzeyleri ile modern mekanlar için ideal, yüksek performanslı sürme kapı ve pencere sistemi.", image: "https://picsum.photos/seed/lr3200/600/400" },
-    { name: "LR-2600 Kaldır-Sür Sistemi", description: "Geniş açıklıklar için mükemmel sızdırmazlık ve kullanım kolaylığı sunan, üstün yalıtımlı kaldır-sür (Hebeschiebe) sistemi.", image: "https://picsum.photos/seed/lr2600/600/400" },
-    { name: "LR-1150 Cephe Sistemi", description: "Binalara estetik ve prestijli bir görünüm katan, yüksek ısı ve ses yalıtımı sağlayan modern giydirme cephe sistemi.", image: "https://picsum.photos/seed/lr1150/600/400" },
-    { name: "LR-1050 Pencere ve Kapı", description: "Klasik ve modern mimariye uyum sağlayan, yüksek performanslı, ısı yalıtımlı alüminyum pencere ve kapı sistemi.", image: "https://picsum.photos/seed/lr1050/600/400" },
+    { name: "LR-3200 Sürme Sistemi", description: "Minimalist tasarımı ve geniş cam yüzeyleri ile modern mekanlar için ideal, yüksek performanslı sürme kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
+    { name: "LR-2600 Kaldır-Sür Sistemi", description: "Geniş açıklıklar için mükemmel sızdırmazlık ve kullanım kolaylığı sunan, üstün yalıtımlı kaldır-sür (Hebeschiebe) sistemi.", image: "https://images.unsplash.com/photo-1585128792020-803d29415281?auto=format&fit=crop&w=600&q=80" },
+    { name: "LR-1150 Cephe Sistemi", description: "Binalara estetik ve prestijli bir görünüm katan, yüksek ısı ve ses yalıtımı sağlayan modern giydirme cephe sistemi.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
+    { name: "LR-1050 Pencere ve Kapı", description: "Klasik ve modern mimariye uyum sağlayan, yüksek performanslı, ısı yalıtımlı alüminyum pencere ve kapı sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
 ];
 
 

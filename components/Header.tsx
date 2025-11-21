@@ -37,7 +37,7 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
         <li className="relative group" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <button
                 onClick={handleMainLinkClick}
-                className={`w-full text-left md:w-auto px-4 py-2 text-sm font-medium transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-gray-700 hover:text-brand-red-600'} ${hasSublinks ? 'flex items-center gap-1' : ''}`}
+                className={`w-full text-left md:w-auto px-4 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'} ${hasSublinks ? 'flex items-center gap-1' : ''}`}
                  aria-haspopup={hasSublinks}
                  aria-expanded={isDropdownOpen}
             >
@@ -49,7 +49,7 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
                     <ul className="bg-white rounded-md shadow-lg py-1 border-t-4 border-brand-red-600">
                         {link.subLinks?.map((subLink) => (
                             <li key={subLink.name}>
-                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue-50 hover:text-brand-red-600">
+                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-2 text-sm text-brand-blue-900 hover:bg-brand-blue-50 hover:text-brand-red-600 font-medium">
                                     {subLink.name}
                                 </a>
                             </li>
@@ -124,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     </nav>
                     
                     <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-brand-red-600 focus:outline-none p-2">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2">
                             {isMenuOpen ? <XIcon className="w-7 h-7" /> : <MenuIcon className="w-7 h-7" />}
                         </button>
                     </div>
@@ -139,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                            <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} closeMenu={() => setIsMenuOpen(false)} />
                         ))}
                         <hr className="my-2 border-gray-100"/>
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-brand-red-50 hover:text-brand-red-600 rounded-lg">
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-sm text-brand-blue-900 hover:bg-brand-red-50 hover:text-brand-red-600 rounded-lg font-medium">
                            <InstagramIcon className="w-5 h-5 mr-3"/> Instagram'da Takip Et
                         </a>
                         <div className="pt-2">
