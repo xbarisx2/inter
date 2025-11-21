@@ -101,7 +101,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                          <div className="flex animate-marquee group-hover:pause space-x-8">
                              {displayedReferences.concat(displayedReferences).map((ref, index) => (
                                 <div key={index} className="flex-shrink-0 bg-white p-4 rounded-lg flex items-center justify-center w-64 h-32 border border-gray-100 shadow-sm hover:shadow-md transition-shadow hover:border-brand-red-200">
-                                    <img src={ref.logo} alt={ref.name} className="max-h-16 max-w-full object-contain grayscale transition-all duration-300 group-hover:grayscale-0" />
+                                    <img src={ref.logo} alt={ref.name} className="max-h-16 max-w-full object-contain transition-all duration-300" />
                                 </div>
                             ))}
                         </div>

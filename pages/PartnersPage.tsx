@@ -22,7 +22,7 @@ const PartnersPage: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
                         {PARTNERS.map((partner, index) => (
                             <div key={index} className="flex justify-center items-center p-6 bg-gray-50 rounded-lg transition-all duration-300 hover:shadow-md hover:bg-gray-100 h-32">
-                                <img src={partner.logo} alt={partner.name} className="max-h-16 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300"/>
+                                <img src={partner.logo} alt={partner.name} className="max-h-16 object-contain transition-all duration-300"/>
                             </div>
                         ))}
                     </div>

@@ -26,7 +26,7 @@ const ReferencesPage: React.FC = () => {
                                     <img 
                                         src={ref.logo} 
                                         alt={`${ref.name} logosu`} 
-                                        className="max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" 
+                                        className="max-h-20 max-w-full object-contain transition-all duration-300" 
                                     />
                                 </div>
                                 <p className="text-sm font-medium text-gray-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{ref.name}</p>

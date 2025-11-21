@@ -74,24 +74,25 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     }, []);
 
     return (
-        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white'}`}>
+        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
             {/* Top Contact Bar */}
-            <div className="bg-gray-100 border-b border-gray-200 hidden md:block">
+            <div className="bg-brand-red-600 text-white hidden md:block transition-colors duration-300">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center py-2 text-sm text-gray-700">
+                    <div className="flex justify-between items-center py-2 text-sm font-medium">
                         <div className="flex items-center space-x-6">
-                            <div className="flex items-center space-x-2">
-                                <PhoneIcon className="w-4 h-4 text-brand-red-600" />
-                                <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:text-brand-red-600 transition-colors">{COMPANY_INFO.phone1}</a>
+                            <div className="flex items-center space-x-2 group">
+                                <PhoneIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
+                                <a href={`tel:${COMPANY_INFO.phone1}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.phone1}</a>
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <MailIcon className="w-4 h-4 text-brand-red-600" />
-                                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-red-600 transition-colors">{COMPANY_INFO.email}</a>
+                            <div className="flex items-center space-x-2 group">
+                                <MailIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
+                                <a href={`mailto:${COMPANY_INFO.email}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.email}</a>
                             </div>
                         </div>
                         <div className="flex items-center">
-                             <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-red-600 transition-colors">
+                             <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors flex items-center gap-1">
                                 <InstagramIcon className="w-5 h-5" />
+                                <span className="text-xs">Bizi Takip Edin</span>
                             </a>
                         </div>
                     </div>
@@ -117,14 +118,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                 <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                             ))}
                         </ul>
-                         <button onClick={() => setCurrentPage('İletişim')} className="ml-6 bg-brand-red-600 text-white px-5 py-2 rounded-full font-medium hover:bg-brand-red-700 transition-colors shadow-md">
+                         <button onClick={() => setCurrentPage('İletişim')} className="ml-6 bg-brand-red-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                             Teklif Al
                         </button>
                     </nav>
                     
                     <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-brand-red-600 focus:outline-none">
-                            {isMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-brand-red-600 focus:outline-none p-2">
+                            {isMenuOpen ? <XIcon className="w-7 h-7" /> : <MenuIcon className="w-7 h-7" />}
                         </button>
                     </div>
                 </div>
@@ -132,14 +133,20 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden bg-white border-t border-gray-200">
+                <div className="md:hidden bg-white border-t border-gray-200 absolute w-full shadow-xl">
                     <nav className="flex flex-col p-4 space-y-2">
                         {NAVIGATION_LINKS.map(link => (
                            <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} closeMenu={() => setIsMenuOpen(false)} />
                         ))}
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-brand-red-600">
-                           <InstagramIcon className="w-5 h-5 mr-2"/> Instagram
+                        <hr className="my-2 border-gray-100"/>
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-brand-red-50 hover:text-brand-red-600 rounded-lg">
+                           <InstagramIcon className="w-5 h-5 mr-3"/> Instagram'da Takip Et
                         </a>
+                        <div className="pt-2">
+                             <button onClick={() => {setCurrentPage('İletişim'); setIsMenuOpen(false);}} className="w-full bg-brand-red-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-brand-red-700 transition-colors shadow-sm">
+                                Teklif Al
+                            </button>
+                        </div>
                     </nav>
                 </div>
             )}
