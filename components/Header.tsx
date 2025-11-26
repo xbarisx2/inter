@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { Page, NavLink } from '../types';
 import { NAVIGATION_LINKS, COMPANY_INFO } from '../constants';
 import { InstagramIcon, MenuIcon, XIcon, PhoneIcon, MailIcon } from './Icons';
@@ -113,148 +114,159 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         }
     };
 
-    return (
-        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
-            {/* Top Contact Bar - Hidden on very small screens, visible on md+ */}
-            <div className="bg-brand-red-600 text-white hidden md:block transition-colors duration-300">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center py-2 text-sm font-medium">
-                        <div className="flex items-center space-x-6">
-                            <div className="flex items-center space-x-2 group">
-                                <PhoneIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
-                                <a href={`tel:${COMPANY_INFO.phone1}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.phone1}</a>
-                            </div>
-                            <div className="flex items-center space-x-2 group">
-                                <MailIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
-                                <a href={`mailto:${COMPANY_INFO.email}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.email}</a>
-                            </div>
-                        </div>
-                        <div className="flex items-center">
-                             <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors flex items-center gap-1">
-                                <InstagramIcon className="w-5 h-5" />
-                                <span className="text-xs">Bizi Takip Edin</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    // Portal for mobile menu to avoid z-index/transform stacking context issues
+    const MobileMenuOverlay = () => (
+        <div className={`fixed inset-0 z-[40] transition-all duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto ${isMenuOpen ? 'translate-x-0 bg-white' : 'translate-x-full bg-white/0'} pointer-events-auto`}>
+            {isMenuOpen && (
+                <>
+                    <nav className="flex flex-col space-y-1 mt-4">
+                        {NAVIGATION_LINKS.map(link => {
+                            const hasSublinks = link.subLinks && link.subLinks.length > 0;
+                            const isExpanded = expandedMobileMenu === link.name;
 
-            {/* Main Header */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20 md:h-24 relative">
-                    <div className="flex-shrink-0 z-50">
-                        <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center">
-                            <img 
-                                src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
-                                alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                className="h-14 md:h-20 w-auto object-contain"
-                            />
-                        </button>
-                    </div>
-
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex md:items-center h-full">
-                        <ul className="flex items-center space-x-1 lg:space-x-4 h-full">
-                             {NAVIGATION_LINKS.map(link => (
-                                <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                            ))}
-                        </ul>
-                         <button onClick={() => setCurrentPage('İletişim')} className="ml-4 lg:ml-6 bg-brand-red-600 text-white px-5 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
-                            Teklif Al
-                        </button>
-                    </nav>
-                    
-                    {/* Mobile Menu Button - Increased Z-Index */}
-                    <div className="md:hidden flex items-center z-[60]">
-                        <button 
-                            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                            className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2 rounded-md transition-colors cursor-pointer"
-                            aria-label="Menüyü Aç/Kapat"
-                            aria-expanded={isMenuOpen}
-                        >
-                            {isMenuOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                <nav className="flex flex-col space-y-1">
-                    {NAVIGATION_LINKS.map(link => {
-                        const hasSublinks = link.subLinks && link.subLinks.length > 0;
-                        const isExpanded = expandedMobileMenu === link.name;
-
-                        return (
-                            <div key={link.name} className="border-b border-gray-100 last:border-0">
-                                <div className="flex items-center justify-between">
-                                    <button 
-                                        onClick={() => {
-                                            if (hasSublinks) {
-                                                toggleMobileSubmenu(link.name);
-                                            } else {
-                                                handleMobileLinkClick(link.name);
-                                            }
-                                        }}
-                                        className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900'}`}
-                                    >
-                                        {link.name}
-                                    </button>
-                                    {hasSublinks && (
+                            return (
+                                <div key={link.name} className="border-b border-gray-100 last:border-0">
+                                    <div className="flex items-center justify-between">
                                         <button 
-                                            onClick={() => toggleMobileSubmenu(link.name)}
-                                            className="p-4 text-brand-blue-500 focus:outline-none"
+                                            onClick={() => {
+                                                if (hasSublinks) {
+                                                    toggleMobileSubmenu(link.name);
+                                                } else {
+                                                    handleMobileLinkClick(link.name);
+                                                }
+                                            }}
+                                            className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900'}`}
                                         >
-                                            <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            {link.name}
                                         </button>
-                                    )}
-                                </div>
-                                
-                                {hasSublinks && (
-                                    <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-96 opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
-                                        <ul className="flex flex-col py-2 pl-4">
-                                            <li className="mb-1">
-                                                 <button 
-                                                    onClick={() => handleMobileLinkClick(link.name)}
-                                                    className="w-full text-left py-2 px-2 text-sm font-semibold text-brand-blue-900 hover:text-brand-red-600"
-                                                >
-                                                    Tümü
-                                                </button>
-                                            </li>
-                                            {link.subLinks?.map(subLink => (
-                                                <li key={subLink.name}>
-                                                    <button 
-                                                        onClick={() => handleMobileSubLinkClick(subLink)}
-                                                        className="w-full text-left py-2 px-2 text-sm text-gray-600 hover:text-brand-red-600"
+                                        {hasSublinks && (
+                                            <button 
+                                                onClick={() => toggleMobileSubmenu(link.name)}
+                                                className="p-4 text-brand-blue-500 focus:outline-none"
+                                            >
+                                                <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </button>
+                                        )}
+                                    </div>
+                                    
+                                    {hasSublinks && (
+                                        <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-96 opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
+                                            <ul className="flex flex-col py-2 pl-4">
+                                                <li className="mb-1">
+                                                     <button 
+                                                        onClick={() => handleMobileLinkClick(link.name)}
+                                                        className="w-full text-left py-2 px-2 text-sm font-semibold text-brand-blue-900 hover:text-brand-red-600"
                                                     >
-                                                        {subLink.name}
+                                                        Tümü
                                                     </button>
                                                 </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </nav>
+                                                {link.subLinks?.map(subLink => (
+                                                    <li key={subLink.name}>
+                                                        <button 
+                                                            onClick={() => handleMobileSubLinkClick(subLink)}
+                                                            className="w-full text-left py-2 px-2 text-sm text-gray-600 hover:text-brand-red-600"
+                                                        >
+                                                            {subLink.name}
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </nav>
 
-                <div className="mt-auto pt-8 space-y-4">
-                     <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
-                        <PhoneIcon className="w-5 h-5 mr-2" />
-                        Hemen Ara
-                    </a>
-                    
-                    <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-red-600 text-white py-4 rounded-lg font-bold hover:bg-brand-red-700 transition-colors shadow-md">
-                        Teklif Al
-                    </button>
-                    
-                     <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-brand-blue-800 py-2 font-medium">
-                       <InstagramIcon className="w-6 h-6 mr-2"/> İnstagram'da Takip Et
-                    </a>
+                    <div className="mt-auto pt-8 space-y-4 pb-8">
+                         <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
+                            <PhoneIcon className="w-5 h-5 mr-2" />
+                            Hemen Ara
+                        </a>
+                        
+                        <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-red-600 text-white py-4 rounded-lg font-bold hover:bg-brand-red-700 transition-colors shadow-md">
+                            Teklif Al
+                        </button>
+                        
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-brand-blue-800 py-2 font-medium">
+                           <InstagramIcon className="w-6 h-6 mr-2"/> İnstagram'da Takip Et
+                        </a>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+
+    return (
+        <>
+            <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'}`}>
+                {/* Top Contact Bar - Hidden on very small screens, visible on md+ */}
+                <div className="bg-brand-red-600 text-white hidden md:block transition-colors duration-300">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center py-2 text-sm font-medium">
+                            <div className="flex items-center space-x-6">
+                                <div className="flex items-center space-x-2 group">
+                                    <PhoneIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
+                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.phone1}</a>
+                                </div>
+                                <div className="flex items-center space-x-2 group">
+                                    <MailIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
+                                    <a href={`mailto:${COMPANY_INFO.email}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.email}</a>
+                                </div>
+                            </div>
+                            <div className="flex items-center">
+                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors flex items-center gap-1">
+                                    <InstagramIcon className="w-5 h-5" />
+                                    <span className="text-xs">Bizi Takip Edin</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </header>
+
+                {/* Main Header */}
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center justify-between h-20 md:h-24 relative bg-white z-[60]">
+                        <div className="flex-shrink-0">
+                            <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center">
+                                <img 
+                                    src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
+                                    alt="İNTER AKDENİZ ALÜMİNYUM" 
+                                    className="h-14 md:h-20 w-auto object-contain"
+                                />
+                            </button>
+                        </div>
+
+                        {/* Desktop Navigation */}
+                        <nav className="hidden md:flex md:items-center h-full">
+                            <ul className="flex items-center space-x-1 lg:space-x-4 h-full">
+                                 {NAVIGATION_LINKS.map(link => (
+                                    <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                                ))}
+                            </ul>
+                             <button onClick={() => setCurrentPage('İletişim')} className="ml-4 lg:ml-6 bg-brand-red-600 text-white px-5 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+                                Teklif Al
+                            </button>
+                        </nav>
+                        
+                        {/* Mobile Menu Button */}
+                        <div className="md:hidden flex items-center">
+                            <button 
+                                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                                className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2 rounded-md transition-colors cursor-pointer"
+                                aria-label="Menüyü Aç/Kapat"
+                                aria-expanded={isMenuOpen}
+                            >
+                                {isMenuOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            {/* Render Mobile Menu in Portal to escape header stacking context */}
+            {createPortal(<MobileMenuOverlay />, document.body)}
+        </>
     );
 };
 

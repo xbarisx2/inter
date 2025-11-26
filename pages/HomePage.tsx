@@ -14,7 +14,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative bg-brand-blue-900 text-white min-h-[65vh] md:h-[85vh] flex items-center">
+            <section className="relative bg-brand-blue-900 text-white min-h-[60vh] md:h-[85vh] flex items-center">
                 <div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay" style={{backgroundImage: "url('https://picsum.photos/seed/architecture/1920/1080')"}}></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-blue-950 via-brand-blue-900/80 to-transparent"></div>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-0">
@@ -38,7 +38,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
 
             {/* About Us Summary */}
-            <section className="py-16 md:py-20 bg-white">
+            <section className="py-12 md:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                         <div className="relative order-2 md:order-1">
@@ -61,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
 
             {/* Featured Products */}
-            <section className="py-16 md:py-20 bg-gray-50">
+            <section className="py-12 md:py-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10 md:mb-12">
                         <h2 className="text-2xl md:text-4xl font-bold text-brand-blue-900">Öne Çıkan Ürünlerimiz</h2>
@@ -90,7 +90,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
             
             {/* References Marquee */}
-            <section className="py-16 md:py-20 bg-white overflow-hidden">
+            <section className="py-12 md:py-20 bg-white overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-10 md:mb-12">
                         <h2 className="text-2xl md:text-4xl font-bold text-brand-blue-900">Güvenin Adı: Referanslarımız</h2>
