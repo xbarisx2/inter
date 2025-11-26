@@ -105,9 +105,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     <div className="flex-shrink-0">
                         <button onClick={() => setCurrentPage('Ana Sayfa')} className="flex items-center">
                             <img 
-                                src="https://github.com/xbarisx2/logo/blob/main/inter%20logo.jpg?raw=true" 
+                                src="https://github.com/xbarisx2/logo/blob/main/logoointer.jpg?raw=true" 
                                 alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                className="h-20 md:h-24 w-auto object-contain py-2"
+                                className="h-20 md:h-24 w-auto object-contain py-2 mix-blend-multiply"
                             />
                         </button>
                     </div>

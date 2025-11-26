@@ -4,8 +4,8 @@ import type { NavLink, Product, Reference, BlogPost, Partner } from './types';
 export const COMPANY_INFO = {
     name: "İNTER AKDENİZ ALÜMİNYUM LTD. ŞTİ.",
     address: "Çağlayan Mahallesi Barınaklar Bulvarı Pınar Apartmanı No:99A Muratpaşa / Antalya",
-    phone1: "0501 250 43 03",
-    phone2: "0242 324 04 24",
+    phone1: "+90 (501) 250 43 03",
+    phone2: "+90 (242) 324 04 24",
     email: "info@interakdenizaluminyum.com",
     instagram: "https://www.instagram.com/interakdenizlinearossa/",
     whatsapp: "https://wa.me/905012504303",
@@ -52,7 +52,8 @@ export const PARTNERS: Partner[] = [
 export const REFERENCES: Reference[] = [
     { name: "BİNBİR İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/B%C4%B0NB%C4%B0R%20%C4%B0N%C5%9EAAT.jpeg?raw=true" }, 
     { name: "ERDEM PETROL İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/ERDEM%20PETROL%20%C4%B0N%C5%9EAAT.jpeg?raw=true" }, 
-    { name: "SOHO İNŞAAT", logo: "https://www.sohoinsaat.com/medya/soho_logo_1.png" },
+    { name: "SOHO İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/soho_logo_1.png?raw=true" },
+    { name: "GOLDEN LIFE", logo: "https://github.com/xbarisx2/logo/blob/main/golden%20life.jpg?raw=true" },
     { name: "BİLEM OTEL", logo: "https://github.com/xbarisx2/logo/blob/main/B%C4%B0LEM%20OTEL.jpeg?raw=true" },
     { name: "BOTTEGA", logo: "https://github.com/xbarisx2/logo/blob/main/bottega.jpeg?raw=true" },
     { name: "WALKERS CAFE", logo: "https://github.com/xbarisx2/logo/blob/main/WALKERS%20CAFE.jpeg?raw=true" }, 
