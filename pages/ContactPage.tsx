@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../constants';
-import { PhoneIcon, MailIcon, LocationMarkerIcon } from '../components/Icons';
+import { PhoneIcon, MailIcon, LocationMarkerIcon, CheckCircleIcon } from '../components/Icons';
 
 const ContactPage: React.FC = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -42,9 +42,13 @@ ${message}
         window.location.href = mailtoLink;
 
         setFormStatus('sent');
-        // We don't clear the form, as the user might not have an email client configured
-        // and would lose their message. We will just show a success message.
-        setTimeout(() => setFormStatus('idle'), 8000); 
+        // NOTE: We do not clear the form immediately so the user can resend if needed,
+        // but we switch the UI to a success state.
+    };
+
+    const resetForm = () => {
+        setFormStatus('idle');
+        setFormData({ name: '', email: '', message: '' });
     };
 
     return (
@@ -70,38 +74,53 @@ ${message}
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-12">
-                        {/* Contact Form */}
-                        <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-                            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Mesaj Gönderin</h2>
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Adınız Soyadınız</label>
-                                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-posta Adresiniz</label>
-                                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
-                                </div>
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mesajınız</label>
-                                    <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500"></textarea>
-                                </div>
-                                <div>
-                                    <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-brand-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-lg hover:bg-brand-blue-700 transition-colors duration-300 disabled:bg-brand-blue-400 disabled:cursor-not-allowed">
-                                        {formStatus === 'sending' ? 'Gönderiliyor...' : 'Gönder'}
+                        {/* Contact Form Area */}
+                        <div className="bg-gray-50 p-8 rounded-lg shadow-md transition-all duration-300 min-h-[500px] flex flex-col justify-center">
+                            {formStatus === 'sent' ? (
+                                <div className="text-center animate-fade-in py-8">
+                                    <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
+                                        <CheckCircleIcon className="h-12 w-12 text-green-600" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Yönlendiriliyorsunuz!</h3>
+                                    <p className="text-gray-600 mb-8 max-w-sm mx-auto leading-relaxed">
+                                        E-posta istemciniz otomatik olarak açıldı. Lütfen mesajınızı kontrol edip gönder butonuna basarak işlemi tamamlayın.
+                                    </p>
+                                    <button 
+                                        onClick={resetForm} 
+                                        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-blue-700 bg-brand-blue-100 hover:bg-brand-blue-200 transition-colors duration-300"
+                                    >
+                                        Yeni Mesaj Gönder
                                     </button>
                                 </div>
-                                {formStatus === 'sent' && (
-                                    <div className="p-4 bg-green-100 text-green-800 rounded-md text-sm">
-                                        Teşekkürler! E-posta programınız şimdi açılacaktır. Lütfen oradan gönderimi tamamlayın.
-                                    </div>
-                                )}
-                                {formStatus === 'error' && (
-                                    <div className="p-4 bg-red-100 text-red-800 rounded-md text-sm">
-                                        {errorMessage}
-                                    </div>
-                                )}
-                            </form>
+                            ) : (
+                                <div className="w-full">
+                                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">Mesaj Gönderin</h2>
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div>
+                                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Adınız Soyadınız</label>
+                                            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-posta Adresiniz</label>
+                                            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mesajınız</label>
+                                            <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500"></textarea>
+                                        </div>
+                                        <div>
+                                            <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-brand-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-lg hover:bg-brand-blue-700 transition-colors duration-300 disabled:bg-brand-blue-400 disabled:cursor-not-allowed">
+                                                {formStatus === 'sending' ? 'Yönlendiriliyor...' : 'Gönder'}
+                                            </button>
+                                        </div>
+                                        {formStatus === 'error' && (
+                                            <div className="p-4 bg-red-100 text-red-800 rounded-md text-sm border border-red-200">
+                                                {errorMessage}
+                                            </div>
+                                        )}
+                                    </form>
+                                </div>
+                            )}
                         </div>
 
                         {/* Contact Details */}

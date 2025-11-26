@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import type { Page, NavLink } from '../types';
 import { NAVIGATION_LINKS, COMPANY_INFO } from '../constants';
@@ -9,12 +8,12 @@ interface HeaderProps {
     setCurrentPage: (page: Page) => void;
 }
 
-const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (page: Page) => void; closeMenu?: () => void }> = ({ link, currentPage, setCurrentPage, closeMenu }) => {
+// Desktop Navigation Item
+const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (page: Page) => void; }> = ({ link, currentPage, setCurrentPage }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const hasSublinks = link.subLinks && link.subLinks.length > 0;
 
     const handleMainLinkClick = () => {
-        // Allow navigation for all main links, including those with sublinks like 'Ürünlerimiz'.
         setCurrentPage(link.name);
     };
 
@@ -28,28 +27,26 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
                 document.getElementById(subLink.id)?.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
-        
-        if (closeMenu) closeMenu();
         setDropdownOpen(false);
     };
 
     return (
-        <li className="relative group" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+        <li className="relative group h-full flex items-center" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <button
                 onClick={handleMainLinkClick}
-                className={`w-full text-left md:w-auto px-4 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'} ${hasSublinks ? 'flex items-center gap-1' : ''}`}
+                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'}`}
                  aria-haspopup={hasSublinks}
                  aria-expanded={isDropdownOpen}
             >
                 {link.name}
-                {hasSublinks && <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>}
+                {hasSublinks && <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>}
             </button>
             {hasSublinks && isDropdownOpen && (
-                <div className="md:absolute z-20 left-0 pt-2 w-48">
-                    <ul className="bg-white rounded-md shadow-lg py-1 border-t-4 border-brand-red-600">
+                <div className="absolute top-full left-0 pt-2 w-56 z-50">
+                    <ul className="bg-white rounded-md shadow-xl py-2 border-t-4 border-brand-red-600">
                         {link.subLinks?.map((subLink) => (
                             <li key={subLink.name}>
-                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-2 text-sm text-brand-blue-900 hover:bg-brand-blue-50 hover:text-brand-red-600 font-medium">
+                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-3 text-sm text-brand-blue-900 hover:bg-brand-blue-50 hover:text-brand-red-600 font-medium transition-colors">
                                     {subLink.name}
                                 </a>
                             </li>
@@ -64,6 +61,8 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    // State to track expanded submenus in mobile view
+    const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -73,9 +72,50 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [isMenuOpen]);
+
+    const handleMobileLinkClick = (page: Page) => {
+        setCurrentPage(page);
+        setIsMenuOpen(false);
+        setExpandedMobileMenu(null);
+        window.scrollTo(0, 0);
+    };
+
+    const handleMobileSubLinkClick = (subLink: { name: string; id?: string; page?: Page }) => {
+         if (subLink.page) {
+            setCurrentPage(subLink.page);
+        }
+        if (subLink.id) {
+            setTimeout(() => {
+                const element = document.getElementById(subLink.id);
+                if(element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 300); // Slight delay for menu close animation
+        } else {
+             window.scrollTo(0, 0);
+        }
+        setIsMenuOpen(false);
+        setExpandedMobileMenu(null);
+    };
+
+    const toggleMobileSubmenu = (name: string) => {
+        if (expandedMobileMenu === name) {
+            setExpandedMobileMenu(null);
+        } else {
+            setExpandedMobileMenu(name);
+        }
+    };
+
     return (
-        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
-            {/* Top Contact Bar */}
+        <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
+            {/* Top Contact Bar - Hidden on very small screens, visible on md+ */}
             <div className="bg-brand-red-600 text-white hidden md:block transition-colors duration-300">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-2 text-sm font-medium">
@@ -101,55 +141,119 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
             {/* Main Header */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-24">
-                    <div className="flex-shrink-0">
-                        <button onClick={() => setCurrentPage('Ana Sayfa')} className="flex items-center">
+                <div className="flex items-center justify-between h-20 md:h-24 relative">
+                    <div className="flex-shrink-0 z-50">
+                        <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center">
                             <img 
-                                src="https://github.com/xbarisx2/logo/blob/main/logoointer.jpg?raw=true" 
+                                src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
                                 alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                className="h-20 md:h-24 w-auto object-contain py-2 mix-blend-multiply"
+                                className="h-14 md:h-20 w-auto object-contain"
                             />
                         </button>
                     </div>
 
-                    <nav className="hidden md:flex md:items-center">
-                        <ul className="flex items-center space-x-2">
+                    {/* Desktop Navigation */}
+                    <nav className="hidden md:flex md:items-center h-full">
+                        <ul className="flex items-center space-x-1 lg:space-x-4 h-full">
                              {NAVIGATION_LINKS.map(link => (
                                 <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                             ))}
                         </ul>
-                         <button onClick={() => setCurrentPage('İletişim')} className="ml-6 bg-brand-red-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                         <button onClick={() => setCurrentPage('İletişim')} className="ml-4 lg:ml-6 bg-brand-red-600 text-white px-5 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
                             Teklif Al
                         </button>
                     </nav>
                     
-                    <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2">
-                            {isMenuOpen ? <XIcon className="w-7 h-7" /> : <MenuIcon className="w-7 h-7" />}
+                    {/* Mobile Menu Button - Increased Z-Index */}
+                    <div className="md:hidden flex items-center z-[60]">
+                        <button 
+                            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                            className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2 rounded-md transition-colors cursor-pointer"
+                            aria-label="Menüyü Aç/Kapat"
+                            aria-expanded={isMenuOpen}
+                        >
+                            {isMenuOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div className="md:hidden bg-white border-t border-gray-200 absolute w-full shadow-xl">
-                    <nav className="flex flex-col p-4 space-y-2">
-                        {NAVIGATION_LINKS.map(link => (
-                           <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} closeMenu={() => setIsMenuOpen(false)} />
-                        ))}
-                        <hr className="my-2 border-gray-100"/>
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-sm text-brand-blue-900 hover:bg-brand-red-50 hover:text-brand-red-600 rounded-lg font-medium">
-                           <InstagramIcon className="w-5 h-5 mr-3"/> Instagram'da Takip Et
-                        </a>
-                        <div className="pt-2">
-                             <button onClick={() => {setCurrentPage('İletişim'); setIsMenuOpen(false);}} className="w-full bg-brand-red-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-brand-red-700 transition-colors shadow-sm">
-                                Teklif Al
-                            </button>
-                        </div>
-                    </nav>
+            {/* Mobile Menu Overlay */}
+            <div className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                <nav className="flex flex-col space-y-1">
+                    {NAVIGATION_LINKS.map(link => {
+                        const hasSublinks = link.subLinks && link.subLinks.length > 0;
+                        const isExpanded = expandedMobileMenu === link.name;
+
+                        return (
+                            <div key={link.name} className="border-b border-gray-100 last:border-0">
+                                <div className="flex items-center justify-between">
+                                    <button 
+                                        onClick={() => {
+                                            if (hasSublinks) {
+                                                toggleMobileSubmenu(link.name);
+                                            } else {
+                                                handleMobileLinkClick(link.name);
+                                            }
+                                        }}
+                                        className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900'}`}
+                                    >
+                                        {link.name}
+                                    </button>
+                                    {hasSublinks && (
+                                        <button 
+                                            onClick={() => toggleMobileSubmenu(link.name)}
+                                            className="p-4 text-brand-blue-500 focus:outline-none"
+                                        >
+                                            <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </button>
+                                    )}
+                                </div>
+                                
+                                {hasSublinks && (
+                                    <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-96 opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
+                                        <ul className="flex flex-col py-2 pl-4">
+                                            <li className="mb-1">
+                                                 <button 
+                                                    onClick={() => handleMobileLinkClick(link.name)}
+                                                    className="w-full text-left py-2 px-2 text-sm font-semibold text-brand-blue-900 hover:text-brand-red-600"
+                                                >
+                                                    Tümü
+                                                </button>
+                                            </li>
+                                            {link.subLinks?.map(subLink => (
+                                                <li key={subLink.name}>
+                                                    <button 
+                                                        onClick={() => handleMobileSubLinkClick(subLink)}
+                                                        className="w-full text-left py-2 px-2 text-sm text-gray-600 hover:text-brand-red-600"
+                                                    >
+                                                        {subLink.name}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </nav>
+
+                <div className="mt-auto pt-8 space-y-4">
+                     <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
+                        <PhoneIcon className="w-5 h-5 mr-2" />
+                        Hemen Ara
+                    </a>
+                    
+                    <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-red-600 text-white py-4 rounded-lg font-bold hover:bg-brand-red-700 transition-colors shadow-md">
+                        Teklif Al
+                    </button>
+                    
+                     <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-brand-blue-800 py-2 font-medium">
+                       <InstagramIcon className="w-6 h-6 mr-2"/> İnstagram'da Takip Et
+                    </a>
                 </div>
-            )}
+            </div>
         </header>
     );
 };

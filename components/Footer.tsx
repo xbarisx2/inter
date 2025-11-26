@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { COMPANY_INFO, NAVIGATION_LINKS } from '../constants';
 import type { Page } from '../types';
@@ -17,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                     <div className="lg:col-span-1">
                         <div className="bg-white p-2 rounded mb-4 w-fit">
                             <img 
-                                src="https://github.com/xbarisx2/logo/blob/main/logoointer.jpg?raw=true" 
+                                src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
                                 alt="İnter Akdeniz Alüminyum Logo" 
                                 className="h-12 object-contain"
                             />
