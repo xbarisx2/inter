@@ -12,20 +12,27 @@ interface HeaderProps {
 
 // Helper to handle link clicks
 const handleLinkClick = (
-    item: { name: string; id?: string; page?: Page },
+    item: { name: string; id?: string; page?: Page } | NavLink,
     setCurrentPage: (page: Page) => void,
     closeMenu?: () => void
 ) => {
-    if (item.page) {
-        setCurrentPage(item.page);
+    // Determine the target page. 
+    // 1. If 'page' property exists (SubLinkItems), use it.
+    // 2. If not, assume 'name' is the page (Top-level NavLinks).
+    const targetPage = (item as any).page || (item as any).name;
+
+    if (targetPage) {
+        setCurrentPage(targetPage as Page);
     }
     
-    if (item.id) {
+    // Handle scrolling if an ID is provided
+    if ((item as any).id) {
         setTimeout(() => {
-            const element = document.getElementById(item.id!);
+            const element = document.getElementById((item as any).id!);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
         }, 300);
     } else {
+        // Otherwise scroll to top
         window.scrollTo(0, 0);
     }
 
