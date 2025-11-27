@@ -8,7 +8,7 @@ const LineaRossaPage: React.FC = () => {
             {/* Changed to red background to match 'Rossa' */}
             <div className="bg-brand-red-700 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold">Linea Rossa</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold">Linea Rossa Milano</h1>
                     <p className="mt-4 text-lg text-brand-red-100 max-w-2xl mx-auto">İtalyan tasarımı ve üstün teknolojinin buluştuğu nokta.</p>
                 </div>
             </div>
@@ -16,10 +16,10 @@ const LineaRossaPage: React.FC = () => {
             <div className="py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-800 mb-4">Mimaride Estetik ve Performans</h2>
+                        <h2 className="text-3xl font-bold text-gray-800 mb-4">Milano'dan Dünyaya: Estetik ve Performans</h2>
                         <div className="w-20 h-1 bg-brand-red-600 mx-auto mb-6"></div>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                           Linea Rossa, alüminyum sistemlerde minimalist estetiği, maksimum performansla birleştiren öncü bir markadır. Geniş açıklıklara olanak tanıyan ince profil tasarımları, üstün ısı ve ses yalıtım değerleri ile modern mimarinin tüm gereksinimlerine cevap verir. Yaşam alanlarınıza ferahlık ve zarafet katmak için Linea Rossa'nın yenilikçi dünyasını keşfedin.
+                           <strong>Linea Rossa Milano</strong>, alüminyum sistemlerde minimalist İtalyan estetiğini, maksimum performansla birleştiren global bir markadır. Geniş açıklıklara olanak tanıyan ince profil tasarımları, üstün ısı ve ses yalıtım değerleri ile modern mimarinin tüm gereksinimlerine cevap verir. Yaşam alanlarınıza İtalyan zarafetini katmak için Linea Rossa'nın yenilikçi dünyasını keşfedin.
                         </p>
                     </div>
                 </div>

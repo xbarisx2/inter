@@ -23,14 +23,21 @@ export const NAVIGATION_LINKS: NavLink[] = [
 ];
 
 export const PRODUCTS: Product[] = [
-    { name: "Alüminyum Doğrama", description: "Yüksek yalıtım ve dayanıklılık sunan, modern mimariye uygun estetik alüminyum kapı ve pencere sistemleri.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" },
-    { name: "PVC Doğrama", description: "Enerji verimliliği ve üstün ses yalıtımı sağlayan, her bütçeye uygun, uzun ömürlü PVC kapı ve pencere çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
-    { name: "Cephe Giydirme", description: "Binalara estetik ve modern bir görünüm kazandıran, ısı ve su yalıtımı sağlayan, dayanıklı kompozit ve alüminyum cephe sistemleri.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
-    { name: "Cam Balkon / Kış Bahçesi", description: "Balkonlarınızı ve teraslarınızı dört mevsim yaşanabilir alanlara dönüştüren, fonksiyonel ve şık katlanır ve sürme cam sistemleri.", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" },
-    { name: "Pergola / Tente", description: "Dış mekanlarınıza gölge ve konfor katan, otomatik açılır-kapanır, modern tasarımlı bioklimatik pergola ve tente sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
-    { name: "Korkuluk", description: "Güvenliği estetikle birleştiren, paslanmaz çelik, alüminyum ve cam malzemelerden üretilmiş modern merdiven ve balkon korkulukları.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true" },
-    { name: "Sineklik", description: "Yaz aylarında haşerelerden korunurken doğal havalandırmayı kesmeyen, pratik ve dayanıklı pileli, stor ve sabit sineklik sistemleri.", image: "https://images.unsplash.com/photo-1505926853236-14bd2390a66b?auto=format&fit=crop&w=600&q=80" },
-    { name: "Panjur", description: "Güvenlik, ısı yalıtımı ve mahremiyet sağlayan, manuel veya motorlu seçenekleriyle modern ve kullanışlı alüminyum panjur sistemleri.", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9af?auto=format&fit=crop&w=600&q=80" },
+    { name: "Aldoks Serisi", description: "Ekonomik, hafif ve geniş kullanım alanına sahip, vitrin ve kapı uygulamaları için ideal yalıtımsız doğrama sistemi.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" },
+    { name: "C60 Yalıtımlı Seri", description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu binalar için tasarlanmış polyamid bariyerli kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
+    { name: "Sistem Serisi (Işıklık)", description: "Çatı ışıklıkları ve kış bahçesi tavanları için özel tasarlanmış, su tahliye kanallı ve sızdırmazlık garantili profil sistemi.", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80" },
+    { name: "Sürme (Sliding) Serisi", description: "Dar alanlarda maksimum kullanım sağlayan, balkon, teras ve geniş açıklıklar için geliştirilmiş sürme doğrama profilleri.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
+    { name: "Cephe Sistemleri", description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe uygulamaları için yüksek mukavemetli alüminyum profil çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
+    { name: "Korkuluk ve Küpeşte", description: "Merdiven, balkon ve galeri boşlukları için kare ve yuvarlak formlarda estetik ve güvenli alüminyum korkuluk sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true" },
+    { name: "Cam Balkon Profilleri", description: "Katlanır ve sürme cam balkon sistemleri için tasarlanmış, hava ve su sızdırmazlığı sağlayan özel ray ve kasa profilleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
+    { name: "Ofis Bölme Sistemleri", description: "Modern ofisler için şeffaf, modüler ve ses yalıtımlı cam bölme duvar profilleri ve aksesuarları.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
+    { name: "Güneş Kırıcılar", description: "Bina cephelerinde güneş kontrolü sağlayan, estetik görünümlü sabit veya hareketli alüminyum güneş kırıcı profiller.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
+    { name: "Panjur ve Kepenk", description: "Güvenlik ve güneş kontrolü için kullanılan, motorlu veya manuel kullanıma uygun alüminyum panjur ve kepenk profilleri.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
+    { name: "Kompozit Panel", description: "Dış cephe kaplamalarında kullanılan, yanmaz (B1/A2), uzun ömürlü ve geniş renk seçenekli alüminyum kompozit paneller.", image: "https://images.unsplash.com/photo-1460317442991-0ec2aa247f7b?auto=format&fit=crop&w=600&q=80" },
+    { name: "Sineklik Profilleri", description: "Pencere ve kapı sistemlerine entegre edilebilen, pileli, menteşeli ve sabit sineklik sistemleri için alüminyum profiller.", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" },
+    { name: "Tente ve Pergola", description: "Açık alanları yaşam alanına dönüştüren, motorlu ve ışıklı biyoklimatik pergola sistem profilleri.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },
+    { name: "Mobilya Profilleri", description: "Mutfak, banyo ve gardırop kapakları için dekoratif çerçeve ve kulp profilleri.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
+    { name: "Menfez Profilleri", description: "Havalandırma boşlukları ve banyo kapıları için kullanılan sabit kanatlı alüminyum menfez profilleri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
 ];
 
 export const LINEA_ROSSA_PRODUCTS: Product[] = [
@@ -42,7 +49,7 @@ export const LINEA_ROSSA_PRODUCTS: Product[] = [
 
 
 export const PARTNERS: Partner[] = [
-    { name: 'Linea Rossa', logo: 'https://github.com/xbarisx2/logo/blob/main/l%C4%B1nea%20rossa.jpeg?raw=true' },
+    { name: 'Linea Rossa Milano', logo: 'https://github.com/xbarisx2/logo/blob/main/l%C4%B1nea%20rossa.jpeg?raw=true' },
     { name: 'Pimapen', logo: 'https://github.com/xbarisx2/logo/blob/main/pimapen.jpeg?raw=true' },
     { name: 'Europen', logo: 'https://github.com/xbarisx2/logo/blob/main/europen.jpeg?raw=true' },
     { name: 'Albert Genau', logo: 'https://www.albertgenau.com/upload/logo/10/logo-tr.png?13496' },
@@ -58,19 +65,19 @@ export const REFERENCES: Reference[] = [
     { name: "BOTTEGA", logo: "https://github.com/xbarisx2/logo/blob/main/bottega.jpeg?raw=true" },
     { name: "WALKERS CAFE", logo: "https://github.com/xbarisx2/logo/blob/main/WALKERS%20CAFE.jpeg?raw=true" }, 
     { name: "OPAL YAPI A.Ş", logo: "https://github.com/xbarisx2/logo/blob/main/OPAL%20YAPI%20A.%C5%9E.jpeg?raw=true" },
-    { name: "HASAN AKALIN", logo: "https://picsum.photos/seed/HASAN/240/120" }, 
-    { name: "ADLIHAN DERE", logo: "https://picsum.photos/seed/ADLIHAN/240/120" }, 
+    { name: "HASAN AKALIN", logo: "https://image.pollinations.ai/prompt/modern%20minimalist%20construction%20logo%20HASAN%20AKALIN%20blue%20white%20background" }, 
+    { name: "ADLIHAN DERE", logo: "https://image.pollinations.ai/prompt/elegant%20architecture%20logo%20ADLIHAN%20DERE%20white%20background" }, 
     { name: "ÖZDEN GRUP İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/%C3%B6zden%20in%C5%9Faat.jpeg?raw=true" },
-    { name: "AHG GRUP İNŞAAT", logo: "https://picsum.photos/seed/AHG/240/120" }, 
+    { name: "AHG GRUP İNŞAAT", logo: "https://image.pollinations.ai/prompt/strong%20construction%20logo%20AHG%20GRUP%20white%20background" }, 
     { name: "HASAN ÇERÇİLER MİMARLIK", logo: "https://github.com/xbarisx2/logo/blob/main/hasan%20%C3%A7er%C3%A7iler.jpeg?raw=true" }, 
-    { name: "KEMPAŞ A.Ş.", logo: "https://picsum.photos/seed/KEMPAS/240/120" },
+    { name: "KEMPAŞ A.Ş.", logo: "https://image.pollinations.ai/prompt/corporate%20company%20logo%20KEMPAS%20AS%20white%20background" },
     { name: "KÖRFEZ İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/k%C3%B6rfez.jpeg?raw=true" }, 
     { name: "SEMUS RESTORAN", logo: "https://github.com/xbarisx2/logo/blob/main/semus.jpeg?raw=true" }, 
-    { name: "İLHANLAR İNŞAAT", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/93188693-820d-4c99-9289-1f146608639e" },
-    { name: "KÜSTÜR MİMARLIK", logo: "https://picsum.photos/seed/KUSTUR/240/120" }, 
+    { name: "İLHANLAR İNŞAAT", logo: "https://image.pollinations.ai/prompt/modern%20construction%20logo%20ILHANLAR%20INSAAT%20white%20background" },
+    { name: "KÜSTÜR MİMARLIK", logo: "https://image.pollinations.ai/prompt/creative%20architecture%20logo%20KUSTUR%20MIMARLIK%20white%20background" }, 
     { name: "İDEA MİMARLIK", logo: "https://github.com/xbarisx2/logo/blob/main/%C4%B1dea.jpeg?raw=true" }, 
     { name: "SERTSAN İNŞAAT", logo: "https://github.com/xbarisx2/logo/blob/main/sert%20san.jpeg?raw=true" },
-    { name: "TK İNŞAAT", logo: "https://picsum.photos/seed/TKINSAAT/240/120" }, 
+    { name: "TK İNŞAAT", logo: "https://image.pollinations.ai/prompt/building%20construction%20logo%20TK%20INSAAT%20white%20background" }, 
     { name: "CAMSAŞ A.Ş", logo: "https://github.com/xbarisx2/logo/blob/main/cam%20sa%C5%9F.jpeg?raw=true" }, 
     { name: "PILLO", logo: "https://github.com/xbarisx2/logo/blob/main/pillo.jpeg?raw=true" },
     { name: "DORUK YAPIM", logo: "https://github.com/xbarisx2/logo/blob/main/Doruk%20yap%C4%B1m.jpeg?raw=true" }, 
@@ -100,7 +107,6 @@ export const BLOG_POSTS: BlogPost[] = [
         author: "Mimar Ahmet Yılmaz",
         date: "15 Temmuz 2024",
         image: "https://picsum.photos/seed/blogpvc/1200/600",
-        // FIX: Corrected typo to match BlogCategory type.
         category: "Doğrama Çözümler",
         excerpt: "Eviniz veya projeniz için doğru pencere malzemesini seçmek, hem estetik hem de performans açısından kritik bir karardır. PVC ve alüminyum doğramanın artılarını ve eksilerini karşılaştırıyoruz.",
         content: [
@@ -129,12 +135,12 @@ export const BLOG_POSTS: BlogPost[] = [
         author: "İç Mimar Zeynep Kaya",
         date: "28 Haziran 2024",
         image: "https://picsum.photos/seed/blogwintergarden/1200/600",
-        category: "Genel",
-        excerpt: "Kış bahçeleri, evinize doğayı taşıyan, aydınlık ve ferah alanlar yaratır. Fonksiyonel ve estetik bir kış bahçesi tasarlarken nelere dikkat etmeniz gerektiğini bu yazımızda bulabilirsiniz.",
+        category: "Doğrama Çözümler",
+        excerpt: "Bahçenizin keyfini kışın da sürmek ister misiniz? Kış bahçesi sistemleri ile doğayla iç içe, sıcak ve konforlu yaşam alanları oluşturmanın püf noktaları.",
         content: [
-            { type: 'p', text: "Kış bahçesi, ev ile bahçe arasında bir geçiş alanı yaratarak doğayla iç içe, konforlu bir mekan sunar. Doğru planlama ve tasarımla, bu alanlar yılın her günü kullanılabilecek değerli bir yaşam alanına dönüşebilir." },
-            { type: 'h2', text: "Malzeme ve Konumlandırma" },
-            { type: 'p', text: "Kış bahçesinin iskeletinde genellikle alüminyum veya PVC gibi dayanıklı ve bakım gerektirmeyen malzemeler tercih edilir. Konumlandırma ise en önemli faktörlerden biridir. Güneş ışığından maksimum düzeyde faydalanmak için genellikle güney cephesi idealdir. Ancak kullanım amacınıza göre farklı yönler de değerlendirilebilir." },
+            { type: 'p', text: "Kış bahçeleri, evinize ekstra bir oda kazandırmanın yanı sıra, doğanın güzelliklerini yıl boyunca yaşamanıza olanak tanır. Ancak doğru bir kış bahçesi tasarımı için dikkat edilmesi gereken bazı teknik ve estetik detaylar vardır." },
+            { type: 'h2', text: "Yalıtım ve Havalandırma" },
+            { type: 'p', text: "Kış bahçesinin en önemli unsuru yalıtımdır. Isı yalıtımlı alüminyum profiller ve yüksek performanslı camlar kullanılarak, kışın soğuktan, yazın ise aşırı sıcaktan korunmak mümkündür. Ayrıca, terleme ve nem oluşumunu engellemek için doğru bir havalandırma sistemi şarttır. Tavanda açılır cam paneller veya yan cephelerdeki sürme sistemler, doğal hava sirkülasyonu sağlar." },
         ]
     }
 ];

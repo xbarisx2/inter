@@ -16,7 +16,7 @@ const ReferencesPage: React.FC = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16">
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                           Otel, konut, iş merkezi ve özel villa projeleri başta olmak üzere, Antalya ve çevresinde birçok prestijli yapıya imzamızı attık. Müşterilerimizin bize duyduğu güven, en büyük referansımızdır.
+                           Otel, konut, iş merkezi ve özel villa projeleri başta olmak üzere, yurt içi ve yurt dışında birçok prestijli yapıya imzamızı attık. Müşterilerimizin bize duyduğu güven, en büyük referansımızdır.
                         </p>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
