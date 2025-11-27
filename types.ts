@@ -1,13 +1,16 @@
 
 export type Page = 'Ana Sayfa' | 'Kurumsal' | 'Ürünlerimiz' | 'İş Ortaklarımız' | 'Referanslarımız' | 'Medya' | 'Blog' | 'İletişim' | 'Linea Rossa';
 
+export interface SubLinkItem {
+    name: string;
+    id?: string; // For scrolling to an element
+    page?: Page; // For navigating to a new page
+    subLinks?: SubLinkItem[]; // Recursive nesting for multi-level menus
+}
+
 export interface NavLink {
     name: Page;
-    subLinks?: { 
-        name: string; 
-        id?: string; // For scrolling to an element
-        page?: Page; // For navigating to a new page
-    }[];
+    subLinks?: SubLinkItem[];
 }
 
 export interface Product {

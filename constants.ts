@@ -13,8 +13,57 @@ export const COMPANY_INFO = {
 
 export const NAVIGATION_LINKS: NavLink[] = [
     { name: 'Ana Sayfa' },
-    { name: 'Kurumsal', subLinks: [{name: 'Hakkımızda', id: 'hakkimizda', page: 'Kurumsal'}, {name: 'Vizyonumuz', id: 'vizyonumuz', page: 'Kurumsal'}, {name: 'Misyonumuz', id: 'misyonumuz', page: 'Kurumsal'}] },
-    { name: 'Ürünlerimiz', subLinks: [{name: 'Tüm Ürünlerimiz', page: 'Ürünlerimiz'}, {name: 'Linea Rossa', page: 'Linea Rossa'}] },
+    { 
+        name: 'Kurumsal', 
+        subLinks: [
+            {name: 'Hakkımızda', id: 'hakkimizda', page: 'Kurumsal'}, 
+            {name: 'Vizyonumuz', id: 'vizyonumuz', page: 'Kurumsal'}, 
+            {name: 'Misyonumuz', id: 'misyonumuz', page: 'Kurumsal'}
+        ] 
+    },
+    { 
+        name: 'Ürünlerimiz',
+        subLinks: [
+            {
+                name: "Linea Rossa GRANDE Serileri",
+                subLinks: [
+                    { name: "Linea Rossa GLR 27 Minimal Yalıtımsız Sürme Sistemi", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 33 G-slide Sürme Sistemi", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 36 Yalıtımlı Sürme Sistemi", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR-37 Minimal Yalıtımlı Sürme Sistemi", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 50 – GLR 51 Giriş Kapısı Sistemleri", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 53 Açılır Sistem", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 63 Katlanır Kapı", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 64 Katlanır Kapı", page: "Linea Rossa" },
+                    { name: "Linea Rossa GLR 95 Modüler Panel Cephe", page: "Linea Rossa" }
+                ]
+            },
+            {
+                name: "Linea Rossa Pencere ve Kapı Sistemleri",
+                subLinks: [
+                    { name: "LR-1050 Pencere Sistemi", page: "Linea Rossa" },
+                    { name: "LR-3200 Yüksek Performans Sürme", page: "Linea Rossa" },
+                    { name: "LR-2600 Kaldır-Sür (Hebeschiebe)", page: "Linea Rossa" }
+                ]
+            },
+            {
+                name: "Alüminyum Profil Katalogları",
+                subLinks: [
+                    { name: "Aldoks Serisi", page: "Ürünlerimiz" },
+                    { name: "C60 Yalıtımlı Seri", page: "Ürünlerimiz" },
+                    { name: "Cephe Sistemleri", page: "Ürünlerimiz" },
+                    { name: "Ofis Bölme Sistemleri", page: "Ürünlerimiz" }
+                ]
+            },
+            {
+                name: "Solar Montaj Sistemleri",
+                subLinks: [
+                    { name: "Solar Konstrüksiyon", page: "Ürünlerimiz" },
+                    { name: "Çatı Bağlantı Elemanları", page: "Ürünlerimiz" }
+                ]
+            }
+        ]
+    },
     { name: 'İş Ortaklarımız' },
     { name: 'Referanslarımız' },
     { name: 'Medya' },
@@ -32,7 +81,7 @@ export const PRODUCTS: Product[] = [
     { name: "Cam Balkon Profilleri", description: "Katlanır ve sürme cam balkon sistemleri için tasarlanmış, hava ve su sızdırmazlığı sağlayan özel ray ve kasa profilleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
     { name: "Ofis Bölme Sistemleri", description: "Modern ofisler için şeffaf, modüler ve ses yalıtımlı cam bölme duvar profilleri ve aksesuarları.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
     { name: "Güneş Kırıcılar", description: "Bina cephelerinde güneş kontrolü sağlayan, estetik görünümlü sabit veya hareketli alüminyum güneş kırıcı profiller.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
-    { name: "Panjur ve Kepenk", description: "Güvenlik ve güneş kontrolü için kullanılan, motorlu veya manuel kullanıma uygun alüminyum panjur ve kepenk profilleri.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
+    { name: "Panjur ve Kepenk", description: "Güvenlik ve güneş kontrolü için kullanılan, motorlu ve manuel kullanıma uygun alüminyum panjur ve kepenk profilleri.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
     { name: "Kompozit Panel", description: "Dış cephe kaplamalarında kullanılan, yanmaz (B1/A2), uzun ömürlü ve geniş renk seçenekli alüminyum kompozit paneller.", image: "https://images.unsplash.com/photo-1460317442991-0ec2aa247f7b?auto=format&fit=crop&w=600&q=80" },
     { name: "Sineklik Profilleri", description: "Pencere ve kapı sistemlerine entegre edilebilen, pileli, menteşeli ve sabit sineklik sistemleri için alüminyum profiller.", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" },
     { name: "Tente ve Pergola", description: "Açık alanları yaşam alanına dönüştüren, motorlu ve ışıklı biyoklimatik pergola sistem profilleri.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },

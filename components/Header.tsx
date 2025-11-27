@@ -1,56 +1,67 @@
+
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import type { Page, NavLink } from '../types';
+import type { Page, NavLink, SubLinkItem } from '../types';
 import { NAVIGATION_LINKS, COMPANY_INFO } from '../constants';
-import { InstagramIcon, MenuIcon, XIcon, PhoneIcon, MailIcon } from './Icons';
+import { InstagramIcon, MenuIcon, XIcon, PhoneIcon, MailIcon, ChevronRightIcon } from './Icons';
 
 interface HeaderProps {
     currentPage: Page;
     setCurrentPage: (page: Page) => void;
 }
 
-// Desktop Navigation Item
-const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (page: Page) => void; }> = ({ link, currentPage, setCurrentPage }) => {
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const hasSublinks = link.subLinks && link.subLinks.length > 0;
+// Helper to handle link clicks
+const handleLinkClick = (
+    item: { name: string; id?: string; page?: Page },
+    setCurrentPage: (page: Page) => void,
+    closeMenu?: () => void
+) => {
+    if (item.page) {
+        setCurrentPage(item.page);
+    }
+    
+    if (item.id) {
+        setTimeout(() => {
+            const element = document.getElementById(item.id!);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    } else {
+        window.scrollTo(0, 0);
+    }
 
-    const handleMainLinkClick = () => {
-        setCurrentPage(link.name);
-    };
+    if (closeMenu) closeMenu();
+};
 
-    const handleSublinkClick = (subLink: { name: string; id?: string; page?: Page; }) => {
-        if (subLink.page) {
-            setCurrentPage(subLink.page);
-        }
-        
-        if (subLink.id) {
-            setTimeout(() => {
-                document.getElementById(subLink.id)?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-        setDropdownOpen(false);
-    };
+// --- Desktop Recursive Components ---
+
+const DesktopSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Page) => void; closeMenu: () => void }> = ({ item, setCurrentPage, closeMenu }) => {
+    const hasChildren = item.subLinks && item.subLinks.length > 0;
 
     return (
-        <li className="relative group h-full flex items-center" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
-            <button
-                onClick={handleMainLinkClick}
-                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'}`}
-                 aria-haspopup={hasSublinks}
-                 aria-expanded={isDropdownOpen}
+        <li className="relative group/item px-4 py-2 hover:bg-gray-50">
+            <a 
+                href="#" 
+                onClick={(e) => { 
+                    e.preventDefault(); 
+                    if (!hasChildren) handleLinkClick(item, setCurrentPage, closeMenu); 
+                }}
+                className="flex items-center justify-between w-full text-sm text-gray-700 hover:text-brand-red-600 transition-colors"
             >
-                {link.name}
-                {hasSublinks && <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>}
-            </button>
-            {hasSublinks && isDropdownOpen && (
-                <div className="absolute top-full left-0 pt-2 w-56 z-50">
-                    <ul className="bg-white rounded-md shadow-xl py-2 border-t-4 border-brand-red-600">
-                        {link.subLinks?.map((subLink) => (
-                            <li key={subLink.name}>
-                               <a href="#" onClick={(e) => { e.preventDefault(); handleSublinkClick(subLink); }} className="block px-4 py-3 text-sm text-brand-blue-900 hover:bg-brand-blue-50 hover:text-brand-red-600 font-medium transition-colors">
-                                    {subLink.name}
-                                </a>
-                            </li>
+                <span>{item.name}</span>
+                {hasChildren && <ChevronRightIcon className="w-4 h-4 text-gray-400" />}
+            </a>
+            
+            {/* Recursive Child Menu (Flyout to the right) */}
+            {hasChildren && (
+                <div className="absolute left-full top-0 w-64 bg-white shadow-xl border border-gray-100 hidden group-hover/item:block">
+                     <ul className="py-2">
+                        {item.subLinks?.map((subItem) => (
+                            <DesktopSubMenuItem 
+                                key={subItem.name} 
+                                item={subItem} 
+                                setCurrentPage={setCurrentPage} 
+                                closeMenu={closeMenu}
+                            />
                         ))}
                     </ul>
                 </div>
@@ -59,10 +70,104 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
     );
 };
 
+// Desktop Navigation Item
+const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (page: Page) => void; }> = ({ link, currentPage, setCurrentPage }) => {
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const hasSublinks = link.subLinks && link.subLinks.length > 0;
+
+    return (
+        <li 
+            className="relative h-full flex items-center group" 
+            onMouseEnter={() => setDropdownOpen(true)} 
+            onMouseLeave={() => setDropdownOpen(false)}
+        >
+            <button
+                onClick={() => handleLinkClick(link, setCurrentPage)}
+                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'}`}
+                 aria-haspopup={hasSublinks}
+                 aria-expanded={isDropdownOpen}
+            >
+                {link.name}
+                {hasSublinks && <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>}
+            </button>
+            
+            {/* Main Dropdown */}
+            {hasSublinks && isDropdownOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-brand-red-600 z-50">
+                    <ul className="py-2">
+                        {link.subLinks?.map((subLink) => (
+                            <DesktopSubMenuItem 
+                                key={subLink.name} 
+                                item={subLink} 
+                                setCurrentPage={setCurrentPage} 
+                                closeMenu={() => setDropdownOpen(false)}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </li>
+    );
+};
+
+
+// --- Mobile Recursive Components ---
+
+const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Page) => void; closeMenu: () => void; depth?: number }> = ({ item, setCurrentPage, closeMenu, depth = 0 }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const hasChildren = item.subLinks && item.subLinks.length > 0;
+    const paddingLeft = `${(depth + 1) * 1}rem`;
+
+    return (
+        <li className="border-b border-gray-50 last:border-0">
+             <div className="flex items-center justify-between pr-4">
+                <button 
+                    onClick={() => {
+                        if (hasChildren) {
+                            setIsExpanded(!isExpanded);
+                        } else {
+                            handleLinkClick(item, setCurrentPage, closeMenu);
+                        }
+                    }}
+                    className="flex-grow text-left py-3 text-sm font-medium text-gray-600 hover:text-brand-red-600"
+                    style={{ paddingLeft }}
+                >
+                    {item.name}
+                </button>
+                {hasChildren && (
+                    <button 
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="p-2 text-gray-400 focus:outline-none"
+                    >
+                         <svg className={`w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                )}
+            </div>
+
+            {/* Recursive Mobile Children */}
+            {hasChildren && (
+                 <div className={`overflow-hidden transition-all duration-300 bg-gray-50 ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <ul>
+                        {item.subLinks?.map((subItem) => (
+                            <MobileSubMenuItem 
+                                key={subItem.name} 
+                                item={subItem} 
+                                setCurrentPage={setCurrentPage} 
+                                closeMenu={closeMenu}
+                                depth={depth + 1}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </li>
+    );
+};
+
+
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    // State to track expanded submenus in mobile view
     const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
 
     useEffect(() => {
@@ -73,7 +178,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Prevent body scroll when mobile menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -83,28 +187,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
 
-    const handleMobileLinkClick = (page: Page) => {
-        setCurrentPage(page);
-        setIsMenuOpen(false);
-        setExpandedMobileMenu(null);
-        window.scrollTo(0, 0);
-    };
-
-    const handleMobileSubLinkClick = (subLink: { name: string; id?: string; page?: Page }) => {
-         if (subLink.page) {
-            setCurrentPage(subLink.page);
-        }
-        if (subLink.id) {
-            setTimeout(() => {
-                const element = document.getElementById(subLink.id);
-                if(element) element.scrollIntoView({ behavior: 'smooth' });
-            }, 300); // Slight delay for menu close animation
-        } else {
-             window.scrollTo(0, 0);
-        }
-        setIsMenuOpen(false);
-        setExpandedMobileMenu(null);
-    };
 
     const toggleMobileSubmenu = (name: string) => {
         if (expandedMobileMenu === name) {
@@ -114,7 +196,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         }
     };
 
-    // Portal for mobile menu to avoid z-index/transform stacking context issues
     const MobileMenuOverlay = () => (
         <div className={`fixed inset-0 z-[40] transition-all duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto ${isMenuOpen ? 'translate-x-0 bg-white' : 'translate-x-full bg-white/0'} pointer-events-auto`}>
             {isMenuOpen && (
@@ -132,7 +213,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                                 if (hasSublinks) {
                                                     toggleMobileSubmenu(link.name);
                                                 } else {
-                                                    handleMobileLinkClick(link.name);
+                                                    handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false));
                                                 }
                                             }}
                                             className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900'}`}
@@ -149,26 +230,27 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                         )}
                                     </div>
                                     
+                                    {/* Mobile Submenu Root */}
                                     {hasSublinks && (
-                                        <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-96 opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
-                                            <ul className="flex flex-col py-2 pl-4">
-                                                <li className="mb-1">
+                                        <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-[1200px] opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
+                                            <ul className="flex flex-col py-2">
+                                                 {/* "All" Link for the category itself */}
+                                                <li className="mb-1 border-b border-gray-100">
                                                      <button 
-                                                        onClick={() => handleMobileLinkClick(link.name)}
-                                                        className="w-full text-left py-2 px-2 text-sm font-semibold text-brand-blue-900 hover:text-brand-red-600"
+                                                        onClick={() => handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false))}
+                                                        className="w-full text-left py-2 px-4 text-sm font-bold text-brand-blue-900 hover:text-brand-red-600"
                                                     >
-                                                        Tümü
+                                                        {link.name} Ana Sayfa
                                                     </button>
                                                 </li>
+                                                {/* Recursive Items */}
                                                 {link.subLinks?.map(subLink => (
-                                                    <li key={subLink.name}>
-                                                        <button 
-                                                            onClick={() => handleMobileSubLinkClick(subLink)}
-                                                            className="w-full text-left py-2 px-2 text-sm text-gray-600 hover:text-brand-red-600"
-                                                        >
-                                                            {subLink.name}
-                                                        </button>
-                                                    </li>
+                                                    <MobileSubMenuItem 
+                                                        key={subLink.name}
+                                                        item={subLink}
+                                                        setCurrentPage={setCurrentPage}
+                                                        closeMenu={() => setIsMenuOpen(false)}
+                                                    />
                                                 ))}
                                             </ul>
                                         </div>
