@@ -16,23 +16,18 @@ const handleLinkClick = (
     setCurrentPage: (page: Page) => void,
     closeMenu?: () => void
 ) => {
-    // Determine the target page. 
-    // 1. If 'page' property exists (SubLinkItems), use it.
-    // 2. If not, assume 'name' is the page (Top-level NavLinks).
     const targetPage = (item as any).page || (item as any).name;
 
     if (targetPage) {
         setCurrentPage(targetPage as Page);
     }
     
-    // Handle scrolling if an ID is provided
     if ((item as any).id) {
         setTimeout(() => {
             const element = document.getElementById((item as any).id!);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
         }, 300);
     } else {
-        // Otherwise scroll to top
         window.scrollTo(0, 0);
     }
 
@@ -52,13 +47,12 @@ const DesktopSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: P
                     e.preventDefault(); 
                     if (!hasChildren) handleLinkClick(item, setCurrentPage, closeMenu); 
                 }}
-                className="flex items-center justify-between w-full text-sm text-gray-700 hover:text-brand-red-600 transition-colors"
+                className="flex items-center justify-between w-full text-sm text-gray-700 hover:text-black transition-colors"
             >
                 <span>{item.name}</span>
                 {hasChildren && <ChevronRightIcon className="w-4 h-4 text-gray-400" />}
             </a>
             
-            {/* Recursive Child Menu (Flyout to the right) */}
             {hasChildren && (
                 <div className="absolute left-full top-0 w-64 bg-white shadow-xl border border-gray-100 hidden group-hover/item:block">
                      <ul className="py-2">
@@ -77,7 +71,6 @@ const DesktopSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: P
     );
 };
 
-// Desktop Navigation Item
 const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (page: Page) => void; }> = ({ link, currentPage, setCurrentPage }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const hasSublinks = link.subLinks && link.subLinks.length > 0;
@@ -90,7 +83,7 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
         >
             <button
                 onClick={() => handleLinkClick(link, setCurrentPage)}
-                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900 hover:text-brand-red-600'}`}
+                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${currentPage === link.name ? 'text-black' : 'text-gray-600 hover:text-black'}`}
                  aria-haspopup={hasSublinks}
                  aria-expanded={isDropdownOpen}
             >
@@ -98,9 +91,8 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
                 {hasSublinks && <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>}
             </button>
             
-            {/* Main Dropdown */}
             {hasSublinks && isDropdownOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-brand-red-600 z-50">
+                <div className="absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-black z-50">
                     <ul className="py-2">
                         {link.subLinks?.map((subLink) => (
                             <DesktopSubMenuItem 
@@ -136,7 +128,7 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
                             handleLinkClick(item, setCurrentPage, closeMenu);
                         }
                     }}
-                    className="flex-grow text-left py-3 text-sm font-medium text-gray-600 hover:text-brand-red-600"
+                    className="flex-grow text-left py-3 text-sm font-medium text-gray-600 hover:text-black"
                     style={{ paddingLeft }}
                 >
                     {item.name}
@@ -151,7 +143,6 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
                 )}
             </div>
 
-            {/* Recursive Mobile Children */}
             {hasChildren && (
                  <div className={`overflow-hidden transition-all duration-300 bg-gray-50 ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                     <ul>
@@ -223,34 +214,31 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                                     handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false));
                                                 }
                                             }}
-                                            className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-red-600' : 'text-brand-blue-900'}`}
+                                            className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-black' : 'text-gray-800'}`}
                                         >
                                             {link.name}
                                         </button>
                                         {hasSublinks && (
                                             <button 
                                                 onClick={() => toggleMobileSubmenu(link.name)}
-                                                className="p-4 text-brand-blue-500 focus:outline-none"
+                                                className="p-4 text-gray-500 focus:outline-none"
                                             >
                                                 <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                                             </button>
                                         )}
                                     </div>
                                     
-                                    {/* Mobile Submenu Root */}
                                     {hasSublinks && (
                                         <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-[1200px] opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
                                             <ul className="flex flex-col py-2">
-                                                 {/* "All" Link for the category itself */}
                                                 <li className="mb-1 border-b border-gray-100">
                                                      <button 
                                                         onClick={() => handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false))}
-                                                        className="w-full text-left py-2 px-4 text-sm font-bold text-brand-blue-900 hover:text-brand-red-600"
+                                                        className="w-full text-left py-2 px-4 text-sm font-bold text-gray-900 hover:text-black"
                                                     >
                                                         {link.name} Ana Sayfa
                                                     </button>
                                                 </li>
-                                                {/* Recursive Items */}
                                                 {link.subLinks?.map(subLink => (
                                                     <MobileSubMenuItem 
                                                         key={subLink.name}
@@ -268,16 +256,16 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     </nav>
 
                     <div className="mt-auto pt-8 space-y-4 pb-8">
-                         <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
+                         <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-bold hover:bg-gray-50 transition-colors">
                             <PhoneIcon className="w-5 h-5 mr-2" />
                             Hemen Ara
                         </a>
                         
-                        <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-red-600 text-white py-4 rounded-lg font-bold hover:bg-brand-red-700 transition-colors shadow-md">
+                        <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-gray-900 text-white py-4 rounded-lg font-bold hover:bg-black transition-colors shadow-md">
                             Teklif Al
                         </button>
                         
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-brand-blue-800 py-2 font-medium">
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-gray-800 py-2 font-medium">
                            <InstagramIcon className="w-6 h-6 mr-2"/> İnstagram'da Takip Et
                         </a>
                     </div>
@@ -289,22 +277,22 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     return (
         <>
             <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'}`}>
-                {/* Top Contact Bar - Hidden on very small screens, visible on md+ */}
-                <div className="bg-brand-red-600 text-white hidden md:block transition-colors duration-300">
+                {/* Top Contact Bar - Dark Neutral */}
+                <div className="bg-brand-blue-950 text-white hidden md:block transition-colors duration-300">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center py-2 text-sm font-medium">
                             <div className="flex items-center space-x-6">
                                 <div className="flex items-center space-x-2 group">
-                                    <PhoneIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
-                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.phone1}</a>
+                                    <PhoneIcon className="w-4 h-4 text-gray-300 group-hover:text-white" />
+                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="text-gray-300 hover:text-white transition-colors">{COMPANY_INFO.phone1}</a>
                                 </div>
                                 <div className="flex items-center space-x-2 group">
-                                    <MailIcon className="w-4 h-4 text-white/90 group-hover:text-white" />
-                                    <a href={`mailto:${COMPANY_INFO.email}`} className="text-white/90 hover:text-white transition-colors">{COMPANY_INFO.email}</a>
+                                    <MailIcon className="w-4 h-4 text-gray-300 group-hover:text-white" />
+                                    <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-300 hover:text-white transition-colors">{COMPANY_INFO.email}</a>
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors flex items-center gap-1">
+                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors flex items-center gap-1">
                                     <InstagramIcon className="w-5 h-5" />
                                     <span className="text-xs">Bizi Takip Edin</span>
                                 </a>
@@ -313,7 +301,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     </div>
                 </div>
 
-                {/* Main Header */}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20 md:h-24 relative bg-white z-[60]">
                         <div className="flex-shrink-0">
@@ -326,23 +313,21 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                             </button>
                         </div>
 
-                        {/* Desktop Navigation */}
                         <nav className="hidden md:flex md:items-center h-full">
                             <ul className="flex items-center space-x-1 lg:space-x-4 h-full">
                                  {NAVIGATION_LINKS.map(link => (
                                     <NavItem key={link.name} link={link} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                                 ))}
                             </ul>
-                             <button onClick={() => setCurrentPage('İletişim')} className="ml-4 lg:ml-6 bg-brand-red-600 text-white px-5 py-2.5 rounded-full font-bold hover:bg-brand-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+                             <button onClick={() => setCurrentPage('İletişim')} className="ml-4 lg:ml-6 bg-brand-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-black transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
                                 Teklif Al
                             </button>
                         </nav>
                         
-                        {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
                             <button 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                                className="text-brand-blue-900 hover:text-brand-red-600 focus:outline-none p-2 rounded-md transition-colors cursor-pointer"
+                                className="text-gray-900 hover:text-black focus:outline-none p-2 rounded-md transition-colors cursor-pointer"
                                 aria-label="Menüyü Aç/Kapat"
                                 aria-expanded={isMenuOpen}
                             >
@@ -353,7 +338,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 </div>
             </header>
             
-            {/* Render Mobile Menu in Portal to escape header stacking context */}
             {createPortal(<MobileMenuOverlay />, document.body)}
         </>
     );
