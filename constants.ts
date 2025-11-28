@@ -13,6 +13,11 @@ export const COMPANY_INFO = {
 
 export const HERO_SLIDES = [
     {
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true",
+        title: "PVC KAPI PENCERE SİSTEMLERİ",
+        subtitle: "Üstün Yalıtım ve Dayanıklılık"
+    },
+    {
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa1.png?raw=true",
         title: "PANJUR VE KEPENK SİSTEMLERİ",
         subtitle: "Güvenlik ve Konforun Estetik Hali"
@@ -26,11 +31,6 @@ export const HERO_SLIDES = [
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa5.jpg?raw=true",
         title: "CAM BALKON SİSTEMLERİ",
         subtitle: "Manzaranızı Kesintisiz Yaşayın"
-    },
-    {
-        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true",
-        title: "PVC KAPI PENCERE SİSTEMLERİ",
-        subtitle: "Üstün Yalıtım ve Dayanıklılık"
     }
 ];
 

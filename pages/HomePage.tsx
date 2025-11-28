@@ -25,32 +25,32 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
     const categoryGrid = [
         { 
             title: "Alüminyum Mimari Sistemleri", 
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Panjur Sistemleri", 
-            image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Kepenk Sistemleri", 
-            image: "https://images.unsplash.com/photo-1594589888806-2598df5b32e0?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/kepenk-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Pergola Sistemleri", 
-            image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true", // Using existing pergola/glass balcony image
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true",
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Zip Perde Sistemleri", 
-            image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Akıllı Çatı Sistemleri", 
-            image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/Makas_Akilli_Cati-e1749810492326.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
@@ -60,17 +60,17 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
         },
         { 
             title: "Cam Balkon Sistemleri", 
-            image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Giyotin Cam Balkon Sistemleri", 
-            image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/giyotin-cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
             title: "Alüminyum Kompozit Sistemler", 
-            image: "https://images.unsplash.com/photo-1460317442991-0ec2aa247f7b?auto=format&fit=crop&w=800&q=80", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
@@ -80,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
         },
         { 
             title: "PVC Kapı, Pencere Sistemleri", 
-            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
     ];
@@ -92,7 +92,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 {HERO_SLIDES.map((slide, index) => (
                     <div 
                         key={index}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+                        className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
                     >
                         <div 
                             className={`absolute inset-0 bg-cover bg-center transform transition-transform duration-[10s] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'}`}
@@ -231,7 +231,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                              <img 
                                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
                                 alt="Kurumsal Bina" 
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                className="w-full h-full object-cover transition-all duration-700"
                             />
                             <div className="absolute -bottom-10 -left-10 bg-brand-blue-900 text-white p-8 hidden md:block shadow-xl">
                                 <p className="text-2xl font-bold leading-none">
