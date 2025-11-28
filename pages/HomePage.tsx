@@ -1,5 +1,6 @@
-import React from 'react';
-import { PRODUCTS, REFERENCES } from '../constants';
+
+import React, { useState, useEffect } from 'react';
+import { PRODUCTS, REFERENCES, HERO_SLIDES } from '../constants';
 import type { Page } from '../types';
 import { ShieldCheckIcon, LightBulbIcon, HardHatIcon } from '../components/Icons';
 
@@ -8,58 +9,110 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const slideInterval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+        }, 5000);
+        return () => clearInterval(slideInterval);
+    }, []);
+
     const featuredProducts = PRODUCTS.slice(0, 3); // Show fewer, bigger items
     const displayedReferences = REFERENCES.slice(0, 15);
 
-    const mainCategories = [
+    // Expanded Category Grid matching the user's request (12 items)
+    const categoryGrid = [
         { 
-            title: "LİNEA ROSSA SİSTEMLERİ", 
-            subtitle: "İtalyan Estetiği ve Yüksek Performans",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", 
-            page: 'Linea Rossa' as Page 
-        },
-        { 
-            title: "CEPHE GİYDİRME", 
-            subtitle: "Modern Mimari Çözümler",
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", 
-            page: 'Ürünlerimiz' as Page 
-        },
-        { 
-            title: "SÜRME SİSTEMLER", 
-            subtitle: "Geniş Açıklıklar, Maksimum Manzara",
+            title: "Alüminyum Mimari Sistemleri", 
             image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "KIŞ BAHÇESİ & GÖLGELEME", 
-            subtitle: "Dört Mevsim Yaşam Alanları",
+            title: "Panjur Sistemleri", 
+            image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Kepenk Sistemleri", 
+            image: "https://images.unsplash.com/photo-1594589888806-2598df5b32e0?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Pergola Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true", // Using existing pergola/glass balcony image
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Zip Perde Sistemleri", 
             image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Akıllı Çatı Sistemleri", 
+            image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Cephe Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Cam Balkon Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Giyotin Cam Balkon Sistemleri", 
+            image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Alüminyum Kompozit Sistemler", 
+            image: "https://images.unsplash.com/photo-1460317442991-0ec2aa247f7b?auto=format&fit=crop&w=800&q=80", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "Korkuluk Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true", 
+            page: 'Ürünlerimiz' as Page 
+        },
+        { 
+            title: "PVC Kapı, Pencere Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
     ];
 
     return (
         <>
-            {/* HERO SECTION: Sharp, Boxy, Industrial */}
+            {/* HERO SECTION: Sharp, Boxy, Industrial with Slider */}
             <section className="relative h-screen bg-brand-blue-950 overflow-hidden">
-                <div 
-                    className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[30s] hover:scale-110" 
-                    style={{backgroundImage: "url('https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?auto=format&fit=crop&w=1920&q=80')"}}
-                ></div>
-                {/* Darker overlay for text readability with transparent header */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
-                
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex items-center pt-20">
+                {HERO_SLIDES.map((slide, index) => (
+                    <div 
+                        key={index}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+                    >
+                        <div 
+                            className={`absolute inset-0 bg-cover bg-center transform transition-transform duration-[10s] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'}`}
+                            style={{backgroundImage: `url('${slide.image}')`}}
+                        ></div>
+                        {/* Overlay only for text readability at bottom/center, leaving top lighter for logo visibility */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    </div>
+                ))}
+
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center pt-20">
                     <div className="max-w-4xl border-l-8 border-brand-blue-500 pl-8 md:pl-12 py-4 animate-fade-in-up">
                         <h2 className="text-white text-lg md:text-xl font-bold tracking-[0.3em] uppercase mb-4 text-brand-blue-400">
                             İNTER AKDENİZ ALÜMİNYUM
                         </h2>
-                        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-none mb-6 uppercase tracking-tight">
-                            LINEA ROSSA <br/>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">ITALIA/MILANO</span>
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-none mb-6 uppercase tracking-tight">
+                            {HERO_SLIDES[currentSlide].title}
                         </h1>
-                        <p className="text-gray-300 text-lg md:text-2xl font-light max-w-2xl mb-10 border-b border-gray-600 pb-10">
-                            Estetik, teknik ve performansın mükemmel uyumu ile yapılarınıza değer katıyoruz.
+                        <p className="text-gray-200 text-lg md:text-2xl font-light max-w-2xl mb-10 border-b border-gray-500 pb-10">
+                            {HERO_SLIDES[currentSlide].subtitle}
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-0">
@@ -74,7 +127,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
                 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/50">
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/50 z-20">
                     <span className="text-xs tracking-widest uppercase mb-2">Aşağı Kaydır</span>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7-7-7"></path></svg>
                 </div>
@@ -115,14 +168,14 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-            {/* CATEGORY GRID: Full Width Images with Text Overlay */}
+            {/* EXPANDED CATEGORY GRID */}
             <section className="bg-white">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                    {mainCategories.map((cat, idx) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    {categoryGrid.map((cat, idx) => (
                         <div 
                             key={idx} 
                             onClick={() => setCurrentPage(cat.page)}
-                            className="group relative h-[400px] md:h-[500px] cursor-pointer overflow-hidden border-r border-gray-100 last:border-r-0"
+                            className="group relative h-[300px] cursor-pointer overflow-hidden border border-gray-100"
                         >
                             <div 
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -130,17 +183,11 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             ></div>
                             <div className="absolute inset-0 bg-brand-blue-900/40 group-hover:bg-brand-blue-900/70 transition-colors duration-300"></div>
                             
-                            <div className="absolute bottom-0 left-0 w-full p-8 transition-transform duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                <div className="h-1 w-12 bg-white mb-4 transition-all duration-300 group-hover:w-24 group-hover:bg-brand-blue-400"></div>
-                                <h3 className="text-2xl font-bold text-white uppercase mb-2 leading-tight">
+                            <div className="absolute bottom-0 left-0 w-full p-6 transition-transform duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                <div className="h-1 w-8 bg-white mb-3 transition-all duration-300 group-hover:w-16 group-hover:bg-brand-blue-400"></div>
+                                <h3 className="text-lg md:text-xl font-bold text-white uppercase mb-1 leading-tight">
                                     {cat.title}
                                 </h3>
-                                <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    {cat.subtitle}
-                                </p>
-                                <span className="inline-block mt-4 text-white text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                    İncele &rarr;
-                                </span>
                             </div>
                         </div>
                     ))}
@@ -253,7 +300,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                     <div className="relative group overflow-hidden">
                          <div className="flex animate-marquee group-hover:pause space-x-16 items-center">
                              {[...displayedReferences, ...displayedReferences].map((ref, index) => (
-                                <div key={`${ref.name}-${index}`} className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 opacity-50 hover:opacity-100 cursor-pointer">
+                                <div key={`${ref.name}-${index}`} className="flex-shrink-0 flex items-center justify-center transition-all duration-500 cursor-pointer">
                                     <img src={ref.logo} alt={ref.name} className="h-16 w-auto object-contain mix-blend-multiply" />
                                 </div>
                             ))}

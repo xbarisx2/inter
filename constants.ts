@@ -11,6 +11,29 @@ export const COMPANY_INFO = {
     whatsapp: "https://wa.me/905012504303",
 };
 
+export const HERO_SLIDES = [
+    {
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa1.png?raw=true",
+        title: "PANJUR VE KEPENK SİSTEMLERİ",
+        subtitle: "Güvenlik ve Konforun Estetik Hali"
+    },
+    {
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa2.webp?raw=true",
+        title: "ALÜMİNYUM MİMARİ SİSTEMLER",
+        subtitle: "Modern Yapılar İçin Yenilikçi Çözümler"
+    },
+    {
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa5.jpg?raw=true",
+        title: "CAM BALKON SİSTEMLERİ",
+        subtitle: "Manzaranızı Kesintisiz Yaşayın"
+    },
+    {
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true",
+        title: "PVC KAPI PENCERE SİSTEMLERİ",
+        subtitle: "Üstün Yalıtım ve Dayanıklılık"
+    }
+];
+
 export const NAVIGATION_LINKS: NavLink[] = [
     { name: 'Ana Sayfa' },
     { 

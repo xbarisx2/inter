@@ -13,6 +13,7 @@ import BlogPostDetailPage from './pages/BlogPostDetailPage';
 import ContactPage from './pages/ContactPage';
 import WhatsAppButton from './components/WhatsAppButton';
 import PartnersPage from './pages/PartnersPage';
+import SocialSidebar from './components/SocialSidebar';
 import type { Page } from './types';
 
 const App: React.FC = () => {
@@ -72,11 +73,13 @@ const App: React.FC = () => {
     return (
         <div className="bg-gray-50 text-gray-800 font-sans">
             <Header currentPage={currentPage} setCurrentPage={handleSetCurrentPage} />
-            <main>
+            {/* Added dynamic padding so header doesn't cover content on non-Home pages */}
+            <main className={`${currentPage !== 'Ana Sayfa' ? 'pt-28 lg:pt-32' : ''}`}>
                 {renderPage()}
             </main>
             <Footer setCurrentPage={handleSetCurrentPage} />
             <WhatsAppButton />
+            <SocialSidebar />
         </div>
     );
 };

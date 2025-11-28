@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { Page, NavLink, SubLinkItem } from '../types';
@@ -75,8 +76,8 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
     const hasSublinks = link.subLinks && link.subLinks.length > 0;
 
     // Logic to determine text color based on transparency state
-    const baseTextColor = isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-700 hover:text-brand-blue-900';
-    const activeTextColor = isTransparent ? 'text-brand-blue-200' : 'text-brand-blue-900';
+    const baseTextColor = isTransparent ? 'text-gray-800 hover:text-brand-blue-600' : 'text-gray-700 hover:text-brand-blue-900';
+    const activeTextColor = 'text-brand-blue-900';
     const textColor = currentPage === link.name ? activeTextColor : baseTextColor;
 
     return (
@@ -169,19 +170,10 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
 
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
     const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
 
-    // Transparency logic: Transparent only on HomePage AND not scrolled
-    const isTransparent = currentPage === 'Ana Sayfa' && !isScrolled && !isMenuOpen;
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    // Transparency logic: Transparent only on HomePage (but we add a white gradient so text is dark)
+    const isHomePage = currentPage === 'Ana Sayfa';
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -283,34 +275,34 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
     return (
         <>
-            {/* Header Container - Fixed positioning to overlay content */}
+            {/* Header Container - Absolute positioning to stay at top */}
             <header 
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-                    isTransparent 
-                    ? 'bg-transparent shadow-none border-b border-white/10' 
+                className={`absolute top-0 left-0 w-full z-50 transition-all duration-300 ${
+                    isHomePage 
+                    ? 'bg-gradient-to-b from-white via-white/70 to-transparent shadow-none border-b border-white/0' 
                     : 'bg-white shadow-md'
                 }`}
             >
-                {/* Top Contact Bar - Integrated into header, visibility handled by transparency */}
+                {/* Top Contact Bar */}
                 <div className={`hidden md:block transition-all duration-300 border-b ${
-                    isTransparent 
-                    ? 'bg-black/30 border-white/10 text-white' 
+                    isHomePage 
+                    ? 'bg-transparent border-gray-200/20 text-brand-blue-900' 
                     : 'bg-brand-blue-900 border-brand-blue-900 text-white'
                 }`}>
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center py-2 text-sm font-medium">
                             <div className="flex items-center space-x-6">
                                 <div className="flex items-center space-x-2 group">
-                                    <PhoneIcon className={`w-4 h-4 ${isTransparent ? 'text-white' : 'text-brand-blue-200'}`} />
-                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:text-brand-blue-200 transition-colors">{COMPANY_INFO.phone1}</a>
+                                    <PhoneIcon className={`w-4 h-4 ${isHomePage ? 'text-brand-blue-900' : 'text-brand-blue-200'}`} />
+                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.phone1}</a>
                                 </div>
                                 <div className="flex items-center space-x-2 group">
-                                    <MailIcon className={`w-4 h-4 ${isTransparent ? 'text-white' : 'text-brand-blue-200'}`} />
-                                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-blue-200 transition-colors">{COMPANY_INFO.email}</a>
+                                    <MailIcon className={`w-4 h-4 ${isHomePage ? 'text-brand-blue-900' : 'text-brand-blue-200'}`} />
+                                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.email}</a>
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue-200 transition-colors flex items-center gap-1">
+                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-colors flex items-center gap-1">
                                     <InstagramIcon className="w-4 h-4" />
                                     <span className="text-xs">Takip Et</span>
                                 </a>
@@ -321,14 +313,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
                 {/* Main Navigation */}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`flex items-center justify-between transition-all duration-300 ${isTransparent ? 'h-24 md:h-28' : 'h-20 md:h-24'}`}>
+                    <div className={`flex items-center justify-between transition-all duration-300 ${isHomePage ? 'h-24 md:h-28' : 'h-20 md:h-24'}`}>
                         {/* Logo */}
                         <div className="flex-shrink-0 z-50">
                             <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center focus:outline-none">
                                 <img 
                                     src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
                                     alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                    className={`w-auto object-contain transition-all duration-300 ${isTransparent ? 'h-16 md:h-24 brightness-0 invert drop-shadow-lg' : 'h-14 md:h-20'}`}
+                                    className={`w-auto object-contain transition-all duration-300 ${isHomePage ? 'h-16 md:h-24' : 'h-14 md:h-20'}`}
                                 />
                             </button>
                         </div>
@@ -342,15 +334,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                         link={link} 
                                         currentPage={currentPage} 
                                         setCurrentPage={setCurrentPage} 
-                                        isTransparent={isTransparent}
+                                        isTransparent={isHomePage}
                                     />
                                 ))}
                             </ul>
                              <button 
                                 onClick={() => setCurrentPage('İletişim')} 
                                 className={`ml-6 px-6 py-3 rounded-none font-bold transition-all duration-300 uppercase tracking-widest text-xs border-2 ${
-                                    isTransparent 
-                                    ? 'border-white text-white hover:bg-white hover:text-brand-blue-900' 
+                                    isHomePage 
+                                    ? 'border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white' 
                                     : 'border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white'
                                 }`}
                              >
@@ -362,9 +354,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                         <div className="md:hidden flex items-center z-50">
                             <button 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                                className={`p-2 rounded-md transition-colors focus:outline-none ${
-                                    isTransparent && !isMenuOpen ? 'text-white' : 'text-gray-900'
-                                }`}
+                                className="p-2 rounded-md transition-colors focus:outline-none text-gray-900"
                                 aria-label="Menüyü Aç/Kapat"
                             >
                                 {isMenuOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
