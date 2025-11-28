@@ -14,22 +14,22 @@ export const COMPANY_INFO = {
 export const HERO_SLIDES = [
     {
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa4.jpg?raw=true",
-        title: "PVC KAPI PENCERE SİSTEMLERİ",
+        title: "PVC Kapı, Pencere Sistemleri",
         subtitle: "Üstün Yalıtım ve Dayanıklılık"
     },
     {
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa1.png?raw=true",
-        title: "PANJUR VE KEPENK SİSTEMLERİ",
+        title: "Panjur ve Kepenk Sistemleri",
         subtitle: "Güvenlik ve Konforun Estetik Hali"
     },
     {
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa2.webp?raw=true",
-        title: "ALÜMİNYUM MİMARİ SİSTEMLER",
+        title: "Alüminyum Mimari Sistemleri",
         subtitle: "Modern Yapılar İçin Yenilikçi Çözümler"
     },
     {
         image: "https://github.com/xbarisx2/logo/blob/main/anasayfa5.jpg?raw=true",
-        title: "CAM BALKON SİSTEMLERİ",
+        title: "Cam Balkon Sistemleri",
         subtitle: "Manzaranızı Kesintisiz Yaşayın"
     }
 ];

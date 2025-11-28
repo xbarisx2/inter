@@ -92,7 +92,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 {HERO_SLIDES.map((slide, index) => (
                     <div 
                         key={index}
-                        className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+                        className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
                     >
                         <div 
                             className={`absolute inset-0 bg-cover bg-center transform transition-transform duration-[10s] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'}`}
@@ -105,21 +105,21 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center pt-20">
                     <div className="max-w-4xl border-l-8 border-brand-blue-500 pl-8 md:pl-12 py-4 animate-fade-in-up">
-                        <h2 className="text-white text-lg md:text-xl font-bold tracking-[0.3em] uppercase mb-4 text-brand-blue-400">
+                        <h2 className="text-white text-lg md:text-xl font-bold tracking-[0.3em] uppercase mb-4 text-brand-blue-400 drop-shadow-md">
                             İNTER AKDENİZ ALÜMİNYUM
                         </h2>
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-none mb-6 uppercase tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-none mb-6 tracking-tight drop-shadow-2xl">
                             {HERO_SLIDES[currentSlide].title}
                         </h1>
-                        <p className="text-gray-200 text-lg md:text-2xl font-light max-w-2xl mb-10 border-b border-gray-500 pb-10">
+                        <p className="text-gray-200 text-lg md:text-2xl font-light max-w-2xl mb-10 border-b border-gray-500 pb-10 drop-shadow-lg">
                             {HERO_SLIDES[currentSlide].subtitle}
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-0">
-                            <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-5 px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-brand-blue-600">
+                            <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-5 px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-brand-blue-600 shadow-lg">
                                 Ürünleri İncele
                             </button>
-                            <button onClick={() => setCurrentPage('İletişim')} className="bg-transparent text-white font-bold py-5 px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-white">
+                            <button onClick={() => setCurrentPage('İletişim')} className="bg-transparent text-white font-bold py-5 px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-white shadow-lg">
                                 İletişime Geç
                             </button>
                         </div>
@@ -229,7 +229,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         </div>
                         <div className="relative h-[600px] bg-gray-200">
                              <img 
-                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
+                                src="https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true" 
                                 alt="Kurumsal Bina" 
                                 className="w-full h-full object-cover transition-all duration-700"
                             />

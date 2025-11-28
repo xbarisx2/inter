@@ -73,8 +73,7 @@ const App: React.FC = () => {
     return (
         <div className="bg-gray-50 text-gray-800 font-sans">
             <Header currentPage={currentPage} setCurrentPage={handleSetCurrentPage} />
-            {/* Added dynamic padding so header doesn't cover content on non-Home pages */}
-            <main className={`${currentPage !== 'Ana Sayfa' ? 'pt-28 lg:pt-32' : ''}`}>
+            <main>
                 {renderPage()}
             </main>
             <Footer setCurrentPage={handleSetCurrentPage} />

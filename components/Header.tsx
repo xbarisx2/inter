@@ -75,8 +75,8 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const hasSublinks = link.subLinks && link.subLinks.length > 0;
 
-    // Logic to determine text color based on transparency state
-    const baseTextColor = isTransparent ? 'text-gray-800 hover:text-brand-blue-600' : 'text-gray-700 hover:text-brand-blue-900';
+    // Logic to determine text color - Always dark corporate blue for consistency and readability on the white/gradient background
+    const baseTextColor = 'text-gray-700 hover:text-brand-blue-900';
     const activeTextColor = 'text-brand-blue-900';
     const textColor = currentPage === link.name ? activeTextColor : baseTextColor;
 
@@ -171,8 +171,7 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
-
-    // Transparency logic: Transparent only on HomePage (but we add a white gradient so text is dark)
+    
     const isHomePage = currentPage === 'Ana Sayfa';
 
     useEffect(() => {
@@ -273,31 +272,35 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         </div>
     );
 
+    // Determine header style
+    // Home Page: Absolute position (doesn't follow scroll), transparent top with gradient.
+    // Other Pages: Relative position (doesn't overlap content), solid white.
+    
     return (
         <>
-            {/* Header Container - Absolute positioning to stay at top */}
+            {/* Header Container */}
             <header 
-                className={`absolute top-0 left-0 w-full z-50 transition-all duration-300 ${
-                    isHomePage 
-                    ? 'bg-gradient-to-b from-white via-white/70 to-transparent shadow-none border-b border-white/0' 
+                className={`${isHomePage ? 'absolute top-0 left-0' : 'relative'} w-full z-50 transition-all duration-300 ${
+                    isHomePage
+                    ? 'bg-gradient-to-b from-white via-white/80 to-transparent border-b border-white/0'
                     : 'bg-white shadow-md'
                 }`}
             >
                 {/* Top Contact Bar */}
                 <div className={`hidden md:block transition-all duration-300 border-b ${
-                    isHomePage 
-                    ? 'bg-transparent border-gray-200/20 text-brand-blue-900' 
-                    : 'bg-brand-blue-900 border-brand-blue-900 text-white'
+                    isHomePage
+                    ? 'bg-transparent border-gray-200/20 text-brand-blue-900'
+                    : 'bg-gray-800 border-gray-800 text-white' // Gray background for non-home pages
                 }`}>
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center py-2 text-sm font-medium">
                             <div className="flex items-center space-x-6">
                                 <div className="flex items-center space-x-2 group">
-                                    <PhoneIcon className={`w-4 h-4 ${isHomePage ? 'text-brand-blue-900' : 'text-brand-blue-200'}`} />
+                                    <PhoneIcon className={`w-4 h-4 ${!isHomePage ? 'text-gray-300' : 'text-brand-blue-900'}`} />
                                     <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.phone1}</a>
                                 </div>
                                 <div className="flex items-center space-x-2 group">
-                                    <MailIcon className={`w-4 h-4 ${isHomePage ? 'text-brand-blue-900' : 'text-brand-blue-200'}`} />
+                                    <MailIcon className={`w-4 h-4 ${!isHomePage ? 'text-gray-300' : 'text-brand-blue-900'}`} />
                                     <a href={`mailto:${COMPANY_INFO.email}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.email}</a>
                                 </div>
                             </div>
@@ -313,14 +316,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
                 {/* Main Navigation */}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`flex items-center justify-between transition-all duration-300 ${isHomePage ? 'h-24 md:h-28' : 'h-20 md:h-24'}`}>
+                    {/* Consistent height */}
+                    <div className="flex items-center justify-between transition-all duration-300 h-24 md:h-28">
                         {/* Logo */}
                         <div className="flex-shrink-0 z-50">
                             <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center focus:outline-none">
                                 <img 
                                     src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
                                     alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                    className={`w-auto object-contain transition-all duration-300 ${isHomePage ? 'h-16 md:h-24' : 'h-14 md:h-20'}`}
+                                    className="w-auto object-contain transition-all duration-300 h-16 md:h-24"
                                 />
                             </button>
                         </div>
@@ -340,11 +344,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                             </ul>
                              <button 
                                 onClick={() => setCurrentPage('İletişim')} 
-                                className={`ml-6 px-6 py-3 rounded-none font-bold transition-all duration-300 uppercase tracking-widest text-xs border-2 ${
-                                    isHomePage 
-                                    ? 'border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white' 
-                                    : 'border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white'
-                                }`}
+                                className={`ml-6 px-6 py-3 rounded-none font-bold transition-all duration-300 uppercase tracking-widest text-xs border-2 border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white`}
                              >
                                 Teklif Al
                             </button>
