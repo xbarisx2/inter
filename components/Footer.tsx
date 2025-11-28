@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { COMPANY_INFO, NAVIGATION_LINKS } from '../constants';
 import type { Page } from '../types';
@@ -10,7 +9,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
     return (
-        <footer className="bg-brand-blue-950 text-white border-t-4 border-brand-blue-800">
+        <footer className="bg-gray-900 text-white border-t-4 border-brand-blue-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Company Info */}
@@ -23,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                             />
                         </div>
                         <h3 className="text-xl font-bold mb-4 text-white">İNTER AKDENİZ ALÜMİNYUM</h3>
-                        <p className="text-brand-blue-200 text-sm leading-relaxed">
+                        <p className="text-gray-400 text-sm leading-relaxed">
                            Modern mimarinin gereksinimlerini, yenilikçi alüminyum ve PVC sistemleriyle buluşturarak yaşam alanlarınıza değer katıyoruz.
                         </p>
                     </div>
@@ -34,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                         <ul className="space-y-2">
                             {NAVIGATION_LINKS.map(link => (
                                 <li key={link.name}>
-                                    <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage(link.name); }} className="text-brand-blue-200 hover:text-white hover:pl-2 transition-all duration-300 text-sm">
+                                    <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage(link.name); }} className="text-gray-400 hover:text-brand-blue-400 hover:pl-2 transition-all duration-300 text-sm">
                                         {link.name}
                                     </a>
                                 </li>
@@ -47,31 +46,31 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                         <h3 className="text-lg font-semibold mb-4 text-white">İletişim</h3>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start">
-                                <LocationMarkerIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-brand-blue-400" />
-                                <span className="text-brand-blue-200">{COMPANY_INFO.address}</span>
+                                <LocationMarkerIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-brand-blue-500" />
+                                <span className="text-gray-400">{COMPANY_INFO.address}</span>
                             </li>
                             <li className="flex items-center">
-                                <PhoneIcon className="w-5 h-5 mr-3 flex-shrink-0 text-brand-blue-400" />
-                                <a href={`tel:${COMPANY_INFO.phone1}`} className="text-brand-blue-200 hover:text-white">{COMPANY_INFO.phone1}</a>
+                                <PhoneIcon className="w-5 h-5 mr-3 flex-shrink-0 text-brand-blue-500" />
+                                <a href={`tel:${COMPANY_INFO.phone1}`} className="text-gray-400 hover:text-white">{COMPANY_INFO.phone1}</a>
                             </li>
                             <li className="flex items-center">
-                                <MailIcon className="w-5 h-5 mr-3 flex-shrink-0 text-brand-blue-400" />
-                                <a href={`mailto:${COMPANY_INFO.email}`} className="text-brand-blue-200 hover:text-white">{COMPANY_INFO.email}</a>
+                                <MailIcon className="w-5 h-5 mr-3 flex-shrink-0 text-brand-blue-500" />
+                                <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-400 hover:text-white">{COMPANY_INFO.email}</a>
                             </li>
                         </ul>
                     </div>
                      {/* Social */}
                      <div>
                         <h3 className="text-lg font-semibold mb-4 text-white">Sosyal Medya</h3>
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center p-2 bg-brand-blue-700 hover:bg-brand-blue-600 rounded-full transition-colors">
+                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center p-2 bg-brand-blue-800 hover:bg-brand-blue-700 rounded-full transition-colors">
                             <InstagramIcon className="w-6 h-6 text-white" />
                         </a>
                      </div>
                 </div>
 
-                <div className="mt-12 border-t border-brand-blue-900 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                    <p className="text-sm text-brand-blue-300">&copy; {new Date().getFullYear()} {COMPANY_INFO.name} Tüm hakları saklıdır.</p>
-                    <p className="text-sm text-brand-blue-400 mt-2 md:mt-0 opacity-70 hover:opacity-100 transition-opacity">
+                <div className="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                    <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} {COMPANY_INFO.name} Tüm hakları saklıdır.</p>
+                    <p className="text-sm text-gray-600 mt-2 md:mt-0 opacity-70 hover:opacity-100 transition-opacity">
                         Web Tasarım: <a href="mailto:barisyldrm@pm.me" className="hover:text-white transition-colors">barisyldrm@pm.me</a>
                     </p>
                 </div>
