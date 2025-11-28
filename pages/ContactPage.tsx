@@ -53,7 +53,7 @@ ${message}
 
     return (
         <>
-            <div className="relative h-96 bg-gray-200">
+            <div className="relative h-64 md:h-96 bg-gray-200">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.954215286591!2d30.75572567645166!3d36.86718097223049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c391d3c054e7ab%3A0xe54e1c251d8b9d5c!2s%C3%87a%C4%9Flayan%2C%20Bar%C4%B1naklar%20Blv.%20No%3A99%2C%2007230%20Muratpa%C5%9Fa%2FAntalya!5e0!3m2!1str!2str!4v1721841370591!5m2!1str!2str"
                     width="100%"
@@ -66,16 +66,16 @@ ${message}
                 ></iframe>
             </div>
 
-            <div className="py-20 bg-white">
+            <div className="py-16 md:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold text-brand-blue-900">Bize Ulaşın</h1>
-                        <p className="mt-4 text-lg text-gray-600">Projeniz hakkında görüşmek veya teklif almak için bizimle iletişime geçin.</p>
+                        <h1 className="text-3xl md:text-5xl font-bold text-brand-blue-900">Bize Ulaşın</h1>
+                        <p className="mt-4 text-base md:text-lg text-gray-600">Projeniz hakkında görüşmek veya teklif almak için bizimle iletişime geçin.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-12">
                         {/* Contact Form Area */}
-                        <div className="bg-gray-50 p-8 rounded-lg shadow-md transition-all duration-300 min-h-[500px] flex flex-col justify-center">
+                        <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md transition-all duration-300 min-h-[500px] flex flex-col justify-center">
                             {formStatus === 'sent' ? (
                                 <div className="text-center animate-fade-in py-8">
                                     <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">

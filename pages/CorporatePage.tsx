@@ -2,21 +2,21 @@
 import React from 'react';
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
-    <div className="bg-brand-blue-900 text-white py-20">
+    <div className="bg-brand-blue-900 text-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold">{title}</h1>
-            <p className="mt-4 text-lg text-brand-blue-200">{subtitle}</p>
+            <h1 className="text-3xl md:text-5xl font-bold">{title}</h1>
+            <p className="mt-4 text-base md:text-lg text-brand-blue-200 max-w-2xl mx-auto">{subtitle}</p>
         </div>
     </div>
 );
 
 const Section: React.FC<{id: string, title: string, image: string, children: React.ReactNode, imageLeft?: boolean}> = ({id, title, image, children, imageLeft = false}) => (
-    <section id={id} className="py-20 bg-white">
+    <section id={id} className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid md:grid-cols-2 gap-12 items-center ${imageLeft ? 'md:grid-flow-col-dense' : ''}`}>
+            <div className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${imageLeft ? 'md:grid-flow-col-dense' : ''}`}>
                 <div className={`${imageLeft ? 'md:col-start-2' : ''}`}>
-                    <h2 className="text-3xl font-bold text-brand-blue-900 mb-4">{title}</h2>
-                    <div className="space-y-4 text-gray-600">
+                    <h2 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-4">{title}</h2>
+                    <div className="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                         {children}
                     </div>
                 </div>

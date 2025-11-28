@@ -97,29 +97,31 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         <div 
                             className={`absolute inset-0 bg-cover bg-center transform transition-transform duration-[10s] ease-linear ${index === currentSlide ? 'scale-110' : 'scale-100'}`}
                             style={{backgroundImage: `url('${slide.image}')`}}
+                            role="img"
+                            aria-label={slide.title}
                         ></div>
                         {/* Overlay only for text readability at bottom/center, leaving top lighter for logo visibility */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     </div>
                 ))}
 
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center pt-20">
-                    <div className="max-w-4xl border-l-8 border-brand-blue-500 pl-8 md:pl-12 py-4 animate-fade-in-up">
-                        <h2 className="text-white text-lg md:text-xl font-bold tracking-[0.3em] uppercase mb-4 text-brand-blue-400 drop-shadow-md">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center pt-24 md:pt-20">
+                    <div className="max-w-4xl border-l-8 border-brand-blue-500 pl-6 md:pl-12 py-4 animate-fade-in-up">
+                        <h2 className="text-white text-base md:text-xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase mb-2 md:mb-4 text-brand-blue-400 drop-shadow-md">
                             İNTER AKDENİZ ALÜMİNYUM
                         </h2>
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-none mb-6 tracking-tight drop-shadow-2xl">
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white leading-tight md:leading-none mb-4 md:mb-6 tracking-tight drop-shadow-2xl">
                             {HERO_SLIDES[currentSlide].title}
                         </h1>
-                        <p className="text-gray-200 text-lg md:text-2xl font-light max-w-2xl mb-10 border-b border-gray-500 pb-10 drop-shadow-lg">
+                        <p className="text-gray-200 text-base md:text-2xl font-light max-w-2xl mb-8 md:mb-10 border-b border-gray-500 pb-8 md:pb-10 drop-shadow-lg">
                             {HERO_SLIDES[currentSlide].subtitle}
                         </p>
                         
-                        <div className="flex flex-col sm:flex-row gap-0">
-                            <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-5 px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-brand-blue-600 shadow-lg">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
+                            <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-brand-blue-600 shadow-lg w-full sm:w-auto">
                                 Ürünleri İncele
                             </button>
-                            <button onClick={() => setCurrentPage('İletişim')} className="bg-transparent text-white font-bold py-5 px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-sm rounded-none border-2 border-white shadow-lg">
+                            <button onClick={() => setCurrentPage('İletişim')} className="bg-transparent text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-white shadow-lg w-full sm:w-auto">
                                 İletişime Geç
                             </button>
                         </div>
@@ -136,23 +138,23 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             {/* PROCESS STRIP: Corporate Process Flow */}
             <section className="bg-brand-blue-900 text-white py-0 relative z-20">
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-blue-800/50">
-                        <div className="p-8 flex items-center justify-center md:justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
-                            <LightBulbIcon className="w-10 h-10 mr-4 opacity-80" />
+                    <div className="grid grid-cols-1 md:grid-cols-4 divide-y divide-blue-800/50 md:divide-y-0 md:divide-x">
+                        <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
+                            <LightBulbIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
                                 <h4 className="font-bold text-lg uppercase">Projelendirme</h4>
                                 <p className="text-xs text-blue-200 opacity-70">Mimari teknik detay</p>
                             </div>
                         </div>
-                        <div className="p-8 flex items-center justify-center md:justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
-                            <HardHatIcon className="w-10 h-10 mr-4 opacity-80" />
+                        <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
+                            <HardHatIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
                                 <h4 className="font-bold text-lg uppercase">Üretim</h4>
                                 <p className="text-xs text-blue-200 opacity-70">Yüksek teknoloji parkuru</p>
                             </div>
                         </div>
-                        <div className="p-8 flex items-center justify-center md:justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
-                            <ShieldCheckIcon className="w-10 h-10 mr-4 opacity-80" />
+                        <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
+                            <ShieldCheckIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
                                 <h4 className="font-bold text-lg uppercase">Montaj</h4>
                                 <p className="text-xs text-blue-200 opacity-70">Uzman ekip garantisi</p>
@@ -175,11 +177,13 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         <div 
                             key={idx} 
                             onClick={() => setCurrentPage(cat.page)}
-                            className="group relative h-[300px] cursor-pointer overflow-hidden border border-gray-100"
+                            className="group relative h-[250px] md:h-[300px] cursor-pointer overflow-hidden border border-gray-100"
                         >
                             <div 
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                                 style={{backgroundImage: `url('${cat.image}')`}}
+                                role="img"
+                                aria-label={cat.title}
                             ></div>
                             <div className="absolute inset-0 bg-brand-blue-900/40 group-hover:bg-brand-blue-900/70 transition-colors duration-300"></div>
                             
@@ -195,20 +199,20 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
 
             {/* CORPORATE SECTION: Split Layout (Text Left / Image Right) */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-16 md:py-24 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                         <div>
                             <span className="block text-sm font-bold text-brand-blue-600 tracking-widest uppercase mb-2">Kurumsal</span>
-                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
                                 ÇÖZÜM ODAKLI <br/> MİMARİ SİSTEMLER
                             </h2>
                             <div className="h-1 w-20 bg-brand-blue-600 mb-8"></div>
                             
-                            <p className="text-gray-600 text-lg leading-relaxed mb-6 font-light">
+                            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 font-light">
                                 İnter Akdeniz Alüminyum, 20 yılı aşkın süredir sektörde edindiği tecrübeyi, <strong>Linea Rossa Milano</strong> kalitesiyle birleştirerek projelere değer katmaktadır.
                             </p>
-                            <p className="text-gray-600 text-lg leading-relaxed mb-10 font-light">
+                            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-light">
                                 Antalya merkezli firmamız, Türkiye'nin ve dünyanın dört bir yanına alüminyum cephe, doğrama ve özel tasarım mimari çözümler sunmaktadır.
                             </p>
                             
@@ -223,14 +227,14 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                 </div>
                             </div>
                             
-                            <button onClick={() => setCurrentPage('Kurumsal')} className="bg-brand-blue-900 text-white font-bold py-4 px-10 hover:bg-brand-blue-800 transition-colors duration-300 uppercase tracking-wide text-sm rounded-none">
+                            <button onClick={() => setCurrentPage('Kurumsal')} className="bg-brand-blue-900 text-white font-bold py-4 px-10 hover:bg-brand-blue-800 transition-colors duration-300 uppercase tracking-wide text-sm rounded-none w-full md:w-auto">
                                 Hakkımızda Daha Fazla
                             </button>
                         </div>
-                        <div className="relative h-[600px] bg-gray-200">
+                        <div className="relative h-[400px] md:h-[600px] bg-gray-200">
                              <img 
                                 src="https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true" 
-                                alt="Kurumsal Bina" 
+                                alt="Kurumsal Alüminyum Cephe Binası" 
                                 className="w-full h-full object-cover transition-all duration-700"
                             />
                             <div className="absolute -bottom-10 -left-10 bg-brand-blue-900 text-white p-8 hidden md:block shadow-xl">
@@ -244,25 +248,25 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
 
             {/* FEATURED PROJECTS: Masonry Grid Style */}
-            <section className="py-24 bg-white">
+            <section className="py-16 md:py-24 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-                        <div>
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
+                        <div className="mb-6 md:mb-0">
                             <span className="block text-sm font-bold text-gray-400 tracking-widest uppercase mb-2">GALERİ</span>
-                            <h2 className="text-4xl font-black text-gray-900 uppercase">ÖNE ÇIKAN SİSTEMLER</h2>
+                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase">ÖNE ÇIKAN SİSTEMLER</h2>
                             <div className="h-1 w-20 bg-brand-blue-600 mt-4"></div>
                         </div>
-                        <button onClick={() => setCurrentPage('Ürünlerimiz')} className="hidden md:inline-block text-gray-900 font-bold border-b-2 border-gray-900 pb-1 hover:text-brand-blue-600 hover:border-brand-blue-600 transition-all">
+                        <button onClick={() => setCurrentPage('Ürünlerimiz')} className="text-gray-900 font-bold border-b-2 border-gray-900 pb-1 hover:text-brand-blue-600 hover:border-brand-blue-600 transition-all text-sm md:text-base">
                             TÜM ÜRÜNLERİ GÖR
                         </button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                         {featuredProducts.map((product, index) => (
-                            <div key={index} className="group relative h-80 overflow-hidden cursor-pointer border border-gray-100">
+                            <div key={index} className="group relative h-72 md:h-80 overflow-hidden cursor-pointer border border-gray-100">
                                 <img 
                                     src={product.image} 
-                                    alt={product.name} 
+                                    alt={`Öne Çıkan Ürün: ${product.name}`} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-brand-blue-900/20 group-hover:bg-brand-blue-900/80 transition-colors duration-300"></div>
@@ -276,7 +280,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             </div>
                         ))}
                          {/* Static Extra Item to fill grid if needed or make a pattern */}
-                         <div className="group relative h-80 bg-brand-blue-950 flex items-center justify-center text-center cursor-pointer overflow-hidden">
+                         <div className="group relative h-72 md:h-80 bg-brand-blue-950 flex items-center justify-center text-center cursor-pointer overflow-hidden">
                              <div className="absolute inset-0 border-8 border-brand-blue-900 transition-all duration-300 group-hover:border-brand-blue-500"></div>
                              <div className="p-8">
                                 <h3 className="text-3xl font-black text-white mb-2">PROJELERİNİZ</h3>
@@ -291,17 +295,17 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </section>
 
             {/* REFERENCES / BRANDS */}
-            <section className="py-20 bg-gray-50 border-t border-gray-200">
+            <section className="py-20 bg-gray-50 border-t border-gray-200 overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-12">
                         <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">GÜÇLÜ İŞ BİRLİĞİ</span>
                         <h2 className="text-3xl font-black text-gray-900 mt-2 uppercase">REFERANSLARIMIZ</h2>
                     </div>
-                    <div className="relative group overflow-hidden">
-                         <div className="flex animate-marquee group-hover:pause space-x-16 items-center">
+                    <div className="relative group">
+                         <div className="flex animate-marquee group-hover:pause space-x-12 md:space-x-16 items-center">
                              {[...displayedReferences, ...displayedReferences].map((ref, index) => (
                                 <div key={`${ref.name}-${index}`} className="flex-shrink-0 flex items-center justify-center transition-all duration-500 cursor-pointer">
-                                    <img src={ref.logo} alt={ref.name} className="h-16 w-auto object-contain mix-blend-multiply" />
+                                    <img src={ref.logo} alt={`${ref.name} Referans Logosu`} className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
                                 </div>
                             ))}
                         </div>

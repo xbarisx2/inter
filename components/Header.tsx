@@ -297,15 +297,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                             <div className="flex items-center space-x-6">
                                 <div className="flex items-center space-x-2 group">
                                     <PhoneIcon className={`w-4 h-4 ${!isHomePage ? 'text-gray-300' : 'text-brand-blue-900'}`} />
-                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.phone1}</a>
+                                    <a href={`tel:${COMPANY_INFO.phone1}`} className="hover:opacity-80 transition-colors" aria-label="Telefon">{COMPANY_INFO.phone1}</a>
                                 </div>
                                 <div className="flex items-center space-x-2 group">
                                     <MailIcon className={`w-4 h-4 ${!isHomePage ? 'text-gray-300' : 'text-brand-blue-900'}`} />
-                                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:opacity-80 transition-colors">{COMPANY_INFO.email}</a>
+                                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:opacity-80 transition-colors" aria-label="E-posta">{COMPANY_INFO.email}</a>
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-colors flex items-center gap-1">
+                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-colors flex items-center gap-1" aria-label="Instagram">
                                     <InstagramIcon className="w-4 h-4" />
                                     <span className="text-xs">Takip Et</span>
                                 </a>
@@ -317,14 +317,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 {/* Main Navigation */}
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Consistent height */}
-                    <div className="flex items-center justify-between transition-all duration-300 h-24 md:h-28">
-                        {/* Logo */}
+                    <div className="flex items-center justify-between transition-all duration-300 h-20 md:h-28">
+                        {/* Logo - Adjusted height for mobile to prevent overcrowding */}
                         <div className="flex-shrink-0 z-50">
                             <button onClick={() => { setCurrentPage('Ana Sayfa'); setIsMenuOpen(false); }} className="flex items-center focus:outline-none">
                                 <img 
                                     src="https://github.com/xbarisx2/logo/blob/main/logoointer-removebg-preview.png?raw=true" 
                                     alt="İNTER AKDENİZ ALÜMİNYUM" 
-                                    className="w-auto object-contain transition-all duration-300 h-16 md:h-24"
+                                    className="w-auto object-contain transition-all duration-300 h-12 md:h-24"
                                 />
                             </button>
                         </div>
@@ -354,7 +354,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                         <div className="md:hidden flex items-center z-50">
                             <button 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                                className="p-2 rounded-md transition-colors focus:outline-none text-gray-900"
+                                className="p-2 rounded-md transition-colors focus:outline-none text-gray-900 bg-white/50 backdrop-blur-sm"
                                 aria-label="Menüyü Aç/Kapat"
                             >
                                 {isMenuOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
