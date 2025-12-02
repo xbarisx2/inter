@@ -19,6 +19,12 @@ export interface Product {
     image: string;
 }
 
+export interface ProductSection {
+    id: string;
+    title: string;
+    items: Product[];
+}
+
 export interface Reference {
     name: string;
     logo: string;

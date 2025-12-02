@@ -1,5 +1,5 @@
 
-import type { NavLink, Product, Reference, BlogPost, Partner } from './types';
+import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection } from './types';
 
 export const COMPANY_INFO = {
     name: "İNTER AKDENİZ ALÜMİNYUM LTD. ŞTİ.",
@@ -48,25 +48,16 @@ export const NAVIGATION_LINKS: NavLink[] = [
         name: 'Ürünlerimiz',
         subLinks: [
             {
-                name: "Linea Rossa GRANDE Serileri",
+                name: "LINEA ROSSA Sistemleri",
                 subLinks: [
-                    { name: "Linea Rossa GLR 27 Minimal Yalıtımsız Sürme Sistemi", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 33 G-slide Sürme Sistemi", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 36 Yalıtımlı Sürme Sistemi", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR-37 Minimal Yalıtımlı Sürme Sistemi", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 50 – GLR 51 Giriş Kapısı Sistemleri", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 53 Açılır Sistem", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 63 Katlanır Kapı", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 64 Katlanır Kapı", page: "Linea Rossa" },
-                    { name: "Linea Rossa GLR 95 Modüler Panel Cephe", page: "Linea Rossa" }
-                ]
-            },
-            {
-                name: "Linea Rossa Pencere ve Kapı Sistemleri",
-                subLinks: [
-                    { name: "LR-1050 Pencere Sistemi", page: "Linea Rossa" },
-                    { name: "LR-3200 Yüksek Performans Sürme", page: "Linea Rossa" },
-                    { name: "LR-2600 Kaldır-Sür (Hebeschiebe)", page: "Linea Rossa" }
+                    { name: "Yalıtımlı Sürme Sistemleri", page: "Linea Rossa", id: "yalitimli-surme" },
+                    { name: "Yalıtımsız Sürme Sistemleri", page: "Linea Rossa", id: "yalitimsiz-surme" },
+                    { name: "Stick Cephe Sistemleri", page: "Linea Rossa", id: "stick-cephe" },
+                    { name: "Panel Cephe Sistemleri", page: "Linea Rossa", id: "panel-cephe" },
+                    { name: "Katlanır Kapı Sistemleri", page: "Linea Rossa", id: "katlanir-kapi" },
+                    { name: "Açılır Yalıtımlı Sistemler", page: "Linea Rossa", id: "acilir-yalitimli" },
+                    { name: "Açılır Yalıtımsız Sistemler", page: "Linea Rossa", id: "acilir-yalitimsiz" },
+                    { name: "Zip Screen & Pergola", page: "Linea Rossa", id: "zip-pergola" }
                 ]
             },
             {
@@ -112,11 +103,72 @@ export const PRODUCTS: Product[] = [
     { name: "Menfez Profilleri", description: "Havalandırma boşlukları ve banyo kapıları için kullanılan sabit kanatlı alüminyum menfez profilleri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
 ];
 
-export const LINEA_ROSSA_PRODUCTS: Product[] = [
-    { name: "LR-3200 Sürme Sistemi", description: "Minimalist tasarımı ve geniş cam yüzeyleri ile modern mekanlar için ideal, yüksek performanslı sürme kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
-    { name: "LR-2600 Kaldır-Sür Sistemi", description: "Geniş açıklıklar için mükemmel sızdırmazlık ve kullanım kolaylığı sunan, üstün yalıtımlı kaldır-sür (Hebeschiebe) sistemi.", image: "https://images.unsplash.com/photo-1585128792020-803d29415281?auto=format&fit=crop&w=600&q=80" },
-    { name: "LR-1150 Cephe Sistemi", description: "Binalara estetik ve prestijli bir görünüm katan, yüksek ısı ve ses yalıtımı sağlayan modern giydirme cephe sistemi.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
-    { name: "LR-1050 Pencere ve Kapı", description: "Klasik ve modern mimariye uyum sağlayan, yüksek performanslı, ısı yalıtımlı alüminyum pencere ve kapı sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
+export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
+    {
+        id: "yalitimli-surme",
+        title: "Yalıtımlı Sürme Sistemleri",
+        items: [
+            { name: "LR-3100 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: Yüksek ısı bariyerli, modern mimari için ideal sürme sistemi.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp" },
+            { name: "LR-3200 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: Geniş açıklıklar için tasarlanmış yüksek performanslı seri.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3200.webp" },
+            { name: "LR-3300 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: Ağır yük taşıma kapasitesine sahip, panoramik sürme sistemi.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3300.webp" },
+            { name: "LR-3400 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: Üstün sızdırmazlık ve konfor sağlayan gelişmiş tasarım.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3400.webp" },
+            { name: "LR-3500 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: İnce profil detaylarıyla maksimum görüş alanı.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3500.webp" },
+            { name: "LR-3700 - Linea Rossa", description: "Yalıtımlı Sürme Sistemi: Lüks projeler için minimal ve yüksek yalıtımlı çözüm.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3700.webp" },
+        ]
+    },
+    {
+        id: "yalitimsiz-surme",
+        title: "Yalıtımsız Sürme Sistemleri",
+        items: [
+            { name: "LR-2100 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Ekonomik ve fonksiyonel, iç mekan ve balkon kapatmaları için ideal.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-2200 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "stick-cephe",
+        title: "Stick Cephe Sistemleri",
+        items: [
+            { name: "LR-9200 - Linea Rossa", description: "Stick Cephe Sistemi: Silikon ve kapaklı cephe uygulamaları için çok yönlü profil sistemi.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
+            { name: "LR-9300 - Linea Rossa", description: "Stick Cephe Sistemi: Yüksek katlı binalarda rüzgar yüküne dayanıklı güçlendirilmiş cephe.", image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "panel-cephe",
+        title: "Panel Cephe Sistemleri",
+        items: [
+            { name: "LR-9500 - Linea Rossa", description: "Panel Cephe Sistemi: Hızlı montaj ve fabrikasyon üretim imkanı sunan modüler cephe.", image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "katlanir-kapi",
+        title: "Katlanır Kapı Sistemleri",
+        items: [
+            { name: "LR-6100 - Linea Rossa", description: "Katlanır Kapı Sistemi: Mekanları tamamen birleştiren, eşiksiz veya eşikli katlanır sistem.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "acilir-yalitimli",
+        title: "Açılır Yalıtımlı Sistemler",
+        items: [
+            { name: "LR-5100 - Linea Rossa", description: "Açılır Yalıtımlı Sistem: Standart ve çift açılım pencereler için üstün ısı yalıtımı.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "acilir-yalitimsiz",
+        title: "Açılır Yalıtımsız Sistemler",
+        items: [
+            { name: "LR-4100 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Vitrin ve ara bölmeler için ekonomik doğrama çözümü.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-4500 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Ofis bölmeleri ve iç kapılar için modern tasarımlı seri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "zip-pergola",
+        title: "Zip Screen & Pergola",
+        items: [
+            { name: "LR-8300 - Linea Rossa", description: "Zip Screen: Dış cephe gölgelendirmesi için rüzgara dayanıklı fermuarlı perde sistemi.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true" },
+            { name: "LR-8700 - Linea Rossa", description: "Bioclimatic Pergola: Dört mevsim kullanım sağlayan, hareketli lamelli alüminyum pergola.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true" },
+        ]
+    }
 ];
 
 
@@ -184,7 +236,7 @@ export const BLOG_POSTS: BlogPost[] = [
         content: [
             { type: 'p', text: "Pencere ve kapı doğraması seçimi, bir yapının hem görünümünü hem de yalıtım performansını doğrudan etkiler. Piyasada en yaygın iki seçenek olan PVC ve Alüminyum arasında karar vermek zor olabilir. Her iki malzemenin de kendine özgü avantajları ve dezavantajları bulunmaktadır." },
             { type: 'h2', text: "Maliyet ve Performans" },
-            { type: 'p', text: "Genellikle PVC doğramalar, alüminyum doğramalara göre daha ekonomiktir. Isı yalıtımında da doğal yapısı gereği oldukça başarılıdır. Ancak alüminyum, daha yüksek statik dayanıklılığa sahip olduğu için çok geniş açıklıklarda ve yüksek katlı binalarda tercih edilir." },
+            { type: 'p', text: "Genellikle PVC doğramalar, alüminyum doğramalara göre daha ekonomiktir. Isı yalıtımlı camlar (Isıcam), binaların enerji tüketimini azaltmada kilit bir rol oynar. Bu camlar, aralarında argon gibi yalıtkan gazlar bulunan iki veya daha fazla cam plakanın birleşiminden oluşur." },
         ]
     },
     {
