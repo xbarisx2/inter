@@ -236,6 +236,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                 src="https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true" 
                                 alt="Kurumsal Alüminyum Cephe Binası" 
                                 className="w-full h-full object-cover transition-all duration-700"
+                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute -bottom-10 -left-10 bg-brand-blue-900 text-white p-8 hidden md:block shadow-xl">
                                 <p className="text-2xl font-bold leading-none">
@@ -268,6 +270,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                     src={product.image} 
                                     alt={`Öne Çıkan Ürün: ${product.name}`} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-brand-blue-900/20 group-hover:bg-brand-blue-900/80 transition-colors duration-300"></div>
                                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -305,7 +309,13 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                          <div className="flex animate-marquee group-hover:pause space-x-12 md:space-x-16 items-center">
                              {[...displayedReferences, ...displayedReferences].map((ref, index) => (
                                 <div key={`${ref.name}-${index}`} className="flex-shrink-0 flex items-center justify-center transition-all duration-500 cursor-pointer">
-                                    <img src={ref.logo} alt={`${ref.name} Referans Logosu`} className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+                                    <img 
+                                        src={ref.logo} 
+                                        alt={`${ref.name} Referans Logosu`} 
+                                        className="h-12 md:h-16 w-auto object-contain mix-blend-multiply"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
                                 </div>
                             ))}
                         </div>

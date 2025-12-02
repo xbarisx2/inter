@@ -49,6 +49,7 @@ export const NAVIGATION_LINKS: NavLink[] = [
         subLinks: [
             {
                 name: "LINEA ROSSA Sistemleri",
+                page: "Linea Rossa", // Added page target so the category itself is clickable
                 subLinks: [
                     { name: "Yalıtımlı Sürme Sistemleri", page: "Linea Rossa", id: "yalitimli-surme" },
                     { name: "Yalıtımsız Sürme Sistemleri", page: "Linea Rossa", id: "yalitimsiz-surme" },
@@ -62,6 +63,7 @@ export const NAVIGATION_LINKS: NavLink[] = [
             },
             {
                 name: "Alüminyum Profil Katalogları",
+                page: "Ürünlerimiz",
                 subLinks: [
                     { name: "Aldoks Serisi", page: "Ürünlerimiz" },
                     { name: "C60 Yalıtımlı Seri", page: "Ürünlerimiz" },
@@ -71,6 +73,7 @@ export const NAVIGATION_LINKS: NavLink[] = [
             },
             {
                 name: "Solar Montaj Sistemleri",
+                page: "Ürünlerimiz",
                 subLinks: [
                     { name: "Solar Konstrüksiyon", page: "Ürünlerimiz" },
                     { name: "Çatı Bağlantı Elemanları", page: "Ürünlerimiz" }
@@ -206,7 +209,7 @@ export const REFERENCES: Reference[] = [
     { name: "PILLO", logo: "https://github.com/xbarisx2/logo/blob/main/pillo.jpeg?raw=true" },
     { name: "DORUK YAPIM", logo: "https://github.com/xbarisx2/logo/blob/main/Doruk%20yap%C4%B1m.jpeg?raw=true" }, 
     { name: "ÖZAY KUYUMCULUK GRUBU", logo: "https://github.com/xbarisx2/logo/blob/main/%C3%B6zay%20kuyumculuk.jpeg?raw=true" }, 
-    { name: "İHSAN ÖZKOÇ KUYUMCULUK", logo: "https://file-service-pixel-bylm.aistudio.google.com/asset/07827194-e448-4f79-a804-004808794e08" },
+    { name: "İHSAN ÖZKOÇ KUYUMCULUK", logo: "https://image.pollinations.ai/prompt/luxury%20gold%20jewelry%20logo%20IHSAN%20OZKOC%20elegant%20serif%20font%20white%20background" },
     { name: "KAAN ÖZKOÇ", logo: "https://github.com/xbarisx2/logo/blob/main/kaan%20%C3%B6zkoc.jpeg?raw=true" },
 ];
 

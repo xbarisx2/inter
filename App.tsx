@@ -32,6 +32,18 @@ const App: React.FC = () => {
           setActivePostSlug(null);
         }
         window.scrollTo(0, 0);
+
+        // Handle hash scrolling after page render
+        const hash = window.location.hash;
+        if (hash) {
+            const id = hash.replace('#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
     }, [currentPage]);
 
     const renderPage = () => {
@@ -71,9 +83,9 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="bg-gray-50 text-gray-800 font-sans">
+        <div className="bg-gray-50 text-gray-800 font-sans pt-36 md:pt-0">
             <Header currentPage={currentPage} setCurrentPage={handleSetCurrentPage} />
-            <main>
+            <main className={currentPage === 'Ana Sayfa' ? '' : ''}>
                 {renderPage()}
             </main>
             <Footer setCurrentPage={handleSetCurrentPage} />

@@ -23,12 +23,20 @@ const handleLinkClick = (
     }
     
     if ((item as any).id) {
-        setTimeout(() => {
-            const element = document.getElementById((item as any).id!);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+        // Set the hash so the App's useEffect can pick it up after rendering the new page
+        window.location.hash = (item as any).id;
+        
+        // If we are already on the page, try scrolling immediately
+        const element = document.getElementById((item as any).id!);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
     } else {
         window.scrollTo(0, 0);
+        // Clear hash if navigating to a top-level page without ID
+        if (window.location.hash) {
+             history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
     }
 
     if (closeMenu) closeMenu();
