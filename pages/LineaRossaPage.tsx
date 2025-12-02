@@ -34,7 +34,7 @@ const LineaRossaPage: React.FC = () => {
                                 {section.items.map((product, index) => (
                                     <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
                                         <div className="relative">
-                                            <img src={product.image} alt={product.name} className="h-72 w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                                            <img src={product.image} alt={product.name} className="h-72 w-full object-cover transition-all duration-500" />
                                             <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
                                         </div>
                                         <div className="p-8 flex-grow flex flex-col">

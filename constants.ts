@@ -120,53 +120,53 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
         id: "yalitimsiz-surme",
         title: "Yalıtımsız Sürme Sistemleri",
         items: [
-            { name: "LR-2100 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Ekonomik ve fonksiyonel, iç mekan ve balkon kapatmaları için ideal.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
-            { name: "LR-2200 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-2100 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Ekonomik ve fonksiyonel, iç mekan ve balkon kapatmaları için ideal.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2100.webp" },
+            { name: "LR-2200 - Linea Rossa", description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2200.webp" },
         ]
     },
     {
         id: "stick-cephe",
         title: "Stick Cephe Sistemleri",
         items: [
-            { name: "LR-9200 - Linea Rossa", description: "Stick Cephe Sistemi: Silikon ve kapaklı cephe uygulamaları için çok yönlü profil sistemi.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
-            { name: "LR-9300 - Linea Rossa", description: "Stick Cephe Sistemi: Yüksek katlı binalarda rüzgar yüküne dayanıklı güçlendirilmiş cephe.", image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-9200 - Linea Rossa", description: "Stick Cephe Sistemi: Silikon ve kapaklı cephe uygulamaları için çok yönlü profil sistemi.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9200.webp" },
+            { name: "LR-9300 - Linea Rossa", description: "Stick Cephe Sistemi: Yüksek katlı binalarda rüzgar yüküne dayanıklı güçlendirilmiş cephe.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9300.webp" },
         ]
     },
     {
         id: "panel-cephe",
         title: "Panel Cephe Sistemleri",
         items: [
-            { name: "LR-9500 - Linea Rossa", description: "Panel Cephe Sistemi: Hızlı montaj ve fabrikasyon üretim imkanı sunan modüler cephe.", image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-9500 - Linea Rossa", description: "Panel Cephe Sistemi: Hızlı montaj ve fabrikasyon üretim imkanı sunan modüler cephe.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9500.webp" },
         ]
     },
     {
         id: "katlanir-kapi",
         title: "Katlanır Kapı Sistemleri",
         items: [
-            { name: "LR-6100 - Linea Rossa", description: "Katlanır Kapı Sistemi: Mekanları tamamen birleştiren, eşiksiz veya eşikli katlanır sistem.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-6100 - Linea Rossa", description: "Katlanır Kapı Sistemi: Mekanları tamamen birleştiren, eşiksiz veya eşikli katlanır sistem.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-6100.webp" },
         ]
     },
     {
         id: "acilir-yalitimli",
         title: "Açılır Yalıtımlı Sistemler",
         items: [
-            { name: "LR-5100 - Linea Rossa", description: "Açılır Yalıtımlı Sistem: Standart ve çift açılım pencereler için üstün ısı yalıtımı.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-5100 - Linea Rossa", description: "Açılır Yalıtımlı Sistem: Standart ve çift açılım pencereler için üstün ısı yalıtımı.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-5100.webp" },
         ]
     },
     {
         id: "acilir-yalitimsiz",
         title: "Açılır Yalıtımsız Sistemler",
         items: [
-            { name: "LR-4100 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Vitrin ve ara bölmeler için ekonomik doğrama çözümü.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
-            { name: "LR-4500 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Ofis bölmeleri ve iç kapılar için modern tasarımlı seri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
+            { name: "LR-4100 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Vitrin ve ara bölmeler için ekonomik doğrama çözümü.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-4100.webp" },
+            { name: "LR-4500 - Linea Rossa", description: "Açılır Yalıtımsız Sistem: Ofis bölmeleri ve iç kapılar için modern tasarımlı seri.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-4500.webp" },
         ]
     },
     {
         id: "zip-pergola",
         title: "Zip Screen & Pergola",
         items: [
-            { name: "LR-8300 - Linea Rossa", description: "Zip Screen: Dış cephe gölgelendirmesi için rüzgara dayanıklı fermuarlı perde sistemi.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true" },
-            { name: "LR-8700 - Linea Rossa", description: "Bioclimatic Pergola: Dört mevsim kullanım sağlayan, hareketli lamelli alüminyum pergola.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true" },
+            { name: "LR-8300 - Linea Rossa", description: "Zip Screen: Dış cephe gölgelendirmesi için rüzgara dayanıklı fermuarlı perde sistemi.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-8300.webp" },
+            { name: "LR-8700 - Linea Rossa", description: "Bioclimatic Pergola: Dört mevsim kullanım sağlayan, hareketli lamelli alüminyum pergola.", image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-8700.webp" },
         ]
     }
 ];
