@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { PRODUCTS, REFERENCES, HERO_SLIDES } from '../constants';
+import { PRODUCTS, REFERENCES, HERO_SLIDES, COMPANY_INFO } from '../constants';
 import type { Page } from '../types';
 import { ShieldCheckIcon, LightBulbIcon, HardHatIcon } from '../components/Icons';
 
@@ -121,9 +121,9 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-brand-blue-600 shadow-lg w-full sm:w-auto">
                                 Ürünleri İncele
                             </button>
-                            <button onClick={() => setCurrentPage('İletişim')} className="bg-transparent text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-white shadow-lg w-full sm:w-auto">
+                            <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-transparent text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-white shadow-lg w-full sm:w-auto text-center flex items-center justify-center">
                                 İletişime Geç
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -289,9 +289,9 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                              <div className="p-8">
                                 <h3 className="text-3xl font-black text-white mb-2">PROJELERİNİZ</h3>
                                 <p className="text-gray-400 mb-6">Sizin için en uygun çözümü bulalım.</p>
-                                <button onClick={() => setCurrentPage('İletişim')} className="text-white font-bold underline decoration-brand-blue-500 underline-offset-4 hover:text-brand-blue-400 transition-colors">
+                                <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="text-white font-bold underline decoration-brand-blue-500 underline-offset-4 hover:text-brand-blue-400 transition-colors">
                                     TEKLİF AL
-                                </button>
+                                </a>
                              </div>
                          </div>
                     </div>

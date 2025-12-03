@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { SOLAR_SECTIONS } from '../constants';
+import { SOLAR_SECTIONS, COMPANY_INFO } from '../constants';
 
 const SolarPage: React.FC = () => {
     return (
@@ -33,21 +33,29 @@ const SolarPage: React.FC = () => {
                         <div key={section.id} id={section.id} className="scroll-mt-32">
                             <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 border-l-4 border-brand-blue-600 pl-4">{section.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-                                {section.items.map((product, index) => (
-                                    <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
-                                        <div className="relative">
-                                            <img src={product.image} alt={product.name} className="h-72 w-full object-cover transition-all duration-500" />
-                                            <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
+                                {section.items.map((product, index) => {
+                                    const whatsappUrl = `${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${product.name} hakkında teklif almak istiyorum.`)}`;
+                                    return (
+                                        <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
+                                            <div className="relative">
+                                                <img src={product.image} alt={product.name} className="h-72 w-full object-cover transition-all duration-500" />
+                                                <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
+                                            </div>
+                                            <div className="p-8 flex-grow flex flex-col">
+                                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
+                                                <p className="text-gray-600 flex-grow leading-relaxed">{product.description}</p>
+                                                <a 
+                                                    href={whatsappUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="mt-8 self-start border-2 border-brand-blue-900 text-brand-blue-900 font-bold py-3 px-8 hover:bg-brand-blue-900 hover:text-white transition-all duration-300 uppercase text-sm tracking-wide inline-block text-center"
+                                                >
+                                                    Teklif Al
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div className="p-8 flex-grow flex flex-col">
-                                            <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                                            <p className="text-gray-600 flex-grow leading-relaxed">{product.description}</p>
-                                            <button className="mt-8 self-start border-2 border-brand-blue-900 text-brand-blue-900 font-bold py-3 px-8 hover:bg-brand-blue-900 hover:text-white transition-all duration-300 uppercase text-sm tracking-wide">
-                                                Teklif Al
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     ))}

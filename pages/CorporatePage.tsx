@@ -40,14 +40,14 @@ const CorporatePage: React.FC = () => {
 
             <div className="bg-gray-50"><div className="container mx-auto"><hr/></div></div>
 
-            <Section id="vizyonumuz" title="Vizyonumuz" image="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80" imageLeft>
+            <Section id="vizyonumuz" title="Vizyonumuz" image="https://image.pollinations.ai/prompt/futuristic%20aluminum%20skyscraper%20facade%20global%20architecture%20innovative%20glass%20design%20sustainable%20building%20photorealistic%208k" imageLeft>
                  <p>Sektördeki yenilikleri yakından takip ederek ve sürekli gelişimi hedefleyerek, Türkiye'de ve uluslararası pazarda alüminyum sistemleri denildiğinde akla gelen ilk markalardan biri olmaktır.</p>
                 <p>Sürdürülebilir ve çevre dostu üretim tekniklerini benimseyerek, gelecek nesillere daha yaşanabilir yapılar bırakmayı hedeflerken, teknoloji ve tasarımı birleştirerek mimariye ilham veren, öncü ve yenilikçi çözümler sunmak en temel vizyonumuzdur. Müşterilerimiz ve iş ortaklarımız için sadece bir tedarikçi değil, aynı zamanda güvenilir bir çözüm ortağı olarak anılmak istiyoruz.</p>
             </Section>
 
             <div className="bg-gray-50"><div className="container mx-auto"><hr/></div></div>
 
-            <Section id="misyonumuz" title="Misyonumuz" image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80">
+            <Section id="misyonumuz" title="Misyonumuz" image="https://image.pollinations.ai/prompt/high%20tech%20aluminum%20manufacturing%20factory%20precision%20engineering%20metal%20profiles%20industrial%20machinery%20clean%20facility%20photorealistic%208k">
                 <p>En yüksek kalitede hammadde ve en ileri teknolojiyi kullanarak, müşterilerimizin ihtiyaçlarına özel, estetik, güvenli ve uzun ömürlü alüminyum sistemleri üretmek ve uygulamaktır.</p>
                 <p>Bu süreçte, çalışanlarımızın gelişimine yatırım yaparak, iş sağlığı ve güvenliği standartlarına tavizsiz uyarak ve tüm paydaşlarımızla şeffaf ve dürüst bir iletişim kurarak, topluma ve çevreye karşı sorumluluklarımızı eksiksiz yerine getirmeyi taahhüt ederiz. Müşteri memnuniyetini her zaman en üst seviyede tutarak, projelerine değer katmak ve kalıcı eserler bırakmak varlık sebebimizdir.</p>
             </Section>

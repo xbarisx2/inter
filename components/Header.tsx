@@ -290,12 +290,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                     />
                                 ))}
                             </ul>
-                             <button 
-                                onClick={() => setCurrentPage('İletişim')} 
-                                className={`ml-6 px-6 py-3 rounded-none font-bold transition-all duration-300 uppercase tracking-widest text-xs border-2 border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white`}
+                             <a 
+                                href={COMPANY_INFO.whatsapp}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`ml-6 px-6 py-3 rounded-none font-bold transition-all duration-300 uppercase tracking-widest text-xs border-2 border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-900 hover:text-white flex items-center justify-center`}
                              >
                                 Teklif Al
-                            </button>
+                            </a>
                         </nav>
                         
                         {/* Mobile Toggle - INCREASED Z-INDEX TO 101 to be above overlay */}
@@ -385,9 +387,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                     Hemen Ara
                                 </a>
                                 
-                                <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-blue-900 text-white py-4 rounded-lg font-bold hover:bg-brand-blue-800 transition-colors shadow-md">
+                                <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-brand-blue-900 text-white py-4 rounded-lg font-bold hover:bg-brand-blue-800 transition-colors shadow-md">
                                     Teklif Al
-                                </button>
+                                </a>
                                 
                                  <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-gray-800 py-2 font-medium">
                                    <InstagramIcon className="w-6 h-6 mr-2 text-brand-blue-900"/> İnstagram'da Takip Et
