@@ -49,7 +49,7 @@ export const NAVIGATION_LINKS: NavLink[] = [
         subLinks: [
             {
                 name: "LINEA ROSSA Sistemleri",
-                page: "Linea Rossa", // Added page target so the category itself is clickable
+                page: "Linea Rossa", 
                 subLinks: [
                     { name: "Yalıtımlı Sürme Sistemleri", page: "Linea Rossa", id: "yalitimli-surme" },
                     { name: "Yalıtımsız Sürme Sistemleri", page: "Linea Rossa", id: "yalitimsiz-surme" },
@@ -62,21 +62,33 @@ export const NAVIGATION_LINKS: NavLink[] = [
                 ]
             },
             {
-                name: "Alüminyum Profil Katalogları",
-                page: "Ürünlerimiz",
+                name: "Pimapen Sistemleri",
+                page: "Pimapen",
                 subLinks: [
-                    { name: "Aldoks Serisi", page: "Ürünlerimiz" },
-                    { name: "C60 Yalıtımlı Seri", page: "Ürünlerimiz" },
-                    { name: "Cephe Sistemleri", page: "Ürünlerimiz" },
-                    { name: "Ofis Bölme Sistemleri", page: "Ürünlerimiz" }
+                    { name: "PVC Pencere ve PVC Kapı Sistemleri", page: "Pimapen", id: "pvc-pencere-kapi" },
+                    { name: "Nirvana", page: "Pimapen", id: "nirvana" },
+                    { name: "Carisma", page: "Pimapen", id: "carisma" },
+                    { name: "Sürgülü Kapı & Pencere Sistemleri", page: "Pimapen", id: "surgulu" },
+                    { name: "Panjur & Kepenk Sistemleri", page: "Pimapen", id: "panjur-kepenk" },
+                    { name: "Pencere ve Kapı Donanım Sistemleri", page: "Pimapen", id: "donanim" }
+                ]
+            },
+            {
+                name: "Alüminyum Profil Katalogları",
+                page: "Alüminyum",
+                subLinks: [
+                    { name: "Aldoks Serisi", page: "Alüminyum", id: "aldoks" },
+                    { name: "C60 Yalıtımlı Seri", page: "Alüminyum", id: "c60" },
+                    { name: "Cephe Sistemleri", page: "Alüminyum", id: "cephe" },
+                    { name: "Ofis Bölme Sistemleri", page: "Alüminyum", id: "ofis" }
                 ]
             },
             {
                 name: "Solar Montaj Sistemleri",
-                page: "Ürünlerimiz",
+                page: "Solar",
                 subLinks: [
-                    { name: "Solar Konstrüksiyon", page: "Ürünlerimiz" },
-                    { name: "Çatı Bağlantı Elemanları", page: "Ürünlerimiz" }
+                    { name: "Solar Konstrüksiyon", page: "Solar", id: "konstruksiyon" },
+                    { name: "Çatı Bağlantı Elemanları", page: "Solar", id: "baglanti" }
                 ]
             }
         ]
@@ -104,6 +116,55 @@ export const PRODUCTS: Product[] = [
     { name: "Tente ve Pergola", description: "Açık alanları yaşam alanına dönüştüren, motorlu ve ışıklı biyoklimatik pergola sistem profilleri.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },
     { name: "Mobilya Profilleri", description: "Mutfak, banyo ve gardırop kapakları için dekoratif çerçeve ve kulp profilleri.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
     { name: "Menfez Profilleri", description: "Havalandırma boşlukları ve banyo kapıları için kullanılan sabit kanatlı alüminyum menfez profilleri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
+];
+
+export const ALUMINUM_SECTIONS: ProductSection[] = [
+    {
+        id: "aldoks",
+        title: "Aldoks Serisi",
+        items: [
+            { name: "Aldoks Doğrama", description: "Ekonomik, hafif ve geniş kullanım alanına sahip, vitrin ve kapı uygulamaları için ideal yalıtımsız doğrama sistemi.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" }
+        ]
+    },
+    {
+        id: "c60",
+        title: "C60 Yalıtımlı Seri",
+        items: [
+            { name: "C60 Kapı ve Pencere", description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu binalar için tasarlanmış polyamid bariyerli kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" }
+        ]
+    },
+    {
+        id: "cephe",
+        title: "Cephe Sistemleri",
+        items: [
+            { name: "Giydirme Cephe", description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe uygulamaları için yüksek mukavemetli alüminyum profil çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" }
+        ]
+    },
+    {
+        id: "ofis",
+        title: "Ofis Bölme Sistemleri",
+        items: [
+             { name: "Cam Bölme", description: "Modern ofisler için şeffaf, modüler ve ses yalıtımlı cam bölme duvar profilleri ve aksesuarları.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" }
+        ]
+    }
+];
+
+export const SOLAR_SECTIONS: ProductSection[] = [
+    {
+        id: "konstruksiyon",
+        title: "Solar Konstrüksiyon",
+        items: [
+            { name: "Arazi Tipi Montaj", description: "Güneş enerjisi santralleri için dayanıklı ve hızlı monte edilebilen arazi tipi konstrüksiyon sistemleri.", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" },
+            { name: "Çatı Tipi Montaj", description: "Eğimli ve düz çatılar için özel tasarlanmış, sızdırmazlık garantili solar montaj profilleri.", image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=600&q=80" }
+        ]
+    },
+    {
+        id: "baglanti",
+        title: "Çatı Bağlantı Elemanları",
+        items: [
+            { name: "Kanca ve Klipsler", description: "Farklı kiremit ve çatı tiplerine uygun paslanmaz çelik bağlantı kancaları ve panel tutucu klipsler.", image: "https://images.unsplash.com/photo-1621905252507-b355f6a38029?auto=format&fit=crop&w=600&q=80" }
+        ]
+    }
 ];
 
 export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
@@ -174,6 +235,53 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
     }
 ];
 
+export const PIMAPEN_SECTIONS: ProductSection[] = [
+    {
+        id: "pvc-pencere-kapi",
+        title: "PVC Pencere ve PVC Kapı Sistemleri",
+        items: [
+            { name: "Pimapen Pencere", description: "Yüksek ısı ve ses yalıtımı sağlayan, uzun ömürlü PVC pencere sistemleri.", image: "https://www.pimapen.com.tr/webp/23mfullfb3e8976-094e-4141-87b3-1894b404a593jpg_09-06-2021_14-13-45.webp" },
+            { name: "Pimapen Kapı", description: "Güvenlik ve estetiği bir arada sunan, dayanıklı PVC kapı çözümleri.", image: "https://www.pimapen.com.tr/webp/katlanir-kapijpg_09-06-2021_14-13-45.webp" },
+        ]
+    },
+    {
+        id: "nirvana",
+        title: "Nirvana",
+        items: [
+            { name: "Nirvana Pencere", description: "Üstün performans ve enerji tasarrufu için geliştirilmiş 80mm genişliğinde premium seri.", image: "https://www.pimapen.com.tr/webp/nirvana-findikjpg_30-01-2024_16-05-45.webp" },
+        ]
+    },
+    {
+        id: "carisma",
+        title: "Carisma",
+        items: [
+            { name: "Carisma Pencere", description: "Estetik hatları ve yüksek yalıtım değerleriyle modern mimarinin tercihi 70mm seri.", image: "https://www.pimapen.com.tr/webp/carismapng_06-02-2024_06-19-00.webp" },
+        ]
+    },
+    {
+        id: "surgulu",
+        title: "Sürgülü Kapı & Pencere Sistemleri",
+        items: [
+            { name: "Dynamic Sürgülü", description: "Konforlu kullanım ve geniş görüş açısı sunan pratik sürme sistemi.", image: "https://www.pimapen.com.tr/webp/dynamicpng_30-01-2024_16-07-51.webp" },
+            { name: "Infinity Hebe Schiebe", description: "Geniş açıklıklar için ideal, yüksek yalıtımlı kaldırmalı sürme sistemi.", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" },
+        ]
+    },
+    {
+        id: "panjur-kepenk",
+        title: "Panjur & Kepenk Sistemleri",
+        items: [
+            { name: "Pimapen Panjur", description: "Güneş kontrolü ve güvenlik sağlayan, her türlü pencereye uyumlu panjur sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true" },
+            { name: "Pimapen Kepenk", description: "Otomatik ve manuel seçenekleriyle iş yerleri ve konutlar için kepenk çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/kepenk-sistemleri.jpg?raw=true" },
+        ]
+    },
+    {
+        id: "donanim",
+        title: "Pencere ve Kapı Donanım Sistemleri",
+        items: [
+            { name: "Aksesuar ve Donanım", description: "Pencere ve kapılarınızın fonksiyonelliğini ve güvenliğini artıran kol, menteşe ve kilit sistemleri.", image: "https://images.unsplash.com/photo-1558211583-03ed8a0b3d5f?auto=format&fit=crop&w=600&q=80" },
+        ]
+    }
+];
 
 export const PARTNERS: Partner[] = [
     { name: 'Linea Rossa Milano', logo: 'https://github.com/xbarisx2/logo/blob/main/l%C4%B1nea%20rossa.jpeg?raw=true' },

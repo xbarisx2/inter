@@ -53,7 +53,13 @@ const DesktopSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: P
                 href="#" 
                 onClick={(e) => { 
                     e.preventDefault(); 
-                    if (!hasChildren) handleLinkClick(item, setCurrentPage, closeMenu); 
+                    // Fix: Allow navigation if the item has a specific page defined (like Linea Rossa), even if it has children.
+                    // Only prevent default navigation if it's purely a container (no page) and has children.
+                    if (item.page) {
+                        handleLinkClick(item, setCurrentPage, closeMenu);
+                    } else if (!hasChildren) {
+                        handleLinkClick(item, setCurrentPage, closeMenu);
+                    }
                 }}
                 className="flex items-center justify-between w-full text-sm text-gray-700 hover:text-brand-blue-800 transition-colors"
             >
@@ -95,8 +101,13 @@ const NavItem: React.FC<{ link: NavLink; currentPage: Page; setCurrentPage: (pag
             onMouseLeave={() => setDropdownOpen(false)}
         >
             <button
-                onClick={() => handleLinkClick(link, setCurrentPage)}
-                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${textColor}`}
+                onClick={() => {
+                    // Fix: Disable navigation for "Ürünlerimiz" top-level link
+                    if (link.name !== 'Ürünlerimiz') {
+                        handleLinkClick(link, setCurrentPage);
+                    }
+                }}
+                className={`flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${textColor} ${link.name === 'Ürünlerimiz' ? 'cursor-default' : 'cursor-pointer'}`}
                  aria-haspopup={hasSublinks}
                  aria-expanded={isDropdownOpen}
             >
@@ -133,9 +144,16 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
     return (
         <li className="border-b border-gray-50 last:border-0">
              <div className="flex items-center justify-between pr-4">
+                {/* 
+                    Fix for Mobile: 
+                    If the item has a page (like Linea Rossa), clicking the text should navigate.
+                    The arrow button handles expansion.
+                */}
                 <button 
                     onClick={() => {
-                        if (hasChildren) {
+                        if (item.page) {
+                             handleLinkClick(item, setCurrentPage, closeMenu);
+                        } else if (hasChildren) {
                             setIsExpanded(!isExpanded);
                         } else {
                             handleLinkClick(item, setCurrentPage, closeMenu);
@@ -179,10 +197,12 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
+    const [mounted, setMounted] = useState(false);
     
     const isHomePage = currentPage === 'Ana Sayfa';
 
     useEffect(() => {
+        setMounted(true);
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -199,86 +219,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             setExpandedMobileMenu(name);
         }
     };
-
-    const MobileMenuOverlay = () => (
-        <div className={`fixed inset-0 z-[100] transition-all duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto bg-white ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} pointer-events-auto`}>
-            {isMenuOpen && (
-                <>
-                    <nav className="flex flex-col space-y-1 mt-4">
-                        {NAVIGATION_LINKS.map(link => {
-                            const hasSublinks = link.subLinks && link.subLinks.length > 0;
-                            const isExpanded = expandedMobileMenu === link.name;
-
-                            return (
-                                <div key={link.name} className="border-b border-gray-100 last:border-0">
-                                    <div className="flex items-center justify-between">
-                                        <button 
-                                            onClick={() => {
-                                                if (hasSublinks) {
-                                                    toggleMobileSubmenu(link.name);
-                                                } else {
-                                                    handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false));
-                                                }
-                                            }}
-                                            className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-blue-900' : 'text-gray-800'}`}
-                                        >
-                                            {link.name}
-                                        </button>
-                                        {hasSublinks && (
-                                            <button 
-                                                onClick={() => toggleMobileSubmenu(link.name)}
-                                                className="p-4 text-gray-500 focus:outline-none"
-                                            >
-                                                <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                                            </button>
-                                        )}
-                                    </div>
-                                    
-                                    {hasSublinks && (
-                                        <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-[1200px] opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
-                                            <ul className="flex flex-col py-2">
-                                                <li className="mb-1 border-b border-gray-100">
-                                                     <button 
-                                                        onClick={() => handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false))}
-                                                        className="w-full text-left py-2 px-4 text-sm font-bold text-brand-blue-900 hover:text-brand-blue-700"
-                                                    >
-                                                        {link.name} Ana Sayfa
-                                                    </button>
-                                                </li>
-                                                {link.subLinks?.map(subLink => (
-                                                    <MobileSubMenuItem 
-                                                        key={subLink.name}
-                                                        item={subLink}
-                                                        setCurrentPage={setCurrentPage}
-                                                        closeMenu={() => setIsMenuOpen(false)}
-                                                    />
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </nav>
-
-                    <div className="mt-auto pt-8 space-y-4 pb-8">
-                         <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
-                            <PhoneIcon className="w-5 h-5 mr-2" />
-                            Hemen Ara
-                        </a>
-                        
-                        <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-blue-900 text-white py-4 rounded-lg font-bold hover:bg-brand-blue-800 transition-colors shadow-md">
-                            Teklif Al
-                        </button>
-                        
-                         <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-gray-800 py-2 font-medium">
-                           <InstagramIcon className="w-6 h-6 mr-2 text-brand-blue-900"/> İnstagram'da Takip Et
-                        </a>
-                    </div>
-                </>
-            )}
-        </div>
-    );
 
     // Determine header style
     // Home Page: Absolute position (doesn't follow scroll), transparent top with gradient.
@@ -358,8 +298,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                             </button>
                         </nav>
                         
-                        {/* Mobile Toggle */}
-                        <div className="md:hidden flex items-center z-50">
+                        {/* Mobile Toggle - INCREASED Z-INDEX TO 101 to be above overlay */}
+                        <div className="md:hidden flex items-center z-[101]">
                             <button 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
                                 className="p-2 rounded-md transition-colors focus:outline-none text-gray-900 bg-white/50 backdrop-blur-sm"
@@ -372,7 +312,92 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 </div>
             </header>
             
-            {createPortal(<MobileMenuOverlay />, document.body)}
+            {mounted && document.body && createPortal(
+                <div className={`fixed inset-0 z-[100] transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-24 pb-6 px-4 overflow-y-auto bg-white ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} pointer-events-auto`}>
+                    {isMenuOpen && (
+                        <>
+                            <nav className="flex flex-col space-y-1 mt-4">
+                                {NAVIGATION_LINKS.map(link => {
+                                    const hasSublinks = link.subLinks && link.subLinks.length > 0;
+                                    const isExpanded = expandedMobileMenu === link.name;
+
+                                    return (
+                                        <div key={link.name} className="border-b border-gray-100 last:border-0">
+                                            <div className="flex items-center justify-between">
+                                                <button 
+                                                    onClick={() => {
+                                                        if (hasSublinks) {
+                                                            toggleMobileSubmenu(link.name);
+                                                        } else {
+                                                            handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false));
+                                                        }
+                                                    }}
+                                                    className={`flex-grow text-left py-4 text-lg font-bold ${currentPage === link.name ? 'text-brand-blue-900' : 'text-gray-800'}`}
+                                                >
+                                                    {link.name}
+                                                </button>
+                                                {hasSublinks && (
+                                                    <button 
+                                                        onClick={() => toggleMobileSubmenu(link.name)}
+                                                        className="p-4 text-gray-500 focus:outline-none"
+                                                    >
+                                                        <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                    </button>
+                                                )}
+                                            </div>
+                                            
+                                            {hasSublinks && (
+                                                <div className={`overflow-hidden transition-all duration-300 bg-gray-50 rounded-lg ${isExpanded ? 'max-h-[1200px] opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
+                                                    <ul className="flex flex-col py-2">
+                                                        {/* 
+                                                            Fix: Remove the "Ana Sayfa" link for "Ürünlerimiz" 
+                                                            since the user wants it to be a container only.
+                                                        */}
+                                                        {link.name !== 'Ürünlerimiz' && (
+                                                            <li className="mb-1 border-b border-gray-100">
+                                                                <button 
+                                                                    onClick={() => handleLinkClick(link, setCurrentPage, () => setIsMenuOpen(false))}
+                                                                    className="w-full text-left py-2 px-4 text-sm font-bold text-brand-blue-900 hover:text-brand-blue-700"
+                                                                >
+                                                                    {link.name} Ana Sayfa
+                                                                </button>
+                                                            </li>
+                                                        )}
+                                                        {link.subLinks?.map(subLink => (
+                                                            <MobileSubMenuItem 
+                                                                key={subLink.name}
+                                                                item={subLink}
+                                                                setCurrentPage={setCurrentPage}
+                                                                closeMenu={() => setIsMenuOpen(false)}
+                                                            />
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </nav>
+
+                            <div className="mt-auto pt-8 space-y-4 pb-8">
+                                 <a href={`tel:${COMPANY_INFO.phone1}`} className="flex items-center justify-center w-full py-4 border-2 border-brand-blue-900 text-brand-blue-900 rounded-lg font-bold hover:bg-brand-blue-50 transition-colors">
+                                    <PhoneIcon className="w-5 h-5 mr-2" />
+                                    Hemen Ara
+                                </a>
+                                
+                                <button onClick={() => { setCurrentPage('İletişim'); setIsMenuOpen(false); }} className="w-full bg-brand-blue-900 text-white py-4 rounded-lg font-bold hover:bg-brand-blue-800 transition-colors shadow-md">
+                                    Teklif Al
+                                </button>
+                                
+                                 <a href={COMPANY_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-gray-800 py-2 font-medium">
+                                   <InstagramIcon className="w-6 h-6 mr-2 text-brand-blue-900"/> İnstagram'da Takip Et
+                                </a>
+                            </div>
+                        </>
+                    )}
+                </div>, 
+                document.body
+            )}
         </>
     );
 };

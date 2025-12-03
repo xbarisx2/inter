@@ -1,5 +1,5 @@
 
-export type Page = 'Ana Sayfa' | 'Kurumsal' | 'Ürünlerimiz' | 'İş Ortaklarımız' | 'Referanslarımız' | 'Medya' | 'Blog' | 'İletişim' | 'Linea Rossa';
+export type Page = 'Ana Sayfa' | 'Kurumsal' | 'Ürünlerimiz' | 'İş Ortaklarımız' | 'Referanslarımız' | 'Medya' | 'Blog' | 'İletişim' | 'Linea Rossa' | 'Pimapen' | 'Alüminyum' | 'Solar';
 
 export interface SubLinkItem {
     name: string;

@@ -6,6 +6,9 @@ import HomePage from './pages/HomePage';
 import CorporatePage from './pages/CorporatePage';
 import ProductsPage from './pages/ProductsPage';
 import LineaRossaPage from './pages/LineaRossaPage';
+import PimapenPage from './pages/PimapenPage';
+import AluminumPage from './pages/AluminumPage';
+import SolarPage from './pages/SolarPage';
 import ReferencesPage from './pages/ReferencesPage';
 import MediaPage from './pages/MediaPage';
 import BlogPage from './pages/BlogPage';
@@ -56,6 +59,12 @@ const App: React.FC = () => {
                 return <ProductsPage />;
             case 'Linea Rossa':
                 return <LineaRossaPage />;
+            case 'Pimapen':
+                return <PimapenPage />;
+            case 'Alüminyum':
+                return <AluminumPage />;
+            case 'Solar':
+                return <SolarPage />;
             case 'Referanslarımız':
                 return <ReferencesPage />;
             case 'İş Ortaklarımız':
@@ -83,7 +92,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="bg-gray-50 text-gray-800 font-sans pt-36 md:pt-0">
+        <div className="bg-gray-50 text-gray-800 font-sans">
             <Header currentPage={currentPage} setCurrentPage={handleSetCurrentPage} />
             <main className={currentPage === 'Ana Sayfa' ? '' : ''}>
                 {renderPage()}
