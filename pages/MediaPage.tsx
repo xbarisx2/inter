@@ -44,6 +44,7 @@ const MediaPage: React.FC = () => {
                                     alt={image.alt}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-brand-blue-900 bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
                                     <p className="text-white text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300 px-4 text-center">

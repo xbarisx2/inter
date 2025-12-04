@@ -184,6 +184,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                 style={{backgroundImage: `url('${cat.image}')`}}
                                 role="img"
                                 aria-label={cat.title}
+                                loading="lazy"
                             ></div>
                             <div className="absolute inset-0 bg-brand-blue-900/40 group-hover:bg-brand-blue-900/70 transition-colors duration-300"></div>
                             
@@ -306,7 +307,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         <h2 className="text-3xl font-black text-gray-900 mt-2 uppercase">REFERANSLARIMIZ</h2>
                     </div>
                     <div className="relative group">
-                         <div className="flex animate-marquee group-hover:pause space-x-12 md:space-x-16 items-center">
+                         <div className="flex animate-marquee group-hover:pause space-x-12 md:space-x-16 items-center will-change-transform">
                              {[...displayedReferences, ...displayedReferences].map((ref, index) => (
                                 <div key={`${ref.name}-${index}`} className="flex-shrink-0 flex items-center justify-center transition-all duration-500 cursor-pointer">
                                     <img 
