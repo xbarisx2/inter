@@ -1,10 +1,31 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ALUMINUM_SECTIONS, COMPANY_INFO } from '../constants';
+import ProductModal from '../components/ProductModal';
+import type { Product } from '../types';
 
 const AluminumPage: React.FC = () => {
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = (product: Product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedProduct(null);
+    };
+
     return (
         <>
+            <ProductModal 
+                product={selectedProduct} 
+                isOpen={isModalOpen} 
+                onClose={closeModal} 
+            />
+            
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Alüminyum Profil Sistemleri</h1>
@@ -44,14 +65,23 @@ const AluminumPage: React.FC = () => {
                                             <div className="p-8 flex-grow flex flex-col">
                                                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
                                                 <p className="text-gray-600 flex-grow leading-relaxed">{product.description}</p>
-                                                <a 
-                                                    href={whatsappUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="mt-8 self-start border-2 border-brand-blue-900 text-brand-blue-900 font-bold py-3 px-8 hover:bg-brand-blue-900 hover:text-white transition-all duration-300 uppercase text-sm tracking-wide inline-block text-center"
-                                                >
-                                                    Teklif Al
-                                                </a>
+                                                
+                                                <div className="mt-8 grid grid-cols-2 gap-4">
+                                                    <button
+                                                        onClick={() => openModal(product)}
+                                                        className="border-2 border-gray-300 text-gray-700 font-bold py-3 px-4 hover:bg-gray-100 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
+                                                    >
+                                                        Teknik Detay
+                                                    </button>
+                                                    <a 
+                                                        href={whatsappUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="border-2 border-brand-blue-900 bg-brand-blue-900 text-white font-bold py-3 px-4 hover:bg-brand-blue-800 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
+                                                    >
+                                                        Teklif Al
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     );

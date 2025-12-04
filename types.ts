@@ -13,10 +13,16 @@ export interface NavLink {
     subLinks?: SubLinkItem[];
 }
 
+export interface TechnicalDetails {
+    features: string[]; // List of characteristic features (checkboxes)
+    specifications: { label: string; value: string; }[]; // Key-value pairs for technical specs
+}
+
 export interface Product {
     name: string;
     description: string;
     image: string;
+    technicalDetails?: TechnicalDetails; // Optional technical details
 }
 
 export interface ProductSection {
