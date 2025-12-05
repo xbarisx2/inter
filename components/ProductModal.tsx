@@ -3,6 +3,7 @@ import React from 'react';
 import type { Product } from '../types';
 import { XIcon, CheckCircleIcon, WhatsAppIcon } from './Icons';
 import { COMPANY_INFO } from '../constants';
+import { useLanguage } from '../LanguageContext';
 
 interface ProductModalProps {
     product: Product | null;
@@ -11,6 +12,7 @@ interface ProductModalProps {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose }) => {
+    const { t } = useLanguage();
     if (!isOpen || !product) return null;
 
     const whatsappUrl = `${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${product.name} hakkında teklif ve teknik bilgi almak istiyorum.`)}`;
@@ -32,7 +34,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                     {/* Header */}
                     <div className="bg-brand-blue-900 px-4 py-3 sm:px-6 flex justify-between items-center">
                         <h3 className="text-lg leading-6 font-bold text-white" id="modal-title">
-                            {product.name} - Teknik Detaylar
+                            {product.name} - {t('techDetailsTitle')}
                         </h3>
                         <button onClick={onClose} className="text-white hover:text-gray-200 focus:outline-none">
                             <XIcon className="h-6 w-6" />
@@ -49,7 +51,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                                     className="w-full h-auto object-cover rounded-lg shadow-md mb-6"
                                 />
                                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                    <h4 className="font-bold text-gray-900 mb-2">Ürün Açıklaması</h4>
+                                    <h4 className="font-bold text-gray-900 mb-2">{t('productDescTitle')}</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
                                 </div>
                             </div>
@@ -60,7 +62,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                                     <>
                                         {/* Features List */}
                                         <div className="mb-8">
-                                            <h4 className="font-bold text-brand-blue-900 text-lg mb-4 border-b pb-2">Ürünün Kimliğini Yansıtan Karakteristik Özellikler</h4>
+                                            <h4 className="font-bold text-brand-blue-900 text-lg mb-4 border-b pb-2">{t('featuresTitle')}</h4>
                                             <ul className="space-y-3">
                                                 {product.technicalDetails.features.map((feature, idx) => (
                                                     <li key={idx} className="flex items-start">
@@ -73,7 +75,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
 
                                         {/* Specs Table */}
                                         <div>
-                                            <h4 className="font-bold text-brand-blue-900 text-lg mb-4 border-b pb-2 italic">Sistemin Teknik Spesifikasyonları</h4>
+                                            <h4 className="font-bold text-brand-blue-900 text-lg mb-4 border-b pb-2 italic">{t('specsTitle')}</h4>
                                             <div className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
                                                 <table className="min-w-full divide-y divide-gray-200">
                                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -94,8 +96,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                                     </>
                                 ) : (
                                     <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                                        <p className="text-gray-500 text-lg mb-4">Bu ürün için detaylı teknik veri girişi hazırlanmaktadır.</p>
-                                        <p className="text-gray-400 text-sm">Detaylı bilgi ve teknik föyler için lütfen satış temsilcimiz ile iletişime geçiniz.</p>
+                                        <p className="text-gray-500 text-lg mb-4">{t('techDataPending')}</p>
+                                        <p className="text-gray-400 text-sm">{t('contactForDetails')}</p>
                                     </div>
                                 )}
                             </div>
@@ -111,14 +113,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                             className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm items-center"
                         >
                             <WhatsAppIcon className="w-4 h-4 mr-2" />
-                            Teklif Al
+                            {t('offer')}
                         </a>
                         <button 
                             type="button" 
                             className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                             onClick={onClose}
                         >
-                            Kapat
+                            {t('closeButton')}
                         </button>
                     </div>
                 </div>

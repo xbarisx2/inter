@@ -9,7 +9,8 @@ export interface SubLinkItem {
 }
 
 export interface NavLink {
-    name: Page;
+    name: string;
+    page?: Page;
     subLinks?: SubLinkItem[];
 }
 
@@ -60,4 +61,9 @@ export interface Comment {
     author: string;
     text: string;
     date: string;
+}
+
+export interface MediaImage {
+    src: string;
+    alt: string;
 }

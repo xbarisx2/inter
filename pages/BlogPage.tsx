@@ -1,14 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import { BLOG_POSTS } from '../constants';
+import { useLanguage } from '../LanguageContext';
 import type { BlogPost } from '../types';
 
 interface BlogPostCardProps {
     post: BlogPost;
     onPostSelect: (slug: string) => void;
+    readMoreText: string;
 }
 
-const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onPostSelect }) => {
+const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onPostSelect, readMoreText }) => {
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
             <div className="relative">
@@ -28,7 +29,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onPostSelect }) => {
                 <button 
                     onClick={() => onPostSelect(post.slug)}
                     className="mt-6 self-start text-brand-blue-600 font-semibold hover:text-brand-blue-800 transition-colors">
-                    Devamını Oku &rarr;
+                    {readMoreText} &rarr;
                 </button>
             </div>
         </div>
@@ -40,24 +41,33 @@ interface BlogPageProps {
 }
 
 const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect }) => {
-    const categories = ['Tümü' as const, ...Array.from(new Set(BLOG_POSTS.map(p => p.category)))];
-    const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('Tümü');
+    const { data, t, language } = useLanguage();
+    const BLOG_POSTS = data.BLOG_POSTS;
+
+    const [selectedCategory, setSelectedCategory] = useState<string>(t('allCategories'));
     const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(BLOG_POSTS);
 
+    // Reset category when language changes to avoid mismatch (e.g. "Tümü" vs "All")
     useEffect(() => {
-        if (selectedCategory === 'Tümü') {
+        setSelectedCategory(t('allCategories'));
+    }, [language, t]);
+
+    const categories = [t('allCategories'), ...Array.from(new Set(BLOG_POSTS.map(p => p.category)))];
+
+    useEffect(() => {
+        if (selectedCategory === t('allCategories')) {
             setFilteredPosts(BLOG_POSTS);
         } else {
             setFilteredPosts(BLOG_POSTS.filter(post => post.category === selectedCategory));
         }
-    }, [selectedCategory]);
+    }, [selectedCategory, BLOG_POSTS, t]);
 
     return (
         <>
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold">Blog & Haberler</h1>
-                    <p className="mt-4 text-lg text-brand-blue-200">Sektörden en son haberler ve teknik makaleler.</p>
+                    <h1 className="text-4xl md:text-5xl font-bold">{t('blogPageTitle')}</h1>
+                    <p className="mt-4 text-lg text-brand-blue-200">{t('blogPageSubtitle')}</p>
                 </div>
             </div>
 
@@ -83,7 +93,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ onPostSelect }) => {
                     {/* Blog Posts Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredPosts.map(post => (
-                            <BlogPostCard key={post.slug} post={post} onPostSelect={onPostSelect} />
+                            <BlogPostCard 
+                                key={post.slug} 
+                                post={post} 
+                                onPostSelect={onPostSelect} 
+                                readMoreText={t('readMore')}
+                            />
                         ))}
                     </div>
                 </div>

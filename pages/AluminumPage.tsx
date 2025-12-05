@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
-import { ALUMINUM_SECTIONS, COMPANY_INFO } from '../constants';
+import { COMPANY_INFO } from '../constants';
+import { useLanguage } from '../LanguageContext';
 import ProductModal from '../components/ProductModal';
 import type { Product } from '../types';
 
 const AluminumPage: React.FC = () => {
+    const { data, t, language } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,9 +30,9 @@ const AluminumPage: React.FC = () => {
             
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Alüminyum Profil Sistemleri</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{language === 'tr' ? 'Alüminyum Profil Sistemleri' : 'Aluminum Profile Systems'}</h1>
                     <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">
-                        Estetik, dayanıklı ve fonksiyonel alüminyum çözümleri.
+                        {language === 'tr' ? 'Estetik, dayanıklı ve fonksiyonel alüminyum çözümleri.' : 'Aesthetic, durable and functional aluminum solutions.'}
                     </p>
                 </div>
             </div>
@@ -38,11 +40,12 @@ const AluminumPage: React.FC = () => {
             <div className="py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Geniş Ürün Yelpazesi</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{language === 'tr' ? 'Geniş Ürün Yelpazesi' : 'Wide Product Range'}</h2>
                         <div className="w-20 h-1 bg-brand-blue-600 mx-auto mb-6"></div>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                           İnter Akdeniz Alüminyum olarak, her türlü mimari ihtiyaca uygun, yüksek kaliteli alüminyum profil sistemleri sunuyoruz. 
-                           Yalıtımlı ve yalıtımsız serilerden, ofis bölme ve cephe sistemlerine kadar geniş bir ürün gamı ile projelerinize değer katıyoruz.
+                           {language === 'tr' 
+                            ? "İnter Akdeniz Alüminyum olarak, her türlü mimari ihtiyaca uygun, yüksek kaliteli alüminyum profil sistemleri sunuyoruz. Yalıtımlı ve yalıtımsız serilerden, ofis bölme ve cephe sistemlerine kadar geniş bir ürün gamı ile projelerinize değer katıyoruz."
+                            : "As İnter Akdeniz Aluminum, we offer high quality aluminum profile systems suitable for all kinds of architectural needs. We add value to your projects with a wide product range from insulated and non-insulated series to office partition and facade systems."}
                         </p>
                     </div>
                 </div>
@@ -50,7 +53,7 @@ const AluminumPage: React.FC = () => {
 
             <div className="pb-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-                    {ALUMINUM_SECTIONS.map((section) => (
+                    {data.ALUMINUM_SECTIONS.map((section) => (
                         <div key={section.id} id={section.id} className="scroll-mt-32">
                             <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 border-l-4 border-brand-blue-600 pl-4">{section.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -71,7 +74,7 @@ const AluminumPage: React.FC = () => {
                                                         onClick={() => openModal(product)}
                                                         className="border-2 border-gray-300 text-gray-700 font-bold py-3 px-4 hover:bg-gray-100 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
                                                     >
-                                                        Teknik Detay
+                                                        {t('detailInfoButton')}
                                                     </button>
                                                     <a 
                                                         href={whatsappUrl}
@@ -79,7 +82,7 @@ const AluminumPage: React.FC = () => {
                                                         rel="noopener noreferrer"
                                                         className="border-2 border-brand-blue-900 bg-brand-blue-900 text-white font-bold py-3 px-4 hover:bg-brand-blue-800 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
                                                     >
-                                                        Teklif Al
+                                                        {t('offer')}
                                                     </a>
                                                 </div>
                                             </div>

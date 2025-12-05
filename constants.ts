@@ -1,5 +1,189 @@
 
-import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection } from './types';
+import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection, MediaImage } from './types';
+
+// UI TRANSLATIONS & STATIC CONTENT
+export const UI_LABELS = {
+    TR: {
+        // General
+        examine: 'İncele',
+        offer: 'Teklif Al',
+        contact: 'İletişime Geç',
+        home: 'Ana Sayfa',
+        corporate: 'Kurumsal',
+        products: 'Ürünlerimiz',
+        partners: 'İş Ortaklarımız',
+        references: 'Referanslarımız',
+        media: 'Medya',
+        blog: 'Blog',
+        communication: 'İletişim',
+        followUs: 'Takip Et',
+        quickAccess: 'Hızlı Erişim',
+        address: 'Adres',
+        phone: 'Telefon',
+        email: 'E-posta',
+        socialMedia: 'Sosyal Medya',
+        rightsReserved: 'Tüm hakları saklıdır.',
+        webDesign: 'Web Tasarım',
+        moreAboutUs: 'Hakkımızda Daha Fazla',
+        featuredSystems: 'Öne Çıkan Sistemler',
+        allProducts: 'Tüm Ürünleri Gör',
+        strongCooperation: 'Güçlü İş Birliği',
+        scrollDown: 'Aşağı Kaydır',
+        
+        // Page Titles & Subtitles
+        productsPageTitle: 'Ürünlerimiz',
+        productsPageSubtitle: 'Kalite, estetik ve dayanıklılığı bir araya getiren çözümlerimiz.',
+        partnersPageTitle: 'İş Ortaklarımız',
+        partnersPageSubtitle: 'Başarıya giden yolda birlikte yürüdüğümüz değerli partnerlerimiz.',
+        partnersPageText: 'Projelerimizdeki yüksek kalite ve başarıyı, sektörün önde gelen markalarıyla kurduğumuz güçlü iş birliklerine borçluyuz. Tedarikçilerimizden mimari ofislere kadar tüm paydaşlarımızla ortak bir vizyon doğrultusunda hareket ediyoruz.',
+        referencesPageTitle: 'Referanslarımız',
+        referencesPageSubtitle: 'Kalitemizi ve güvenirliğimizi kanıtlayan tamamlanmış projelerimiz.',
+        referencesPageText: 'Otel, konut, iş merkezi ve özel villa projeleri başta olmak üzere, yurt içi ve yurt dışında birçok prestijli yapıya imzamızı attık. Müşterilerimizin bize duyduğu güven, en büyük referansımızdır.',
+        mediaPageTitle: 'Medya Galerisi',
+        mediaPageSubtitle: 'Projelerimizden ve uygulamalarımızdan seçkin kareler.',
+        blogPageTitle: 'Blog & Haberler',
+        blogPageSubtitle: 'Sektörden en son haberler ve teknik makaleler.',
+        contactPageTitle: 'Bize Ulaşın',
+        contactPageSubtitle: 'Projeniz hakkında görüşmek veya teklif almak için bizimle iletişime geçin.',
+        
+        // Contact Form
+        contactFormTitle: 'Mesaj Gönderin',
+        nameLabel: 'Adınız Soyadınız',
+        emailLabel: 'E-posta Adresiniz',
+        messageLabel: 'Mesajınız',
+        sendButton: 'Gönder',
+        sendingButton: 'Yönlendiriliyor...',
+        successTitle: 'Yönlendiriliyorsunuz!',
+        successMessage: 'E-posta istemciniz otomatik olarak açıldı. Lütfen mesajınızı kontrol edip gönder butonuna basarak işlemi tamamlayın.',
+        newMessageButton: 'Yeni Mesaj Gönder',
+        formError: 'Lütfen tüm alanları doldurunuz.',
+
+        // Product Modal
+        techDetailsTitle: 'Teknik Detaylar',
+        productDescTitle: 'Ürün Açıklaması',
+        featuresTitle: 'Ürünün Kimliğini Yansıtan Karakteristik Özellikler',
+        specsTitle: 'Sistemin Teknik Spesifikasyonları',
+        closeButton: 'Kapat',
+        detailInfoButton: 'Detaylı Bilgi',
+        techDataPending: 'Bu ürün için detaylı teknik veri girişi hazırlanmaktadır.',
+        contactForDetails: 'Detaylı bilgi ve teknik föyler için lütfen satış temsilcimiz ile iletişime geçiniz.',
+
+        // Blog & Comments
+        allCategories: 'Tümü',
+        readMore: 'Devamını Oku',
+        backToBlog: 'Tüm Yazılara Geri Dön',
+        postNotFound: 'Yazı bulunamadı.',
+        commentsTitle: 'Yorumlar',
+        leaveCommentTitle: 'Bir Yorum Bırakın',
+        commentLabel: 'Yorumunuz',
+        submitCommentButton: 'Yorumu Gönder',
+        noCommentsMsg: 'Henüz hiç yorum yapılmamış. İlk yorumu siz yapın!'
+    },
+    EN: {
+        // General
+        examine: 'Examine',
+        offer: 'Get Quote',
+        contact: 'Contact Us',
+        home: 'Home',
+        corporate: 'Corporate',
+        products: 'Products',
+        partners: 'Partners',
+        references: 'References',
+        media: 'Media',
+        blog: 'Blog',
+        communication: 'Contact',
+        followUs: 'Follow Us',
+        quickAccess: 'Quick Access',
+        address: 'Address',
+        phone: 'Phone',
+        email: 'Email',
+        socialMedia: 'Social Media',
+        rightsReserved: 'All rights reserved.',
+        webDesign: 'Web Design',
+        moreAboutUs: 'More About Us',
+        featuredSystems: 'Featured Systems',
+        allProducts: 'View All Products',
+        strongCooperation: 'Strong Cooperation',
+        scrollDown: 'Scroll Down',
+
+        // Page Titles & Subtitles
+        productsPageTitle: 'Our Products',
+        productsPageSubtitle: 'Solutions combining quality, aesthetics, and durability.',
+        partnersPageTitle: 'Our Partners',
+        partnersPageSubtitle: 'Valuable partners we walk with on the path to success.',
+        partnersPageText: 'We owe the high quality and success in our projects to the strong collaborations we have established with leading brands in the sector. We act in line with a common vision with all our stakeholders, from suppliers to architectural offices.',
+        referencesPageTitle: 'Our References',
+        referencesPageSubtitle: 'Our completed projects proving our quality and reliability.',
+        referencesPageText: 'We have signed many prestigious buildings in Turkey and abroad, especially hotels, residences, business centers, and private villa projects. The trust our customers place in us is our greatest reference.',
+        mediaPageTitle: 'Media Gallery',
+        mediaPageSubtitle: 'Selected shots from our projects and applications.',
+        blogPageTitle: 'Blog & News',
+        blogPageSubtitle: 'Latest news and technical articles from the sector.',
+        contactPageTitle: 'Contact Us',
+        contactPageSubtitle: 'Contact us to discuss your project or get a quote.',
+
+        // Contact Form
+        contactFormTitle: 'Send Message',
+        nameLabel: 'Full Name',
+        emailLabel: 'Email Address',
+        messageLabel: 'Your Message',
+        sendButton: 'Send',
+        sendingButton: 'Redirecting...',
+        successTitle: 'Redirecting!',
+        successMessage: 'Your email client has been opened automatically. Please check your message and click send to complete the process.',
+        newMessageButton: 'Send New Message',
+        formError: 'Please fill in all fields.',
+
+        // Product Modal
+        techDetailsTitle: 'Technical Details',
+        productDescTitle: 'Product Description',
+        featuresTitle: 'Characteristic Features Reflecting Product Identity',
+        specsTitle: 'Technical Specifications of the System',
+        closeButton: 'Close',
+        detailInfoButton: 'Detailed Info',
+        techDataPending: 'Detailed technical data entry is being prepared for this product.',
+        contactForDetails: 'Please contact our sales representative for detailed information and technical sheets.',
+
+        // Blog & Comments
+        allCategories: 'All',
+        readMore: 'Read More',
+        backToBlog: 'Back to All Posts',
+        postNotFound: 'Post not found.',
+        commentsTitle: 'Comments',
+        leaveCommentTitle: 'Leave a Comment',
+        commentLabel: 'Your Comment',
+        submitCommentButton: 'Submit Comment',
+        noCommentsMsg: 'No comments yet. Be the first to comment!'
+    }
+};
+
+export const CORPORATE_CONTENT = {
+    header: {
+        title: "Kurumsal Kimliğimiz",
+        subtitle: "Yenilikçi vizyonumuz ve sarsılmaz değerlerimizle tanışın."
+    },
+    about: {
+        title: "Hakkımızda",
+        content: [
+            "İNTER AKDENİZ ALÜMİNYUM, 20 yılı aşkın sektör tecrübesiyle alüminyum ve PVC sistemleri alanında sektörün global standartlarda hizmet veren öncü firmalarından biri olarak faaliyet göstermektedir. Kurulduğumuz günden bu yana, mimari projelerde estetik, fonksiyonellik ve dayanıklılığı bir araya getiren çözümler sunmayı ilke edindik.",
+            "Uzman mühendis ve montaj kadromuzla, en son teknolojiye sahip makine parkurumuzda, alüminyum doğrama, cephe giydirme, cam balkon, pergola ve otomasyon sistemleri gibi geniş bir yelpazede üretim yapıyoruz. Her projeyi, müşterilerimizin beklentilerini aşan bir kalite anlayışıyla, zamanında ve eksiksiz teslim etme prensibiyle yönetiyoruz."
+        ]
+    },
+    vision: {
+        title: "Vizyonumuz",
+        content: [
+            "Sektördeki yenilikleri yakından takip ederek ve sürekli gelişimi hedefleyerek, Türkiye'de ve uluslararası pazarda alüminyum sistemleri denildiğinde akla gelen ilk markalardan biri olmaktır.",
+            "Sürdürülebilir ve çevre dostu üretim tekniklerini benimseyerek, gelecek nesillere daha yaşanabilir yapılar bırakmayı hedeflerken, teknoloji ve tasarımı birleştirerek mimariye ilham veren, öncü ve yenilikçi çözümler sunmak en temel vizyonumuzdur. Müşterilerimiz ve iş ortaklarımız için sadece bir tedarikçi değil, aynı zamanda güvenilir bir çözüm ortağı olarak anılmak istiyoruz."
+        ]
+    },
+    mission: {
+        title: "Misyonumuz",
+        content: [
+            "En yüksek kalitede hammadde ve en ileri teknolojiyi kullanarak, müşterilerimizin ihtiyaçlarına özel, estetik, güvenli ve uzun ömürlü alüminyum sistemleri üretmek ve uygulamaktır.",
+            "Bu süreçte, çalışanlarımızın gelişimine yatırım yaparak, iş sağlığı ve güvenliği standartlarına tavizsiz uyarak ve tüm paydaşlarımızla şeffaf ve dürüst bir iletişim kurarak, topluma ve çevreye karşı sorumluluklarımızı eksiksiz yerine getirmeyi taahhüt ederiz. Müşteri memnuniyetini her zaman en üst seviyede tutarak, projelerine değer katmak ve kalıcı eserler bırakmak varlık sebebimizdir."
+        ]
+    }
+};
 
 export const COMPANY_INFO = {
     name: "İNTER AKDENİZ ALÜMİNYUM LTD. ŞTİ.",
@@ -35,9 +219,10 @@ export const HERO_SLIDES = [
 ];
 
 export const NAVIGATION_LINKS: NavLink[] = [
-    { name: 'Ana Sayfa' },
+    { name: 'Ana Sayfa', page: 'Ana Sayfa' },
     { 
         name: 'Kurumsal', 
+        page: 'Kurumsal',
         subLinks: [
             {name: 'Hakkımızda', id: 'hakkimizda', page: 'Kurumsal'}, 
             {name: 'Vizyonumuz', id: 'vizyonumuz', page: 'Kurumsal'}, 
@@ -46,6 +231,7 @@ export const NAVIGATION_LINKS: NavLink[] = [
     },
     { 
         name: 'Ürünlerimiz',
+        page: 'Ürünlerimiz',
         subLinks: [
             {
                 name: "LINEA ROSSA Sistemleri",
@@ -93,18 +279,18 @@ export const NAVIGATION_LINKS: NavLink[] = [
             }
         ]
     },
-    { name: 'İş Ortaklarımız' },
-    { name: 'Referanslarımız' },
-    { name: 'Medya' },
-    { name: 'Blog' },
-    { name: 'İletişim' },
+    { name: 'İş Ortaklarımız', page: 'İş Ortaklarımız' },
+    { name: 'Referanslarımız', page: 'Referanslarımız' },
+    { name: 'Medya', page: 'Medya' },
+    { name: 'Blog', page: 'Blog' },
+    { name: 'İletişim', page: 'İletişim' },
 ];
 
 export const PRODUCTS: Product[] = [
     { name: "Aldoks Serisi", description: "Ekonomik, hafif ve geniş kullanım alanına sahip, vitrin ve kapı uygulamaları için ideal yalıtımsız doğrama sistemi.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" },
     { name: "C60 Yalıtımlı Seri", description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu binalar için tasarlanmış polyamid bariyerli kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
     { name: "Sistem Serisi (Işıklık)", description: "Çatı ışıklıkları ve kış bahçesi tavanları için özel tasarlanmış, su tahliye kanallı ve sızdırmazlık garantili profil sistemi.", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80" },
-    { name: "Sürme (Sliding) Serisi", description: "Dar alanlarda maksimum kullanım sağlayan, balkon, teras ve geniş açıklıklar için geliştirilmiş sürme doğrama profilleri.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
+    { name: "Sürme (Sliding) Serisi", description: "Dar alanlarda maksimum kullanım sağlayan, balkon ve teras ve geniş açıklıklar için geliştirilmiş sürme doğrama profilleri.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
     { name: "Cephe Sistemleri", description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe uygulamaları için yüksek mukavemetli alüminyum profil çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
     { name: "Korkuluk ve Küpeşte", description: "Merdiven, balkon ve galeri boşlukları için kare ve yuvarlak formlarda estetik ve güvenli alüminyum korkuluk sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true" },
     { name: "Cam Balkon Profilleri", description: "Katlanır ve sürme cam balkon sistemleri için tasarlanmış, hava ve su sızdırmazlığı sağlayan özel ray ve kasa profilleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
@@ -182,7 +368,6 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         "Üretim ve Montaj Kolaylığı",
                         "%50 Azaltılmış Orta Kenet ile Minimal Mimari Çözüm",
                         "Sistem İçinde Çözülmüş Özel Sineklik Tasarımı",
-                        "Projeye Uygun Özel Tasarım ve Seçenekleri",
                         "Paslanmaz Çelik Ray ve Bu Ray Üzerinde Hareket Eden Özel Rulmanlarla Yüksek Dayanım ve Kullanım Konforu",
                         "Özel Dizayn Edilmiş ve Yüksek Dayanımlı Çok Noktadan Kilitleme Sistemi",
                         "Polyamit Profillerle Boşluksuz Orta Kenet Detayı",
@@ -353,6 +538,26 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Kenetli Orta Kanat Genişliği", value: "34 - 78,5 mm" },
                         { label: "Cam Kalınlığı", value: "20 - 22 mm" },
                         { label: "Max. Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            },
+            { 
+                name: "LR-2200 - Linea Rossa", 
+                description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", 
+                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2200.webp",
+                technicalDetails: {
+                     features: [
+                        "Üst ve Alt Kilitleme Sistemi Sayesinde Güvenlik Ön Plana Alınmıştır.",
+                        "Kasa ve Kanat Profilinin Duvar İçine Gömülmesi Sayesinde Dış Ortamın Manzarasının Evinizin İçindeyken Bile Hissetmenizi Sağlamaktadır.",
+                        "Her Kanatta Çift Yönde Bulunan Rulmanlar Sayesinde 800kg Kanat Taşıma Kapasitesi",
+                        "Üç Cam Uygulama İmkanı",
+                        "Yüksek Isı ve Ses Performansı"
+                    ],
+                    specifications: [
+                        { label: "Kasa Genişliği", value: "129 mm" },
+                        { label: "Kasa Yüksekliği", value: "50 mm" },
+                        { label: "Kanat Genişliği", value: "42 mm" },
+                        { label: "Orta Dikme Genişliği", value: "23 mm" }
                     ]
                 }
             },
@@ -657,41 +862,9 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
                 name: "Pimapen Nirvana",
                 description: "Üstün ses ve ısı yalıtımı sağlayan, inovatif teknik özelliklere sahip 'Pasif Ev' sertifikalı seri.",
                 image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
-                technicalDetails: {
-                    features: [
-                        "Pasif Ev Sertifikalı",
-                        "Yüksek Isı ve Ses Yalıtımı (41 dB'ye kadar)",
-                        "Dört Mevsim Yaşam Konforu"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği", value: "80 mm" },
-                        { label: "Odacık Sayısı", value: "6" },
-                        { label: "Profil Sınıfı", value: "A Class / B Class (TS EN 12608-1)" },
-                        { label: "Conta Sistemi", value: "İç-Dış ve Orta Conta, 3’lü Conta Sistemi" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
-                        { label: "Uf", value: "0,95 W/m2 K" }
-                    ]
-                }
-            },
-            {
-                name: "Pimapen Carisma",
-                description: "70 mm genişliğinde ve 5 odacıklı profilleri ile pencere ve kapılardaki optimum teknik çözümler için tasarlanmış seri.",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-                technicalDetails: {
-                    features: [
-                        "Optimum Teknik Çözümler",
-                        "Estetik Tasarım",
-                        "5 Odacıklı Yapı"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği", value: "70 mm" },
-                        { label: "Odacık Sayısı", value: "5" },
-                        { label: "Profil Sınıfı", value: "B Class (TS EN 12608-1)" },
-                        { label: "Conta Sistemi", value: "İç-Dış, 2’li Conta Sistemi" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "4, 10, 20, 24, 26, 30, 36, 39 mm" }
-                    ]
+                 technicalDetails: {
+                    features: ["6 odacıklı profil yapısı", "3 contalı sızdırmazlık sistemi", "Yüksek rüzgar direnci"],
+                    specifications: [{ label: "Profil Genişliği", value: "80 mm" }, { label: "Uf Değeri", value: "0.95 W/m2K" }]
                 }
             }
         ]
@@ -700,25 +873,13 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
         id: "nirvana",
         title: "Nirvana Serisi",
         items: [
-            {
-                name: "Pimapen Nirvana",
-                description: "Üstün ses ve ısı yalıtımı sağlayan, inovatif teknik özelliklere sahip 'Pasif Ev' sertifikalı seri.",
+             {
+                name: "Nirvana Premium",
+                description: "Maksimum performans ve estetik arayanlar için geliştirilmiş, üst segment PVC pencere sistemi.",
                 image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
                 technicalDetails: {
-                    features: [
-                        "Pasif Ev Sertifikalı",
-                        "Yüksek Isı ve Ses Yalıtımı (41 dB'ye kadar)",
-                        "Dört Mevsim Yaşam Konforu"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği", value: "80 mm" },
-                        { label: "Odacık Sayısı", value: "6" },
-                        { label: "Profil Sınıfı", value: "A Class / B Class (TS EN 12608-1)" },
-                        { label: "Conta Sistemi", value: "İç-Dış ve Orta Conta, 3’lü Conta Sistemi" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
-                        { label: "Uf", value: "0,95 W/m2 K" }
-                    ]
+                    features: ["A Sınıfı et kalınlığı", "44 mm'ye kadar cam uygulanabilme", "Üstün ses yalıtımı"],
+                    specifications: [{ label: "Odacık Sayısı", value: "6" }, { label: "Conta", value: "EPDM / TPE" }]
                 }
             }
         ]
@@ -729,22 +890,11 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
         items: [
             {
                 name: "Pimapen Carisma",
-                description: "70 mm genişliğinde ve 5 odacıklı profilleri ile pencere ve kapılardaki optimum teknik çözümler için tasarlanmış seri.",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+                description: "70 mm profil genişliği ve 5 odacıklı yapısıyla ideal ısı ve ses yalıtımı sağlayan ekonomik seri.",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
                 technicalDetails: {
-                    features: [
-                        "Optimum Teknik Çözümler",
-                        "Estetik Tasarım",
-                        "5 Odacıklı Yapı"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği", value: "70 mm" },
-                        { label: "Odacık Sayısı", value: "5" },
-                        { label: "Profil Sınıfı", value: "B Class (TS EN 12608-1)" },
-                        { label: "Conta Sistemi", value: "İç-Dış, 2’li Conta Sistemi" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "4, 10, 20, 24, 26, 30, 36, 39 mm" }
-                    ]
+                    features: ["5 odacıklı tasarım", "Dekoratif cam çıtası seçenekleri", "Yüksek su sızdırmazlığı"],
+                    specifications: [{ label: "Profil Genişliği", value: "70 mm" }, { label: "Sınıf", value: "B Sınıfı (TS EN 12608)" }]
                 }
             }
         ]
@@ -754,63 +904,21 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
         title: "Sürgülü Kapı & Pencere Sistemleri",
         items: [
             {
-                name: "Pimapen Infinity (HBSB)",
-                description: "Geniş ve yüksek açıklıklarda performans ve manzaradan ödün vermeyen kaldırmalı sürme sistemi.",
-                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80",
-                technicalDetails: {
-                    features: [
-                        "Kullanım Rahatlığı ve Konfor",
-                        "Yüksek Güvenlik ve Yalıtım",
-                        "Geniş Açıklıklar İçin İdeal"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği (Kasa)", value: "175 mm" },
-                        { label: "Profil Genişliği (Kanat)", value: "76 mm" },
-                        { label: "Alt Kasa Uygulamaları", value: "PVC / ALM" },
-                        { label: "Profil Standardı", value: "A Class (TS EN 12608-1)" },
-                        { label: "Conta Tipi - Rengi", value: "TPE/EPDM - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "4, 12, 20, 24, 26, 30, 36, 39 mm" }
-                    ]
+                name: "Pimapen Infinity",
+                description: "Geniş açıklıklar için tasarlanmış, kaldır-sür (Hebeşbeş) özellikli yüksek yalıtımlı PVC sürme sistemi.",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+                 technicalDetails: {
+                    features: ["Kolay ve sessiz çalışma", "Yüksek hava ve su yalıtımı", "Geniş manzaralı açıklıklar"],
+                    specifications: [{ label: "Kasa Genişliği", value: "170 mm" }, { label: "Kanat Genişliği", value: "70 mm" }]
                 }
             },
             {
-                name: "Pimapen Dynamic Power",
-                description: "Avrupa ile eşzamanlı geliştirilen, kullanım rahatlığı ve üstün yalıtım özellikleri sunan sürme sistemi.",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                name: "Dynamic Sürme",
+                description: "Basit sürme mantığıyla çalışan, balkon ve teraslar için pratik ve ekonomik çözüm.",
+                image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80",
                 technicalDetails: {
-                    features: [
-                        "Avrupa Standartlarında Tasarım",
-                        "Üstün Yalıtım Özellikleri",
-                        "Kolay Kullanım"
-                    ],
-                    specifications: [
-                        { label: "Profil Genişliği", value: "149 mm" },
-                        { label: "Odacık Sayısı", value: "5" },
-                        { label: "Conta Sistemi", value: "İç-Dış 2’li Conta Sistemi" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Çıta", value: "Tek Tırnaklı - PCE Contalı" },
-                        { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
-                        { label: "Profil Sınıfı", value: "B Class (TS EN 12608-1)" }
-                    ]
-                }
-            },
-            {
-                name: "Pimapen Albatros",
-                description: "Özel tasarım hareketli köşe birleşim profili sayesinde geniş ve ferah ortamlar sağlayan sürme kapı serisi.",
-                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-                technicalDetails: {
-                    features: [
-                        "90º Köşeli Uygulama İmkanı",
-                        "Görüntüyü Kesmeyen Ferah Tasarım",
-                        "İkili, Üçlü ve Dörtlü Kombinasyonlar"
-                    ],
-                    specifications: [
-                        { label: "Kasa Uygulamaları", value: "İki ray / üç ray / sabit bölmeli / sineklikli kasa / pervazlı kasa" },
-                        { label: "Profil Standardı", value: "B Class (TS EN 12608-1)" },
-                        { label: "Conta Sistemi", value: "Fırça Conta / TPE" },
-                        { label: "Conta Tipi - Rengi", value: "TPE - Gri / Siyah" },
-                        { label: "Cam Kalınlıkları", value: "4, 20, 24 mm" }
-                    ]
+                    features: ["Çift raylı kasa", "Özel fırça conta sistemi", "Sineklik entegrasyonu"],
+                    specifications: [{ label: "Kasa Genişliği", value: "120 mm" }, { label: "Cam Kalınlığı", value: "4-20-24 mm" }]
                 }
             }
         ]
@@ -820,21 +928,12 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
         title: "Panjur & Kepenk Sistemleri",
         items: [
             {
-                name: "Storbox Panjur",
-                description: "Her türlü yapıya kolayca uygulanan, olumsuz hava şartlarına karşı koruma sağlayan panjur sistemi.",
+                name: "Pimapen Panjur",
+                description: "Pencerelerinizle tam uyumlu, ısı ve ses yalıtımı na katkı sağlayan, manuel veya motorlu panjur sistemleri.",
                 image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true",
                 technicalDetails: {
-                    features: [
-                        "Her Türlü Yapıya Uygun",
-                        "Isı ve Ses Yalıtımına Katkı",
-                        "Tamamlayıcı Estetik Görünüm"
-                    ],
-                    specifications: [
-                        { label: "Kutu Tipi", value: "Monoblok" },
-                        { label: "Kutu Çeşitleri", value: "165x165 / 200x200 / 165x200 Yalıtımlı / 200x235 Yalıtımlı" },
-                        { label: "Lamel Tipi", value: "PVC (37mm; 55mm) / ALM" },
-                        { label: "Opsiyonel Uygulamalar", value: "Stor Sineklik" }
-                    ]
+                    features: ["PVC ve Alüminyum lamel seçenekleri", "Gizli kutu detayı", "Uzaktan kumanda imkanı"],
+                    specifications: [{ label: "Kutu Boyutları", value: "165x165 / 200x200 mm" }, { label: "Lamel", value: "37 mm / 55 mm" }]
                 }
             }
         ]
@@ -843,21 +942,13 @@ export const PIMAPEN_SECTIONS: ProductSection[] = [
         id: "donanim",
         title: "Pencere ve Kapı Donanım Sistemleri",
         items: [
-            {
-                name: "Pimapen Donanım",
-                description: "Pencerelerinizin güvenliğini ve konforunu artıran kol, menteşe ve ispanyolet sistemleri.",
-                image: "https://images.unsplash.com/photo-1558211583-03ed8a0b3d5f?auto=format&fit=crop&w=600&q=80",
-                 technicalDetails: {
-                     features: [
-                        "Paslanmaz çelik bileşenler",
-                        "Yüksek güvenlikli kilitleme",
-                        "Ergonomik tasarım",
-                        "Uzun ömürlü kullanım"
-                    ],
-                    specifications: [
-                         { label: "Malzeme", value: "Zamak / Alüminyum / Çelik" },
-                         { label: "Renk Seçenekleri", value: "Beyaz, Gümüş, Kahverengi" }
-                    ]
+             {
+                name: "Pimapen Donanımları",
+                description: "Pimapen sistemlerinin performansını artıran, güvenlikli ve uzun ömürlü ispanyolet, kol ve menteşe grupları.",
+                image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80",
+                technicalDetails: {
+                    features: ["Paslanmaya karşı direnç", "Çocuk emniyet kilidi", "Hırsızlığa karşı güvenlikli mantar başlı pimler"],
+                    specifications: [{ label: "Malzeme", value: "Paslanmaz Çelik / Zamak" }, { label: "Garanti", value: "2 Yıl" }]
                 }
             }
         ]
@@ -875,40 +966,74 @@ export const BLOG_POSTS: BlogPost[] = [
         excerpt: "Modern yapılarda sıkça tercih edilen alüminyum cephe sistemlerinin dayanıklılık, estetik ve enerji verimliliği açısından sağladığı faydaları inceliyoruz.",
         content: [
             { type: 'p', text: "Alüminyum cephe sistemleri, günümüz mimarisinin vazgeçilmez unsurlarından biri haline gelmiştir. Hafifliği, dayanıklılığı ve estetik görünümü ile hem yeni binalarda hem de yenileme projelerinde sıklıkla tercih edilmektedir." },
-            { type: 'h2', text: "Dayanıklılık ve Uzun Ömür" },
-            { type: 'p', text: "Alüminyum, doğal korozyon direnci yüksek bir malzemedir. Dış hava koşullarına, yağmura, güneşe ve rüzgara karşı son derece dayanıklıdır. Bu özelliği sayesinde binaların dış cephelerinde uzun yıllar boyunca bakım gerektirmeden kullanılabilir." },
-            { type: 'h2', text: "Estetik ve Tasarım Esnekliği" },
-            { type: 'p', text: "Alüminyum profiller, istenilen renk ve dokuda üretilebilir. Geniş cam yüzeylerle kombin edildiğinde modern ve şık bir görünüm sunar. Mimarlar için geniş bir tasarım özgürlüğü sağlar." }
+             { type: 'h2', text: "Neden Alüminyum Cephe?" },
+             { type: 'p', text: "Alüminyum, yüksek korozyon direnci ve hafif yapısı sayesinde bina yükünü artırmadan uzun ömürlü bir çözüm sunar. Ayrıca geri dönüştürülebilir olması, sürdürülebilir mimari projelerde tercih sebebidir." }
         ]
     },
     {
-        slug: "pvc-pencere-seciminde-dikkat-edilmesi-gerekenler",
-        title: "PVC Pencere Seçiminde Dikkat Edilmesi Gerekenler",
-        author: "İnşaat Mühendisi Selin Demir",
-        date: "22 Ekim 2023",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-        category: "Doğrama Çözümler",
-        excerpt: "Eviniz için doğru PVC pencereyi seçerken göz önünde bulundurmanız gereken profil kalitesi, cam özellikleri ve montaj detayları.",
-        content: [
-            { type: 'p', text: "PVC pencereler, ısı ve ses yalıtımı konusundaki başarıları nedeniyle konutlarda en çok tercih edilen doğrama türüdür. Ancak doğru pencere seçimi, performansı doğrudan etkiler." },
-            { type: 'h2', text: "Profil Genişliği ve Odacık Sayısı" },
-            { type: 'p', text: "Profil genişliği ve odacık sayısı arttıkça, pencerenin ısı yalıtım performansı da artar. Genellikle 70mm ve üzeri profil genişlikleri ve 5 odacıklı sistemler önerilmektedir." },
-            { type: 'h2', text: "Cam Seçimi" },
-            { type: 'p', text: "Pencerenin yalıtım performansını belirleyen en önemli faktörlerden biri de camdır. Isıcam sinerji veya konfor serisi camlar, enerji tasarrufu sağlamak için idealdir." }
-        ]
-    },
-    {
-        slug: "kis-bahcesi-sistemleri",
-        title: "Kış Bahçesi ile Dört Mevsim Bahçe Keyfi",
-        author: "Tasarım Ekibi",
-        date: "05 Eylül 2023",
+        slug: "kis-bahcesi-ile-dort-mevsim-konfor",
+        title: "Kış Bahçesi ile Dört Mevsim Konfor",
+        author: "İnter Akdeniz Ekibi",
+        date: "10 Aralık 2023",
         image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=800&q=80",
-        category: "Genel",
-        excerpt: "Kış bahçesi sistemleri ile evinizin konforunda doğayla iç içe olmanın yollarını keşfedin.",
+        category: "Doğrama Çözümler",
+        excerpt: "Evinizin bahçesini veya terasını kışın da kullanmak ister misiniz? Kış bahçesi sistemleri ile yaşam alanınızı genişletin ve doğayla iç içe olun.",
         content: [
-            { type: 'p', text: "Kış bahçeleri, evinize ekstra bir yaşam alanı katan ve bahçe keyfini yılın 12 ayına yayan estetik yapılardır. Alüminyum iskelet sistemi ve ısı yalıtımlı camlar kullanılarak tasarlanır." },
-            { type: 'h3', text: "Yalıtımın Önemi" },
-            { type: 'p', text: "Kış bahçesinin kışın sıcak, yazın ise serin kalabilmesi için kullanılan profillerin ve camların yüksek yalıtım değerlerine sahip olması gerekir." }
+            { type: 'p', text: "Kış bahçeleri, cam ve alüminyum profillerin mükemmel uyumuyla oluşturulan, ısı yalıtımlı özel yaşam alanlarıdır. Yağmur, kar veya rüzgar demeden dış mekan keyfini iç mekana taşırsınız." },
+            { type: 'h2', text: "Isı Yalıtımlı Sistemlerin Önemi" },
+            { type: 'p', text: "Kış bahçesi yaptırırken dikkat edilmesi gereken en önemli husus, kullanılan profillerin ve camların ısı yalıtım değerleridir. İnter Akdeniz olarak, yüksek yalıtımlı alüminyum sistemler kullanarak enerji tasarrufu sağlıyoruz." }
+        ]
+    },
+    {
+        slug: "pvc-ve-aluminyum-dograma-farklari",
+        title: "PVC ve Alüminyum Doğrama Arasındaki Farklar",
+        author: "Teknik Uzman Mehmet Demir",
+        date: "22 Ocak 2024",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+        category: "Teknik Bilgiler",
+        excerpt: "Pencere ve kapı seçimi yaparken PVC mi yoksa alüminyum mu tercih etmelisiniz? İki malzemenin avantajlarını ve dezavantajlarını sizin için karşılaştırdık.",
+        content: [
+            { type: 'p', text: "İnşaat sektöründe en çok kullanılan iki doğrama malzemesi PVC ve alüminyumdur. Her ikisinin de kendine özgü avantajları vardır ve proje gereksinimlerine göre seçim yapılmalıdır." },
+            { type: 'h3', text: "Alüminyum Doğrama" },
+            { type: 'p', text: "Alüminyum, daha geniş açıklıkları geçebilen, daha ince profil kesitlerine sahip ve çok daha uzun ömürlü bir malzemedir. Renk solması yapmaz ve modern mimaride estetik bir görünüm sunar." },
+            { type: 'h3', text: "PVC Doğrama" },
+            { type: 'p', text: "PVC ise genellikle daha ekonomik bir çözüm sunar ve yüksek ısı yalıtım değerlerine sahiptir. Ancak büyük açıklıklarda alüminyum kadar rijit değildir." }
+        ]
+    },
+    {
+        slug: "linea-rossa-neden-tercih-edilmeli",
+        title: "Linea Rossa: Neden Tercih Edilmeli?",
+        author: "Mimar Ayşe Yılmaz",
+        date: "05 Şubat 2024",
+        image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp",
+        category: "Doğrama Çözümler",
+        excerpt: "İtalyan tasarımı ve üstün mühendisliğin birleşimi Linea Rossa sistemleri, projelerinize nasıl değer katar? Özellikleri ve avantajlarını inceliyoruz.",
+        content: [
+            { type: 'p', text: "Linea Rossa, sadece bir alüminyum profil değil, bir yaşam tarzıdır. Minimalist tasarımı, yüksek taşıma kapasitesi ve mükemmel yalıtım değerleri ile lüks konut projelerinin vazgeçilmezidir." },
+            { type: 'p', text: "Özellikle sürme sistemlerde sunduğu konfor ve estetik, mekanlarınızın değerini artırır. Paslanmaz çelik raylar üzerinde sessizce hareket eden kanatlar, kullanıcı deneyimini üst seviyeye taşır." }
         ]
     }
+];
+
+export const MEDIA_IMAGES: MediaImage[] = [
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0003.jpg?raw=true', alt: 'Proje Uygulaması 1' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0004.jpg?raw=true', alt: 'Proje Uygulaması 2' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0005.jpg?raw=true', alt: 'Proje Uygulaması 3' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0006.jpg?raw=true', alt: 'Proje Uygulaması 4' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0007.jpg?raw=true', alt: 'Proje Uygulaması 5' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0008.jpg?raw=true', alt: 'Proje Uygulaması 6' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0009.jpg?raw=true', alt: 'Proje Uygulaması 7' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0010.jpg?raw=true', alt: 'Proje Uygulaması 8' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0011.jpg?raw=true', alt: 'Proje Uygulaması 9' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0012.jpg?raw=true', alt: 'Proje Uygulaması 10' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0013.jpg?raw=true', alt: 'Proje Uygulaması 11' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0014.jpg?raw=true', alt: 'Proje Uygulaması 12' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0015.jpg?raw=true', alt: 'Proje Uygulaması 13' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0016.jpg?raw=true', alt: 'Proje Uygulaması 14' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0017.jpg?raw=true', alt: 'Proje Uygulaması 15' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0018.jpg?raw=true', alt: 'Proje Uygulaması 16' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0019.jpg?raw=true', alt: 'Proje Uygulaması 17' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0020.jpg?raw=true', alt: 'Proje Uygulaması 18' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0021.jpg?raw=true', alt: 'Proje Uygulaması 19' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0022.jpg?raw=true', alt: 'Proje Uygulaması 20' },
 ];

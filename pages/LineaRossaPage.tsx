@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
-import { LINEA_ROSSA_SECTIONS, COMPANY_INFO } from '../constants';
+import { COMPANY_INFO } from '../constants';
+import { useLanguage } from '../LanguageContext';
 import ProductModal from '../components/ProductModal';
 import type { Product } from '../types';
 
 const LineaRossaPage: React.FC = () => {
+    const { data, t, language } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,21 +28,27 @@ const LineaRossaPage: React.FC = () => {
                 onClose={closeModal} 
             />
 
-            {/* Changed background to brand-blue-900 for consistency */}
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Linea Rossa</h1>
-                    <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">İtalyan tasarımı ve üstün teknolojinin buluştuğu nokta.</p>
+                    <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">
+                        {language === 'tr' ? 'İtalyan tasarımı ve üstün teknolojinin buluştuğu nokta.' : 'Where Italian design meets superior technology.'}
+                    </p>
                 </div>
             </div>
             
             <div className="py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Linea Rossa: Estetik ve Performans</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{language === 'tr' ? 'Linea Rossa: Estetik ve Performans' : 'Linea Rossa: Aesthetics and Performance'}</h2>
                         <div className="w-20 h-1 bg-brand-blue-600 mx-auto mb-6"></div>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                           <strong>Linea Rossa</strong>, alüminyum sistemlerde minimalist İtalyan estetiğini, maksimum performansla birleştiren global bir markadır. Geniş açıklıklara olanak tanıyan ince profil tasarımları, üstün ısı ve ses yalıtım değerleri ile modern mimarinin tüm gereksinimlerine cevap verir. Yaşam alanlarınıza İtalyan zarafetini katmak için Linea Rossa'nın yenilikçi dünyasını keşfedin.
+                           {language === 'tr' 
+                            ? <strong>Linea Rossa</strong> 
+                            : <strong>Linea Rossa</strong>} 
+                           {language === 'tr' 
+                            ? ", alüminyum sistemlerde minimalist İtalyan estetiğini, maksimum performansla birleştiren global bir markadır. Geniş açıklıklara olanak tanıyan ince profil tasarımları, üstün ısı ve ses yalıtım değerleri ile modern mimarinin tüm gereksinimlerine cevap verir. Yaşam alanlarınıza İtalyan zarafetini katmak için Linea Rossa'nın yenilikçi dünyasını keşfedin."
+                            : " is a global brand that combines minimalist Italian aesthetics in aluminum systems with maximum performance. It responds to all requirements of modern architecture with thin profile designs that allow wide openings, superior thermal and sound insulation values. Discover the innovative world of Linea Rossa to add Italian elegance to your living spaces."}
                         </p>
                     </div>
                 </div>
@@ -48,7 +56,7 @@ const LineaRossaPage: React.FC = () => {
 
             <div className="pb-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-                    {LINEA_ROSSA_SECTIONS.map((section) => (
+                    {data.LINEA_ROSSA_SECTIONS.map((section) => (
                         <div key={section.id} id={section.id} className="scroll-mt-32">
                             <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 border-l-4 border-brand-blue-600 pl-4">{section.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -69,7 +77,7 @@ const LineaRossaPage: React.FC = () => {
                                                         onClick={() => openModal(product)}
                                                         className="border-2 border-gray-300 text-gray-700 font-bold py-3 px-4 hover:bg-gray-100 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
                                                     >
-                                                        Teknik Detay
+                                                        {t('detailInfoButton')}
                                                     </button>
                                                     <a 
                                                         href={whatsappUrl}
@@ -77,7 +85,7 @@ const LineaRossaPage: React.FC = () => {
                                                         rel="noopener noreferrer"
                                                         className="border-2 border-brand-blue-900 bg-brand-blue-900 text-white font-bold py-3 px-4 hover:bg-brand-blue-800 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
                                                     >
-                                                        Teklif Al
+                                                        {t('offer')}
                                                     </a>
                                                 </div>
                                             </div>

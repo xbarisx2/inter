@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { BLOG_POSTS } from '../constants';
+import { useLanguage } from '../LanguageContext';
 import type { BlogPost, Comment } from '../types';
 import { UserIcon, CalendarIcon } from '../components/Icons';
 
@@ -18,7 +18,6 @@ const getCommentsForPost = (postSlug: string): Comment[] => {
 };
 
 const addCommentToPost = (comment: Comment): void => {
-    const allComments = getCommentsForPost(comment.postSlug);
     // In a real app, you would fetch all comments, not just for this post
     const otherCommentsJSON = localStorage.getItem('blog-comments');
     let allCommentsInStorage: Comment[] = [];
@@ -41,7 +40,9 @@ interface BlogPostDetailPageProps {
 }
 
 const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack }) => {
-    const post = BLOG_POSTS.find(p => p.slug === slug);
+    const { data, t, language } = useLanguage();
+    const post = data.BLOG_POSTS.find(p => p.slug === slug);
+    
     const [comments, setComments] = useState<Comment[]>([]);
     const [newCommentAuthor, setNewCommentAuthor] = useState('');
     const [newCommentText, setNewCommentText] = useState('');
@@ -54,9 +55,9 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
     if (!post) {
         return (
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-                <h2 className="text-2xl font-bold">Yazı bulunamadı.</h2>
+                <h2 className="text-2xl font-bold">{t('postNotFound')}</h2>
                 <button onClick={onBack} className="mt-4 text-brand-blue-600 hover:underline">
-                    &larr; Blog'a Geri Dön
+                    &larr; {t('backToBlog')}
                 </button>
             </div>
         );
@@ -65,7 +66,7 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
     const handleCommentSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!newCommentAuthor.trim() || !newCommentText.trim()) {
-            setError('Lütfen tüm alanları doldurun.');
+            setError(t('formError'));
             return;
         }
         setError('');
@@ -87,7 +88,7 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
         <div className="bg-white py-12 md:py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <button onClick={onBack} className="mb-8 inline-flex items-center text-brand-blue-600 font-semibold hover:text-brand-blue-800 transition-colors">
-                     &larr; Tüm Yazılara Geri Dön
+                     &larr; {t('backToBlog')}
                 </button>
                 
                 <article>
@@ -113,14 +114,14 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
 
                 {/* Comments Section */}
                 <section id="comments">
-                    <h2 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8">Yorumlar ({comments.length})</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8">{t('commentsTitle')} ({comments.length})</h2>
 
                     {/* Add Comment Form */}
                      <div className="bg-gray-50 p-6 rounded-lg shadow-inner mb-10">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-4">Bir Yorum Bırakın</h3>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-4">{t('leaveCommentTitle')}</h3>
                         <form onSubmit={handleCommentSubmit} className="space-y-4">
                             <div>
-                                <label htmlFor="author" className="block text-sm font-medium text-gray-700">Adınız</label>
+                                <label htmlFor="author" className="block text-sm font-medium text-gray-700">{t('nameLabel')}</label>
                                 <input
                                     type="text"
                                     id="author"
@@ -128,11 +129,11 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
                                     onChange={(e) => setNewCommentAuthor(e.target.value)}
                                     className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500"
                                     required
-                                    aria-label="Adınız"
+                                    aria-label={t('nameLabel')}
                                 />
                             </div>
                             <div>
-                                <label htmlFor="comment" className="block text-sm font-medium text-gray-700">Yorumunuz</label>
+                                <label htmlFor="comment" className="block text-sm font-medium text-gray-700">{t('commentLabel')}</label>
                                 <textarea
                                     id="comment"
                                     rows={4}
@@ -140,13 +141,13 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
                                     onChange={(e) => setNewCommentText(e.target.value)}
                                     className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500"
                                     required
-                                    aria-label="Yorumunuz"
+                                    aria-label={t('commentLabel')}
                                 ></textarea>
                             </div>
                             {error && <p className="text-red-500 text-sm">{error}</p>}
                             <div>
                                 <button type="submit" className="w-full sm:w-auto bg-brand-blue-600 text-white font-bold py-2 px-6 rounded-md shadow-md hover:bg-brand-blue-700 transition-colors duration-300">
-                                    Yorumu Gönder
+                                    {t('submitCommentButton')}
                                 </button>
                             </div>
                         </form>
@@ -162,13 +163,13 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
                                 <div className="ml-4">
                                     <div className="flex items-center">
                                         <p className="font-semibold text-gray-800">{comment.author}</p>
-                                        <span className="text-xs text-gray-500 ml-3">{new Date(comment.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                        <span className="text-xs text-gray-500 ml-3">{new Date(comment.date).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                     </div>
                                     <p className="text-gray-600 mt-1">{comment.text}</p>
                                 </div>
                             </div>
                         )) : (
-                            <p className="text-gray-500">Henüz hiç yorum yapılmamış. İlk yorumu siz yapın!</p>
+                            <p className="text-gray-500">{t('noCommentsMsg')}</p>
                         )}
                     </div>
                 </section>

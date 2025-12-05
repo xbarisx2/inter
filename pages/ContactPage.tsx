@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../constants';
+import { useLanguage } from '../LanguageContext';
 import { PhoneIcon, MailIcon, LocationMarkerIcon, CheckCircleIcon } from '../components/Icons';
 
 const ContactPage: React.FC = () => {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
@@ -17,7 +19,7 @@ const ContactPage: React.FC = () => {
         e.preventDefault();
         
         if (!formData.name || !formData.email || !formData.message) {
-            setErrorMessage('Lütfen tüm alanları doldurunuz.');
+            setErrorMessage(t('formError'));
             setFormStatus('error');
             return;
         }
@@ -38,12 +40,9 @@ ${message}
 
         const mailtoLink = `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.trim())}`;
         
-        // This will attempt to open the user's default email client
         window.location.href = mailtoLink;
 
         setFormStatus('sent');
-        // NOTE: We do not clear the form immediately so the user can resend if needed,
-        // but we switch the UI to a success state.
     };
 
     const resetForm = () => {
@@ -69,8 +68,8 @@ ${message}
             <div className="py-16 md:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h1 className="text-3xl md:text-5xl font-bold text-brand-blue-900">Bize Ulaşın</h1>
-                        <p className="mt-4 text-base md:text-lg text-gray-600">Projeniz hakkında görüşmek veya teklif almak için bizimle iletişime geçin.</p>
+                        <h1 className="text-3xl md:text-5xl font-bold text-brand-blue-900">{t('contactPageTitle')}</h1>
+                        <p className="mt-4 text-base md:text-lg text-gray-600">{t('contactPageSubtitle')}</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-12">
@@ -81,36 +80,36 @@ ${message}
                                     <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
                                         <CheckCircleIcon className="h-12 w-12 text-green-600" />
                                     </div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Yönlendiriliyorsunuz!</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('successTitle')}</h3>
                                     <p className="text-gray-600 mb-8 max-w-sm mx-auto leading-relaxed">
-                                        E-posta istemciniz otomatik olarak açıldı. Lütfen mesajınızı kontrol edip gönder butonuna basarak işlemi tamamlayın.
+                                        {t('successMessage')}
                                     </p>
                                     <button 
                                         onClick={resetForm} 
                                         className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-blue-700 bg-brand-blue-100 hover:bg-brand-blue-200 transition-colors duration-300"
                                     >
-                                        Yeni Mesaj Gönder
+                                        {t('newMessageButton')}
                                     </button>
                                 </div>
                             ) : (
                                 <div className="w-full">
-                                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">Mesaj Gönderin</h2>
+                                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">{t('contactFormTitle')}</h2>
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div>
-                                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Adınız Soyadınız</label>
+                                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">{t('nameLabel')}</label>
                                             <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
                                         </div>
                                         <div>
-                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-posta Adresiniz</label>
+                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('emailLabel')}</label>
                                             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500" />
                                         </div>
                                         <div>
-                                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mesajınız</label>
+                                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">{t('messageLabel')}</label>
                                             <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue-500 focus:border-brand-blue-500"></textarea>
                                         </div>
                                         <div>
                                             <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-brand-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-lg hover:bg-brand-blue-700 transition-colors duration-300 disabled:bg-brand-blue-400 disabled:cursor-not-allowed">
-                                                {formStatus === 'sending' ? 'Yönlendiriliyor...' : 'Gönder'}
+                                                {formStatus === 'sending' ? t('sendingButton') : t('sendButton')}
                                             </button>
                                         </div>
                                         {formStatus === 'error' && (
@@ -130,7 +129,7 @@ ${message}
                                     <LocationMarkerIcon className="w-6 h-6 text-brand-blue-600" />
                                 </div>
                                 <div className="ml-4">
-                                    <h3 className="text-xl font-semibold text-gray-800">Adres</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800">{t('address')}</h3>
                                     <p className="text-gray-600">{COMPANY_INFO.address}</p>
                                 </div>
                             </div>
@@ -139,7 +138,7 @@ ${message}
                                     <PhoneIcon className="w-6 h-6 text-brand-blue-600" />
                                 </div>
                                 <div className="ml-4">
-                                    <h3 className="text-xl font-semibold text-gray-800">Telefon</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800">{t('phone')}</h3>
                                     <a href={`tel:${COMPANY_INFO.phone1}`} className="text-gray-600 hover:text-brand-blue-600 block">{COMPANY_INFO.phone1}</a>
                                     <a href={`tel:${COMPANY_INFO.phone2}`} className="text-gray-600 hover:text-brand-blue-600 block">{COMPANY_INFO.phone2}</a>
                                 </div>
@@ -149,7 +148,7 @@ ${message}
                                     <MailIcon className="w-6 h-6 text-brand-blue-600" />
                                 </div>
                                 <div className="ml-4">
-                                    <h3 className="text-xl font-semibold text-gray-800">E-posta</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800">{t('email')}</h3>
                                     <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-600 hover:text-brand-blue-600">{COMPANY_INFO.email}</a>
                                 </div>
                             </div>

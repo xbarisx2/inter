@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
     <div className="bg-brand-blue-900 text-white py-16 md:py-20">
@@ -29,27 +30,27 @@ const Section: React.FC<{id: string, title: string, image: string, children: Rea
 );
 
 const CorporatePage: React.FC = () => {
+    const { data } = useLanguage();
+    const content = data.CORPORATE_CONTENT;
+
     return (
         <div>
-            <PageHeader title="Kurumsal Kimliğimiz" subtitle="Yenilikçi vizyonumuz ve sarsılmaz değerlerimizle tanışın." />
+            <PageHeader title={content.header.title} subtitle={content.header.subtitle} />
             
-            <Section id="hakkimizda" title="Hakkımızda" image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80">
-                <p>İNTER AKDENİZ ALÜMİNYUM, 20 yılı aşkın sektör tecrübesiyle alüminyum ve PVC sistemleri alanında sektörün global standartlarda hizmet veren öncü firmalarından biri olarak faaliyet göstermektedir. Kurulduğumuz günden bu yana, mimari projelerde estetik, fonksiyonellik ve dayanıklılığı bir araya getiren çözümler sunmayı ilke edindik.</p>
-                <p>Uzman mühendis ve montaj kadromuzla, en son teknolojiye sahip makine parkurumuzda, alüminyum doğrama, cephe giydirme, cam balkon, pergola ve otomasyon sistemleri gibi geniş bir yelpazede üretim yapıyoruz. Her projeyi, müşterilerimizin beklentilerini aşan bir kalite anlayışıyla, zamanında ve eksiksiz teslim etme prensibiyle yönetiyoruz.</p>
+            <Section id="hakkimizda" title={content.about.title} image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80">
+                {content.about.content.map((p, i) => <p key={i}>{p}</p>)}
             </Section>
 
             <div className="bg-gray-50"><div className="container mx-auto"><hr/></div></div>
 
-            <Section id="vizyonumuz" title="Vizyonumuz" image="https://image.pollinations.ai/prompt/futuristic%20aluminum%20skyscraper%20facade%20global%20architecture%20innovative%20glass%20design%20sustainable%20building%20photorealistic%208k" imageLeft>
-                 <p>Sektördeki yenilikleri yakından takip ederek ve sürekli gelişimi hedefleyerek, Türkiye'de ve uluslararası pazarda alüminyum sistemleri denildiğinde akla gelen ilk markalardan biri olmaktır.</p>
-                <p>Sürdürülebilir ve çevre dostu üretim tekniklerini benimseyerek, gelecek nesillere daha yaşanabilir yapılar bırakmayı hedeflerken, teknoloji ve tasarımı birleştirerek mimariye ilham veren, öncü ve yenilikçi çözümler sunmak en temel vizyonumuzdur. Müşterilerimiz ve iş ortaklarımız için sadece bir tedarikçi değil, aynı zamanda güvenilir bir çözüm ortağı olarak anılmak istiyoruz.</p>
+            <Section id="vizyonumuz" title={content.vision.title} image="https://image.pollinations.ai/prompt/futuristic%20aluminum%20skyscraper%20facade%20global%20architecture%20innovative%20glass%20design%20sustainable%20building%20photorealistic%208k" imageLeft>
+                 {content.vision.content.map((p, i) => <p key={i}>{p}</p>)}
             </Section>
 
             <div className="bg-gray-50"><div className="container mx-auto"><hr/></div></div>
 
-            <Section id="misyonumuz" title="Misyonumuz" image="https://image.pollinations.ai/prompt/high%20tech%20aluminum%20manufacturing%20factory%20precision%20engineering%20metal%20profiles%20industrial%20machinery%20clean%20facility%20photorealistic%208k">
-                <p>En yüksek kalitede hammadde ve en ileri teknolojiyi kullanarak, müşterilerimizin ihtiyaçlarına özel, estetik, güvenli ve uzun ömürlü alüminyum sistemleri üretmek ve uygulamaktır.</p>
-                <p>Bu süreçte, çalışanlarımızın gelişimine yatırım yaparak, iş sağlığı ve güvenliği standartlarına tavizsiz uyarak ve tüm paydaşlarımızla şeffaf ve dürüst bir iletişim kurarak, topluma ve çevreye karşı sorumluluklarımızı eksiksiz yerine getirmeyi taahhüt ederiz. Müşteri memnuniyetini her zaman en üst seviyede tutarak, projelerine değer katmak ve kalıcı eserler bırakmak varlık sebebimizdir.</p>
+            <Section id="misyonumuz" title={content.mission.title} image="https://image.pollinations.ai/prompt/high%20tech%20aluminum%20manufacturing%20factory%20precision%20engineering%20metal%20profiles%20industrial%20machinery%20clean%20facility%20photorealistic%208k">
+                {content.mission.content.map((p, i) => <p key={i}>{p}</p>)}
             </Section>
         </div>
     );

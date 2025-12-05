@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { PRODUCTS, REFERENCES, HERO_SLIDES, COMPANY_INFO } from '../constants';
+import { useLanguage } from '../LanguageContext';
+import { COMPANY_INFO } from '../constants';
 import type { Page } from '../types';
 import { ShieldCheckIcon, LightBulbIcon, HardHatIcon } from '../components/Icons';
 
@@ -9,6 +10,9 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
+    const { data, t, language } = useLanguage();
+    const { PRODUCTS, REFERENCES, HERO_SLIDES } = data;
+
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
@@ -16,70 +20,70 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
         }, 5000);
         return () => clearInterval(slideInterval);
-    }, []);
+    }, [HERO_SLIDES]); // Dependency changed to array itself
 
-    const featuredProducts = PRODUCTS.slice(0, 3); // Show fewer, bigger items
+    const featuredProducts = PRODUCTS.slice(0, 3);
     const displayedReferences = REFERENCES.slice(0, 15);
 
-    // Expanded Category Grid matching the user's request (12 items)
+    // Expanded Category Grid - Text needs to be dynamic based on language
     const categoryGrid = [
         { 
-            title: "Alüminyum Mimari Sistemleri", 
+            title: language === 'tr' ? "Alüminyum Mimari Sistemleri" : "Aluminum Architectural Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Panjur Sistemleri", 
+            title: language === 'tr' ? "Panjur Sistemleri" : "Shutter Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Kepenk Sistemleri", 
+            title: language === 'tr' ? "Kepenk Sistemleri" : "Roller Shutter Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/kepenk-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Pergola Sistemleri", 
+            title: language === 'tr' ? "Pergola Sistemleri" : "Pergola Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true",
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Zip Perde Sistemleri", 
+            title: language === 'tr' ? "Zip Perde Sistemleri" : "Zip Screen Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Akıllı Çatı Sistemleri", 
+            title: language === 'tr' ? "Akıllı Çatı Sistemleri" : "Smart Roof Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/Makas_Akilli_Cati-e1749810492326.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Cephe Sistemleri", 
+            title: language === 'tr' ? "Cephe Sistemleri" : "Facade Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Cam Balkon Sistemleri", 
+            title: language === 'tr' ? "Cam Balkon Sistemleri" : "Glass Balcony Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Giyotin Cam Balkon Sistemleri", 
+            title: language === 'tr' ? "Giyotin Cam Balkon Sistemleri" : "Guillotine Glass Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/giyotin-cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Alüminyum Kompozit Sistemler", 
+            title: language === 'tr' ? "Alüminyum Kompozit Sistemler" : "Aluminum Composite Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "Korkuluk Sistemleri", 
+            title: language === 'tr' ? "Korkuluk Sistemleri" : "Railing Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: "PVC Kapı, Pencere Sistemleri", 
+            title: language === 'tr' ? "PVC Kapı, Pencere Sistemleri" : "PVC Door, Window Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
@@ -87,7 +91,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
 
     return (
         <>
-            {/* HERO SECTION: Sharp, Boxy, Industrial with Slider */}
+            {/* HERO SECTION */}
             <section className="relative h-screen bg-brand-blue-950 overflow-hidden">
                 {HERO_SLIDES.map((slide, index) => (
                     <div 
@@ -100,7 +104,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             role="img"
                             aria-label={slide.title}
                         ></div>
-                        {/* Overlay only for text readability at bottom/center, leaving top lighter for logo visibility */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     </div>
                 ))}
@@ -119,10 +122,10 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
                             <button onClick={() => setCurrentPage('Ürünlerimiz')} className="bg-brand-blue-600 text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-brand-blue-700 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-brand-blue-600 shadow-lg w-full sm:w-auto">
-                                Ürünleri İncele
+                                {t('examine')}
                             </button>
                             <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-transparent text-white font-bold py-4 md:py-5 px-8 md:px-12 hover:bg-white hover:text-brand-blue-900 transition-all duration-300 uppercase tracking-widest text-xs md:text-sm rounded-none border-2 border-white shadow-lg w-full sm:w-auto text-center flex items-center justify-center">
-                                İletişime Geç
+                                {t('contact')}
                             </a>
                         </div>
                     </div>
@@ -130,34 +133,34 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 
                 {/* Scroll Indicator */}
                 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/50 z-20">
-                    <span className="text-xs tracking-widest uppercase mb-2">Aşağı Kaydır</span>
+                    <span className="text-xs tracking-widest uppercase mb-2">{language === 'tr' ? 'Aşağı Kaydır' : 'Scroll Down'}</span>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7-7-7"></path></svg>
                 </div>
             </section>
 
-            {/* PROCESS STRIP: Corporate Process Flow */}
+            {/* PROCESS STRIP */}
             <section className="bg-brand-blue-900 text-white py-0 relative z-20">
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 divide-y divide-blue-800/50 md:divide-y-0 md:divide-x">
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <LightBulbIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">Projelendirme</h4>
-                                <p className="text-xs text-blue-200 opacity-70">Mimari teknik detay</p>
+                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Projelendirme' : 'Planning'}</h4>
+                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Mimari teknik detay' : 'Architectural details'}</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <HardHatIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">Üretim</h4>
-                                <p className="text-xs text-blue-200 opacity-70">Yüksek teknoloji parkuru</p>
+                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Üretim' : 'Production'}</h4>
+                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Yüksek teknoloji parkuru' : 'High-tech machinery'}</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <ShieldCheckIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">Montaj</h4>
-                                <p className="text-xs text-blue-200 opacity-70">Uzman ekip garantisi</p>
+                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Montaj' : 'Installation'}</h4>
+                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Uzman ekip garantisi' : 'Expert team guarantee'}</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-center md:justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer bg-brand-blue-950">
@@ -199,37 +202,41 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-            {/* CORPORATE SECTION: Split Layout (Text Left / Image Right) */}
+            {/* CORPORATE SECTION */}
             <section className="py-16 md:py-24 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                         <div>
-                            <span className="block text-sm font-bold text-brand-blue-600 tracking-widest uppercase mb-2">Kurumsal</span>
+                            <span className="block text-sm font-bold text-brand-blue-600 tracking-widest uppercase mb-2">{t('corporate')}</span>
                             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                                ÇÖZÜM ODAKLI <br/> MİMARİ SİSTEMLER
+                                {language === 'tr' ? 'ÇÖZÜM ODAKLI MİMARİ SİSTEMLER' : 'SOLUTION ORIENTED ARCHITECTURAL SYSTEMS'}
                             </h2>
                             <div className="h-1 w-20 bg-brand-blue-600 mb-8"></div>
                             
                             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 font-light">
-                                İnter Akdeniz Alüminyum, 20 yılı aşkın süredir sektörde edindiği tecrübeyi, <strong>Linea Rossa Milano</strong> kalitesiyle birleştirerek projelere değer katmaktadır.
+                                {language === 'tr' 
+                                    ? "İnter Akdeniz Alüminyum, 20 yılı aşkın süredir sektörde edindiği tecrübeyi, Linea Rossa Milano kalitesiyle birleştirerek projelere değer katmaktadır." 
+                                    : "With over 20 years of experience in the sector, İnter Akdeniz Aluminum adds value to projects by combining it with Linea Rossa Milano quality."}
                             </p>
                             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-light">
-                                Antalya merkezli firmamız, Türkiye'nin ve dünyanın dört bir yanına alüminyum cephe, doğrama ve özel tasarım mimari çözümler sunmaktadır.
+                                {language === 'tr'
+                                    ? "Antalya merkezli firmamız, Türkiye'nin ve dünyanın dört bir yanına alüminyum cephe, doğrama ve özel tasarım mimari çözümler sunmaktadır."
+                                    : "Based in Antalya, our company offers aluminum facade, joinery and custom design architectural solutions to all around Turkey and the world."}
                             </p>
                             
                             <div className="grid grid-cols-2 gap-8 mb-10">
                                 <div className="border-l-4 border-gray-200 pl-4">
                                     <span className="block text-3xl font-bold text-brand-blue-900">500+</span>
-                                    <span className="text-gray-500 text-xs uppercase tracking-wide">Proje</span>
+                                    <span className="text-gray-500 text-xs uppercase tracking-wide">{language === 'tr' ? 'Proje' : 'Projects'}</span>
                                 </div>
                                 <div className="border-l-4 border-gray-200 pl-4">
                                     <span className="block text-3xl font-bold text-brand-blue-900">20+</span>
-                                    <span className="text-gray-500 text-xs uppercase tracking-wide">Yıl Deneyim</span>
+                                    <span className="text-gray-500 text-xs uppercase tracking-wide">{language === 'tr' ? 'Yıl Deneyim' : 'Years Experience'}</span>
                                 </div>
                             </div>
                             
                             <button onClick={() => setCurrentPage('Kurumsal')} className="bg-brand-blue-900 text-white font-bold py-4 px-10 hover:bg-brand-blue-800 transition-colors duration-300 uppercase tracking-wide text-sm rounded-none w-full md:w-auto">
-                                Hakkımızda Daha Fazla
+                                {t('moreAboutUs')}
                             </button>
                         </div>
                         <div className="relative h-[400px] md:h-[600px] bg-gray-200">
@@ -242,7 +249,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             />
                             <div className="absolute -bottom-10 -left-10 bg-brand-blue-900 text-white p-8 hidden md:block shadow-xl">
                                 <p className="text-2xl font-bold leading-none">
-                                    GLOBAL <br/> VİZYON
+                                    GLOBAL <br/> {language === 'tr' ? 'VİZYON' : 'VISION'}
                                 </p>
                             </div>
                         </div>
@@ -250,17 +257,17 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-            {/* FEATURED PROJECTS: Masonry Grid Style */}
+            {/* FEATURED PROJECTS */}
             <section className="py-16 md:py-24 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
                         <div className="mb-6 md:mb-0">
                             <span className="block text-sm font-bold text-gray-400 tracking-widest uppercase mb-2">GALERİ</span>
-                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase">ÖNE ÇIKAN SİSTEMLER</h2>
+                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase">{t('featuredSystems')}</h2>
                             <div className="h-1 w-20 bg-brand-blue-600 mt-4"></div>
                         </div>
                         <button onClick={() => setCurrentPage('Ürünlerimiz')} className="text-gray-900 font-bold border-b-2 border-gray-900 pb-1 hover:text-brand-blue-600 hover:border-brand-blue-600 transition-all text-sm md:text-base">
-                            TÜM ÜRÜNLERİ GÖR
+                            {t('allProducts')}
                         </button>
                     </div>
 
@@ -279,19 +286,18 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                     <h3 className="text-2xl font-bold text-white mb-2 uppercase">{product.name}</h3>
                                     <p className="text-gray-300 text-sm mb-6 line-clamp-2">{product.description}</p>
                                     <span className="border-2 border-white text-white px-6 py-2 font-bold uppercase text-xs hover:bg-white hover:text-brand-blue-900 transition-colors">
-                                        İncele
+                                        {t('examine')}
                                     </span>
                                 </div>
                             </div>
                         ))}
-                         {/* Static Extra Item to fill grid if needed or make a pattern */}
                          <div className="group relative h-72 md:h-80 bg-brand-blue-950 flex items-center justify-center text-center cursor-pointer overflow-hidden">
                              <div className="absolute inset-0 border-8 border-brand-blue-900 transition-all duration-300 group-hover:border-brand-blue-500"></div>
                              <div className="p-8">
-                                <h3 className="text-3xl font-black text-white mb-2">PROJELERİNİZ</h3>
-                                <p className="text-gray-400 mb-6">Sizin için en uygun çözümü bulalım.</p>
+                                <h3 className="text-3xl font-black text-white mb-2">{language === 'tr' ? 'PROJELERİNİZ' : 'YOUR PROJECTS'}</h3>
+                                <p className="text-gray-400 mb-6">{language === 'tr' ? 'Sizin için en uygun çözümü bulalım.' : 'Let us find the best solution for you.'}</p>
                                 <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="text-white font-bold underline decoration-brand-blue-500 underline-offset-4 hover:text-brand-blue-400 transition-colors">
-                                    TEKLİF AL
+                                    {t('offer')}
                                 </a>
                              </div>
                          </div>
@@ -299,12 +305,12 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-            {/* REFERENCES / BRANDS */}
+            {/* REFERENCES */}
             <section className="py-20 bg-gray-50 border-t border-gray-200 overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-12">
-                        <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">GÜÇLÜ İŞ BİRLİĞİ</span>
-                        <h2 className="text-3xl font-black text-gray-900 mt-2 uppercase">REFERANSLARIMIZ</h2>
+                        <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">{t('strongCooperation')}</span>
+                        <h2 className="text-3xl font-black text-gray-900 mt-2 uppercase">{t('references')}</h2>
                     </div>
                     <div className="relative group">
                          <div className="flex animate-marquee group-hover:pause space-x-12 md:space-x-16 items-center will-change-transform">
