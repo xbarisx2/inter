@@ -3,10 +3,9 @@ import React from 'react';
 import { COMPANY_INFO } from '../constants';
 import { useLanguage } from '../LanguageContext';
 
-const SmartRoofPage: React.FC = () => {
+const FacadePage: React.FC = () => {
     const { data, language } = useLanguage();
-    const content = data.SMART_ROOF_CONTENT[language === 'tr' ? 'TR' : 'EN'];
-    const models = data.SMART_ROOF_MODELS;
+    const content = data.FACADE_CONTENT[language === 'tr' ? 'TR' : 'EN'];
 
     return (
         <>
@@ -14,7 +13,7 @@ const SmartRoofPage: React.FC = () => {
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        {language === 'tr' ? 'Akıllı Çatı Sistemleri' : 'Smart Roof Systems'}
+                        {language === 'tr' ? 'Cephe Sistemleri' : 'Facade Systems'}
                     </h1>
                 </div>
             </div>
@@ -43,35 +42,31 @@ const SmartRoofPage: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* Product Presentation */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 animate-fade-in-up">
-                        {models.map((item, index) => (
-                            <div key={index} className="relative group rounded-2xl overflow-hidden shadow-2xl h-[300px] md:h-[400px]">
-                                <img 
-                                    src={item.image} 
-                                    alt={item.name} 
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                {/* Text overlay removed as requested */}
-                            </div>
-                        ))}
+                    {/* Image Section */}
+                    <div className="max-w-6xl mx-auto mb-20 animate-fade-in-up">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px] md:h-[500px]">
+                            <img 
+                                src={content.image} 
+                                alt={language === 'tr' ? 'Cephe Sistemleri' : 'Facade Systems'} 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
 
-                    {/* Features Section */}
-                    <div className="grid md:grid-cols-3 gap-12 border-t pt-16 mt-8">
-                        <div className="md:col-span-1">
-                            <h2 className="text-3xl font-bold text-brand-blue-900 mb-6">
-                                {language === 'tr' ? 'Akıllı Çatı Sistemleri' : 'Smart Roof Systems'}
+                    {/* Bottom Section */}
+                    <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                         <div>
+                            <h2 className="text-3xl font-bold text-brand-blue-900">
+                                {language === 'tr' ? 'Cephe Sistemleri' : 'Facade Systems'}
                             </h2>
                         </div>
-                        <div className="md:col-span-2 space-y-16">
-                            {content.features.map((feature, index) => (
-                                <div key={index} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
-                                    <h4 className="text-gray-500 font-medium text-lg hover:text-brand-blue-600 transition-colors cursor-default">
-                                        {feature}
-                                    </h4>
-                                </div>
-                            ))}
+                        <div>
+                             <h4 className="text-gray-500 text-lg mb-2 uppercase tracking-wide">
+                                {content.title}
+                            </h4>
+                            <p className="text-gray-600 leading-relaxed">
+                                {content.text}
+                            </p>
                         </div>
                     </div>
 
@@ -81,4 +76,4 @@ const SmartRoofPage: React.FC = () => {
     );
 };
 
-export default SmartRoofPage;
+export default FacadePage;

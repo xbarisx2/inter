@@ -20,6 +20,10 @@ import ContactPage from './pages/ContactPage';
 import WhatsAppButton from './components/WhatsAppButton';
 import PartnersPage from './pages/PartnersPage';
 import SocialSidebar from './components/SocialSidebar';
+import SolarPage from './pages/SolarPage'; // Using SolarPage for Smart Roof
+import FacadePage from './pages/FacadePage';
+import GuillotinePage from './pages/GuillotinePage';
+import CompositePage from './pages/CompositePage';
 import type { Page } from './types';
 
 const App: React.FC = () => {
@@ -74,6 +78,14 @@ const App: React.FC = () => {
                 return <PergolaPage />;
             case 'ZipPerde':
                 return <ZipPerdePage />;
+            case 'AkıllıÇatı':
+                return <SolarPage />;
+            case 'Cephe':
+                return <FacadePage />;
+            case 'Giyotin':
+                return <GuillotinePage />;
+            case 'Kompozit':
+                return <CompositePage />;
             case 'Referanslarımız':
                 return <ReferencesPage />;
             case 'İş Ortaklarımız':

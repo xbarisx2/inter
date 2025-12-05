@@ -14,7 +14,7 @@ const PergolaPage: React.FC = () => {
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        {language === 'tr' ? 'Pergola Sistemleri' : 'Pergola Systems'}
+                        {language === 'tr' ? 'Pergola ve Tente Sistemleri' : 'Pergola and Awning Systems'}
                     </h1>
                 </div>
             </div>
@@ -79,7 +79,7 @@ const PergolaPage: React.FC = () => {
                     <div className="grid md:grid-cols-3 gap-12 border-t pt-16 mt-8">
                         <div className="md:col-span-1">
                             <h2 className="text-3xl font-bold text-brand-blue-900 mb-6">
-                                {language === 'tr' ? 'Pergola Sistemleri' : 'Pergola Systems'}
+                                {language === 'tr' ? 'Pergola ve Tente Sistemleri' : 'Pergola and Awning Systems'}
                             </h2>
                         </div>
                         <div className="md:col-span-2 space-y-12">

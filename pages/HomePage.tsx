@@ -43,7 +43,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Pergola Sistemleri" : "Pergola Systems", 
+            title: language === 'tr' ? "Pergola ve Tente Sistemleri" : "Pergola and Awning Systems", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true",
             page: 'Ürünlerimiz' as Page 
         },
