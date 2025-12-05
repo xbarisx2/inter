@@ -1,10 +1,9 @@
 
-import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection, MediaImage } from './types';
+import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection, MediaImage, ProductCategory } from './types';
 
 // UI TRANSLATIONS & STATIC CONTENT
 export const UI_LABELS = {
     TR: {
-        // General
         examine: 'İncele',
         offer: 'Teklif Al',
         contact: 'İletişime Geç',
@@ -29,10 +28,8 @@ export const UI_LABELS = {
         allProducts: 'Tüm Ürünleri Gör',
         strongCooperation: 'Güçlü İş Birliği',
         scrollDown: 'Aşağı Kaydır',
-        
-        // Page Titles & Subtitles
         productsPageTitle: 'Ürünlerimiz',
-        productsPageSubtitle: 'Kalite, estetik ve dayanıklılığı bir araya getiren çözümlerimiz.',
+        productsPageSubtitle: 'Kalite, estetik ve dayanıklılığı bir araya getiren sistem çözümlerimiz.',
         partnersPageTitle: 'İş Ortaklarımız',
         partnersPageSubtitle: 'Başarıya giden yolda birlikte yürüdüğümüz değerli partnerlerimiz.',
         partnersPageText: 'Projelerimizdeki yüksek kalite ve başarıyı, sektörün önde gelen markalarıyla kurduğumuz güçlü iş birliklerine borçluyuz. Tedarikçilerimizden mimari ofislere kadar tüm paydaşlarımızla ortak bir vizyon doğrultusunda hareket ediyoruz.',
@@ -45,8 +42,6 @@ export const UI_LABELS = {
         blogPageSubtitle: 'Sektörden en son haberler ve teknik makaleler.',
         contactPageTitle: 'Bize Ulaşın',
         contactPageSubtitle: 'Projeniz hakkında görüşmek veya teklif almak için bizimle iletişime geçin.',
-        
-        // Contact Form
         contactFormTitle: 'Mesaj Gönderin',
         nameLabel: 'Adınız Soyadınız',
         emailLabel: 'E-posta Adresiniz',
@@ -57,8 +52,6 @@ export const UI_LABELS = {
         successMessage: 'E-posta istemciniz otomatik olarak açıldı. Lütfen mesajınızı kontrol edip gönder butonuna basarak işlemi tamamlayın.',
         newMessageButton: 'Yeni Mesaj Gönder',
         formError: 'Lütfen tüm alanları doldurunuz.',
-
-        // Product Modal
         techDetailsTitle: 'Teknik Detaylar',
         productDescTitle: 'Ürün Açıklaması',
         featuresTitle: 'Ürünün Kimliğini Yansıtan Karakteristik Özellikler',
@@ -67,8 +60,6 @@ export const UI_LABELS = {
         detailInfoButton: 'Detaylı Bilgi',
         techDataPending: 'Bu ürün için detaylı teknik veri girişi hazırlanmaktadır.',
         contactForDetails: 'Detaylı bilgi ve teknik föyler için lütfen satış temsilcimiz ile iletişime geçiniz.',
-
-        // Blog & Comments
         allCategories: 'Tümü',
         readMore: 'Devamını Oku',
         backToBlog: 'Tüm Yazılara Geri Dön',
@@ -80,7 +71,6 @@ export const UI_LABELS = {
         noCommentsMsg: 'Henüz hiç yorum yapılmamış. İlk yorumu siz yapın!'
     },
     EN: {
-        // General
         examine: 'Examine',
         offer: 'Get Quote',
         contact: 'Contact Us',
@@ -105,10 +95,8 @@ export const UI_LABELS = {
         allProducts: 'View All Products',
         strongCooperation: 'Strong Cooperation',
         scrollDown: 'Scroll Down',
-
-        // Page Titles & Subtitles
         productsPageTitle: 'Our Products',
-        productsPageSubtitle: 'Solutions combining quality, aesthetics, and durability.',
+        productsPageSubtitle: 'System solutions combining quality, aesthetics, and durability.',
         partnersPageTitle: 'Our Partners',
         partnersPageSubtitle: 'Valuable partners we walk with on the path to success.',
         partnersPageText: 'We owe the high quality and success in our projects to the strong collaborations we have established with leading brands in the sector. We act in line with a common vision with all our stakeholders, from suppliers to architectural offices.',
@@ -121,8 +109,6 @@ export const UI_LABELS = {
         blogPageSubtitle: 'Latest news and technical articles from the sector.',
         contactPageTitle: 'Contact Us',
         contactPageSubtitle: 'Contact us to discuss your project or get a quote.',
-
-        // Contact Form
         contactFormTitle: 'Send Message',
         nameLabel: 'Full Name',
         emailLabel: 'Email Address',
@@ -133,8 +119,6 @@ export const UI_LABELS = {
         successMessage: 'Your email client has been opened automatically. Please check your message and click send to complete the process.',
         newMessageButton: 'Send New Message',
         formError: 'Please fill in all fields.',
-
-        // Product Modal
         techDetailsTitle: 'Technical Details',
         productDescTitle: 'Product Description',
         featuresTitle: 'Characteristic Features Reflecting Product Identity',
@@ -143,8 +127,6 @@ export const UI_LABELS = {
         detailInfoButton: 'Detailed Info',
         techDataPending: 'Detailed technical data entry is being prepared for this product.',
         contactForDetails: 'Please contact our sales representative for detailed information and technical sheets.',
-
-        // Blog & Comments
         allCategories: 'All',
         readMore: 'Read More',
         backToBlog: 'Back to All Posts',
@@ -185,6 +167,132 @@ export const CORPORATE_CONTENT = {
     }
 };
 
+export const KEPENK_CONTENT = {
+    TR: [
+        {
+            title: "Yüksek Güvenlik ve Caydırıcılık",
+            text: "Kepenkler, sağlam ve dayanıklı yapılarıyla hırsızlık gibi dış müdahalelere karşı caydırıcı bir bariyer oluşturur. Kapalı konumdayken iç mekanı tamamen gizleyerek tam mahremiyet sağlar ve iş yeriniz veya garajınız için vazgeçilmez bir güvenlik katmanı ekler."
+        },
+        {
+            title: "Dış Etkenlere Karşı Tam Koruma",
+            text: "Kepenk sistemleri, sadece izinsiz girişleri değil, aynı zamanda olumsuz hava koşullarını da engeller. Yağmur, rüzgar ve toz gibi yıpratıcı etkenlere karşı tam koruma sağlar. Ayrıca güneşin zararlı UV ışınlarını bloke ederek araçlarınızı, ürünlerinizi ve diğer değerli eşyalarınızı solma ve hasar görme riskine karşı korur."
+        },
+        {
+            title: "Sağlam Yapı ve Fonksiyonel Tasarım",
+            text: "Sistemlerimizde kullanılan 77 mm ve 95 mm gibi geniş lamel seçenekleri, kepenklerin dayanıklılığını ve güvenlik seviyesini artırır. Bu sağlam yapı, uzun ömürlü ve sorunsuz bir kullanım sunar. Fonksiyonel tasarımı, ticari alanların ve garajların ihtiyaçlarına tam uyum sağlayarak hem estetik hem de pratik bir çözüm oluşturur."
+        }
+    ],
+    EN: [
+        {
+            title: "High Security and Deterrence",
+            text: "Shutters act as a deterrent barrier against external interventions such as theft with their robust and durable structures. They provide complete privacy by completely hiding the interior when closed and add an indispensable security layer for your workplace or garage."
+        },
+        {
+            title: "Full Protection Against External Factors",
+            text: "Shutter systems prevent not only unauthorized access but also adverse weather conditions. They provide full protection against abrasive factors such as rain, wind, and dust. They also block the sun's harmful UV rays, protecting your vehicles, products, and other valuable items against the risk of fading and damage."
+        },
+        {
+            title: "Robust Structure and Functional Design",
+            text: "Wide slat options such as 77 mm and 95 mm used in our systems increase the durability and security level of the shutters. This robust structure offers long-lasting and trouble-free use. Its functional design fits perfectly with the needs of commercial areas and garages, creating both an aesthetic and practical solution."
+        }
+    ]
+};
+
+export const PERGOLA_CONTENT = {
+    TR: {
+        description: "Rigel Pergola Sistemleri, dış mekanlarda estetik bir görsel sunarken, dayanıklılık ve fonksiyonellikten ödün vermez. Ürünlerimiz, yüksek mukavemetli alüminyum alaşımlı malzemelerden üretilmiş olup, elektrostatik toz boya ile kaplanarak uzun ömürlü ve dış etkenlere karşı dayanıklı hale getirilmiştir. Alüminyum ekstrüzyon profiller, inoks parçalar ve blockout kumaş kullanılarak tasarlanan pergola sistemleri, her türlü hava koşuluna karşı güçlü bir dayanıklılık sergiler.",
+        features: [
+            "Yüksek Koruma ve Dayanıklı Malzeme",
+            "İleri Teknoloji ve Fonksiyonellik",
+            "Estetik Tasarım ve Dört Mevsim Konfor"
+        ]
+    },
+    EN: {
+        description: "Rigel Pergola Systems offer an aesthetic visual in outdoor spaces without compromising durability and functionality. Our products are produced from high-strength aluminum alloy materials and are coated with electrostatic powder paint, making them long-lasting and resistant to external factors. Designed using aluminum extrusion profiles, inox parts, and blockout fabric, pergola systems exhibit strong durability against all weather conditions.",
+        features: [
+            "High Protection and Durable Material",
+            "Advanced Technology and Functionality",
+            "Aesthetic Design and Four Seasons Comfort"
+        ]
+    }
+};
+
+export const ZIP_PERDE_CONTENT = {
+    TR: {
+        description: "Rigel Zip Perde Sistemleri, 0,5 m ile 6 m aralığında genişlik ölçüleri sunarak, geniş bir uygulama yelpazesi ile kullanıcılara pratik çözümler sağlar. Estetik ve fonksiyonel özellikleri bir araya getiren bu sistemler, uzun ömürlü ve sağlıklı bir kullanım vaat eder.",
+        features: [
+            "Üstün Rüzgar Direnci ve Dayanıklılık",
+            "Çevresel Etkenlere Karşı Tam Koruma",
+            "Fonksiyonel Tasarım ile Artan Konfor"
+        ]
+    },
+    EN: {
+        description: "Rigel Zip Screen Systems provide practical solutions to users with a wide range of applications by offering width dimensions ranging from 0.5 m to 6 m. Combining aesthetic and functional features, these systems promise long-lasting and healthy use.",
+        features: [
+            "Superior Wind Resistance and Durability",
+            "Full Protection Against Environmental Factors",
+            "Increased Comfort with Functional Design"
+        ]
+    }
+};
+
+export const PERGOLA_MODELS = [
+    { 
+        name: "Vesta", 
+        subtitle: "Pergola", 
+        image: "https://rigelaluminyum.com/images/urun-gruplari/pergola-sistemleri/athena-modeli.jpg",
+        specs: [
+            { label: "En", value: "6 m" },
+            { label: "İleri Açılım", value: "5,5 m" },
+            { label: "Raylar Arası Maks", value: "3,5 m" },
+            { label: "Ray Tipi", value: "70 x 150" },
+            { label: "Direk", value: "100x100" },
+            { label: "Oluk", value: "15x15" }
+        ]
+    },
+    { 
+        name: "Juno", 
+        subtitle: "Askılı Pergola", 
+        image: "https://rigelaluminyum.com/images/urun-gruplari/pergola-sistemleri/demeter-modeli.jpg",
+        specs: [
+            { label: "En (Maks)", value: "9 m" },
+            { label: "İleri Açılım", value: "5 m" },
+            { label: "Raylar Arası Maks", value: "3,5 m" },
+            { label: "Ray Tipi", value: "70 x 150" },
+            { label: "Oluk", value: "15 x 15" }
+        ]
+    },
+    { 
+        name: "Pallas", 
+        subtitle: "T Modül Pergola", 
+        image: "https://rigelaluminyum.com/images/urun-gruplari/pergola-sistemleri/poseidon-modeli.jpg",
+        specs: [
+            { label: "En (Maks)", value: "6 m" },
+            { label: "İleri Açılım", value: "5,5 m" },
+            { label: "Raylar Arası Maks", value: "3,5 m" },
+            { label: "Ray Tipi", value: "70 x 150" },
+            { label: "Direk", value: "100x100" },
+            { label: "Oluk", value: "15x15" }
+        ]
+    },
+    { 
+        name: "Ceres", 
+        subtitle: "T Modül Askılı Pergola", 
+        image: "https://rigelaluminyum.com/images/urun-gruplari/pergola-sistemleri/artemis-modeli.jpg",
+        specs: [
+            { label: "En", value: "6 m" },
+            { label: "İleri Açılım", value: "5,5 m" },
+            { label: "Raylar Arası Maks", value: "3,5 m" },
+            { label: "Ray Tipi", value: "70 x 150" },
+            { label: "Oluk", value: "15 x 15" }
+        ]
+    }
+];
+
+export const ZIP_PERDE_MODELS = [
+    { name: "Selene", subtitle: "Zip Perde", image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true" }
+];
+
 export const COMPANY_INFO = {
     name: "İNTER AKDENİZ ALÜMİNYUM LTD. ŞTİ.",
     address: "Çağlayan Mahallesi Barınaklar Bulvarı Pınar Apartmanı No:99A Muratpaşa / Antalya",
@@ -216,6 +324,100 @@ export const HERO_SLIDES = [
         title: "Cam Balkon Sistemleri",
         subtitle: "Manzaranızı Kesintisiz Yaşayın"
     }
+];
+
+export const PRODUCT_CATEGORIES: ProductCategory[] = [
+    {
+        id: "linea-rossa-cat",
+        title: "LINEA ROSSA Sistemleri",
+        image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp",
+        description: "İtalyan tasarımı ve üstün teknolojinin buluştuğu nokta. Yüksek performanslı sürme ve cephe sistemleri.",
+        page: "Linea Rossa"
+    },
+    {
+        id: "pimapen-cat",
+        title: "Pimapen Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
+        description: "Pencerenin adı, kalitenin ve konforun adresi. Üstün ısı ve ses yalıtımı sağlayan PVC sistemler.",
+        page: "Pimapen"
+    },
+    {
+        id: "aluminyum-mimari",
+        title: "Alüminyum Mimari Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-dograma-sistemleri.jpg?raw=true",
+        description: "Modern yapılar için estetik, dayanıklı ve yüksek performanslı alüminyum doğrama çözümleri.",
+        page: "Alüminyum"
+    },
+    {
+        id: "panjur",
+        title: "Panjur Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true",
+        description: "Güneş kontrolü, güvenlik ve ısı yalıtımı sağlayan otomatik ve manuel panjur sistemleri.",
+        page: "Panjur"
+    },
+    {
+        id: "kepenk",
+        title: "Kepenk Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/kepenk-sistemleri.jpg?raw=true",
+        description: "İş yerleri ve konutlar için maksimum güvenlik sunan estetik sarmal kepenk çözümleri.",
+        page: "Kepenk"
+    },
+    {
+        id: "pergola",
+        title: "Pergola Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true",
+        description: "Dört mevsim kullanılabilen, ışıklı ve motorlu biyoklimatik pergola sistemleri.",
+        page: "Pergola"
+    },
+    {
+        id: "zip-perde",
+        title: "Zip Perde Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true",
+        description: "Rüzgara dayanıklı, modern dış cephe gölgelendirme ve sineklik çözümleri.",
+        page: "ZipPerde"
+    },
+    {
+        id: "akilli-cati",
+        title: "Akıllı Çatı Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/Makas_Akilli_Cati-e1749810492326.jpg?raw=true",
+        description: "Açılır kapanır hareketli panel teknolojisi ile mekanlarınızı gökyüzüyle buluşturun."
+    },
+    {
+        id: "cephe",
+        title: "Cephe Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true",
+        description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe sistemleri ile modern bina kabukları."
+    },
+    {
+        id: "cam-balkon",
+        title: "Cam Balkon Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/cam-balkon-sistemleri.jpg?raw=true",
+        description: "Katlanır ve sürme cam sistemleri ile balkonlarınızı dört mevsim yaşam alanına dönüştürün."
+    },
+    {
+        id: "giyotin",
+        title: "Giyotin Cam Balkon Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/giyotin-cam-balkon-sistemleri.jpg?raw=true",
+        description: "Dikey hareket eden, kumandalı ve motorlu küpeşte cam sistemleri."
+    },
+    {
+        id: "kompozit",
+        title: "Alüminyum Kompozit Sistemler",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true",
+        description: "Yapılarınıza modern bir görünüm kazandıran, uzun ömürlü cephe kaplama panelleri."
+    },
+    {
+        id: "korkuluk",
+        title: "Korkuluk Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true",
+        description: "Merdiven, balkon ve teraslar için güvenli ve estetik alüminyum ve cam korkuluklar."
+    },
+    {
+        id: "pvc",
+        title: "PVC Kapı, Pencere Sistemleri",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
+        description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu PVC doğrama çözümleri."
+    },
 ];
 
 export const NAVIGATION_LINKS: NavLink[] = [
@@ -259,24 +461,26 @@ export const NAVIGATION_LINKS: NavLink[] = [
                     { name: "Pencere ve Kapı Donanım Sistemleri", page: "Pimapen", id: "donanim" }
                 ]
             },
-            {
-                name: "Alüminyum Profil Katalogları",
+            { 
+                name: "Alüminyum Mimari Sistemleri", 
                 page: "Alüminyum",
                 subLinks: [
-                    { name: "Aldoks Serisi", page: "Alüminyum", id: "aldoks" },
-                    { name: "C60 Yalıtımlı Seri", page: "Alüminyum", id: "c60" },
-                    { name: "Cephe Sistemleri", page: "Alüminyum", id: "cephe" },
-                    { name: "Ofis Bölme Sistemleri", page: "Alüminyum", id: "ofis" }
+                    { name: "Yalıtımlı Sürme Serisi", page: "Alüminyum", id: "yalitimli-surme-rg" },
+                    { name: "Yalıtımsız Sürme Serisi", page: "Alüminyum", id: "yalitimsiz-surme-rg" },
+                    { name: "Açılır Seri", page: "Alüminyum", id: "acilir-seri-rg" }
                 ]
             },
-            {
-                name: "Solar Montaj Sistemleri",
-                page: "Solar",
-                subLinks: [
-                    { name: "Solar Konstrüksiyon", page: "Solar", id: "konstruksiyon" },
-                    { name: "Çatı Bağlantı Elemanları", page: "Solar", id: "baglanti" }
-                ]
-            }
+            { name: "Panjur Sistemleri", page: "Panjur" },
+            { name: "Kepenk Sistemleri", page: "Kepenk" },
+            { name: "Pergola Sistemleri", page: "Pergola" },
+            { name: "Zip Perde Sistemleri", page: "ZipPerde" },
+            { name: "Akıllı Çatı Sistemleri", page: "Ürünlerimiz" },
+            { name: "Cephe Sistemleri", page: "Ürünlerimiz" },
+            { name: "Cam Balkon Sistemleri", page: "Ürünlerimiz" },
+            { name: "Giyotin Cam Balkon Sistemleri", page: "Ürünlerimiz" },
+            { name: "Alüminyum Kompozit Sistemler", page: "Ürünlerimiz" },
+            { name: "Korkuluk Sistemleri", page: "Ürünlerimiz" },
+            { name: "PVC Kapı, Pencere Sistemleri", page: "Ürünlerimiz" }
         ]
     },
     { name: 'İş Ortaklarımız', page: 'İş Ortaklarımız' },
@@ -287,68 +491,207 @@ export const NAVIGATION_LINKS: NavLink[] = [
 ];
 
 export const PRODUCTS: Product[] = [
-    { name: "Aldoks Serisi", description: "Ekonomik, hafif ve geniş kullanım alanına sahip, vitrin ve kapı uygulamaları için ideal yalıtımsız doğrama sistemi.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" },
-    { name: "C60 Yalıtımlı Seri", description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu binalar için tasarlanmış polyamid bariyerli kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" },
-    { name: "Sistem Serisi (Işıklık)", description: "Çatı ışıklıkları ve kış bahçesi tavanları için özel tasarlanmış, su tahliye kanallı ve sızdırmazlık garantili profil sistemi.", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80" },
-    { name: "Sürme (Sliding) Serisi", description: "Dar alanlarda maksimum kullanım sağlayan, balkon ve teras ve geniş açıklıklar için geliştirilmiş sürme doğrama profilleri.", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
-    { name: "Cephe Sistemleri", description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe uygulamaları için yüksek mukavemetli alüminyum profil çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" },
-    { name: "Korkuluk ve Küpeşte", description: "Merdiven, balkon ve galeri boşlukları için kare ve yuvarlak formlarda estetik ve güvenli alüminyum korkuluk sistemleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true" },
-    { name: "Cam Balkon Profilleri", description: "Katlanır ve sürme cam balkon sistemleri için tasarlanmış, hava ve su sızdırmazlığı sağlayan özel ray ve kasa profilleri.", image: "https://github.com/xbarisx2/logo/blob/main/cam-balkon.jpg?raw=true" },
-    { name: "Ofis Bölme Sistemleri", description: "Modern ofisler için şeffaf, modüler ve ses yalıtımlı cam bölme duvar profilleri ve aksesuarları.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
-    { name: "Güneş Kırıcılar", description: "Bina cephelerinde güneş kontrolü sağlayan, estetik görünümlü sabit veya hareketli alüminyum güneş kırıcı profiller.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" },
-    { name: "Panjur ve Kepenk", description: "Güvenlik ve güneş kontrolü için kullanılan, motorlu ve manuel kullanıma uygun alüminyum panjur ve kepenk profilleri.", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" },
-    { name: "Kompozit Panel", description: "Dış cephe kaplamalarında kullanılan, yanmaz (B1/A2), uzun ömürlü ve geniş renk seçenekli alüminyum kompozit paneller.", image: "https://images.unsplash.com/photo-1460317442991-0ec2aa247f7b?auto=format&fit=crop&w=600&q=80" },
-    { name: "Sineklik Profilleri", description: "Pencere ve kapı sistemlerine entegre edilebilen, pileli, menteşeli ve sabit sineklik sistemleri için alüminyum profiller.", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" },
-    { name: "Tente ve Pergola", description: "Açık alanları yaşam alanına dönüştüren, motorlu ve ışıklı biyoklimatik pergola sistem profilleri.", image: "https://images.unsplash.com/photo-1632920235889-7080927c3d79?auto=format&fit=crop&w=600&q=80" },
-    { name: "Mobilya Profilleri", description: "Mutfak, banyo ve gardırop kapakları için dekoratif çerçeve ve kulp profilleri.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" },
-    { name: "Menfez Profilleri", description: "Havalandırma boşlukları ve banyo kapıları için kullanılan sabit kanatlı alüminyum menfez profilleri.", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
+    {
+        name: "LR-3100",
+        description: "Yalıtımlı Sürme Sistemi",
+        image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3100.jpg?raw=true"
+    },
+    {
+        name: "Pimapen Nirvana",
+        description: "Üstün Yalıtımlı PVC Pencere",
+        image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true"
+    },
+    {
+        name: "Bioclimatic Pergola",
+        description: "Dört Mevsim Konfor",
+        image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-8700.jpg?raw=true"
+    }
 ];
 
 export const ALUMINUM_SECTIONS: ProductSection[] = [
     {
-        id: "aldoks",
-        title: "Aldoks Serisi",
+        id: "yalitimli-surme-rg",
+        title: "Yalıtımlı Sürme Serisi",
         items: [
-            { name: "Aldoks Doğrama", description: "Ekonomik, hafif ve geniş kullanım alanına sahip, vitrin ve kapı uygulamaları için ideal yalıtımsız doğrama sistemi.", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" }
+            {
+                name: "RG-100",
+                description: "Yalıtımlı Sürme Sistem: Yüksek performanslı yalıtımlı sürme doğrama sistemi.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/surme-sistemler/rg-100.jpg",
+                technicalDetails: {
+                    features: [
+                        "En iyi su , hava yalıtımı ve enerji tasarrufu",
+                        "Üretim ve montaj kolaylığı",
+                        "Müşteri isteğine bağlı sineklik kasa profili",
+                        "Paslanmaz çelik ray ve bu ray üzerinde hareket eden özel rulmanlarla yüksek dayanım ve kullanım konforu",
+                        "Özel olarak tasarlanmış yüksek dayanımlı çok noktadan kilitleme sistemi",
+                        "Yalıtımı minimalize etmek için kanat birleşimi sağlayan orta kenet tasarımı ve kıl fitiller",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "75 mm" },
+                        { label: "Kanat Genişliği", value: "31,9 mm" },
+                        { label: "Orta Kanat Genişliği", value: "38,5 mm" },
+                        { label: "Orta Kanat Yüksekliği", value: "81,5 mm" },
+                        { label: "Kasa Yüksekliği", value: "44 mm" },
+                        { label: "Cam Kalınlığı", value: "20 - 22 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            },
+            {
+                name: "RG-300",
+                description: "Yalıtımlı Sürme Sistem: Modern mimari için geliştirilmiş ısı yalıtımlı sürme çözümü.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/surme-sistemler/rg-300.jpg",
+                technicalDetails: {
+                    features: [
+                        "En iyi su , hava yalıtımı ve enerji tasarrufu",
+                        "Ağır yük taşımaya müsait rulmanlar",
+                        "Rahat ve hızlı bir sürme için özel çelik ray ve rulman , sıfıra yakın sürtünme",
+                        "Üretim ve montaj kolaylığı",
+                        "Müşteri isteğine bağlı sineklik kasa profili",
+                        "Paslanmaz çelik ray ve bu ray üzerinde hareket eden özel rulmanlarla yüksek dayanım ve kullanım konforu",
+                        "Özel takozu sayesinde daha mukavemetli toplama olanağı",
+                        "Yalıtımı minimalize etmek için kanat birleşimi sağlayan orta kenet tasarımı ve kıl fitiller",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "94,5 mm" },
+                        { label: "Kanat Genişliği", value: "38 mm" },
+                        { label: "Orta Kanat Genişliği", value: "51 mm" },
+                        { label: "Orta Kanat Yüksekliği", value: "94 mm" },
+                        { label: "Kasa Yüksekliği", value: "42,9 mm" },
+                        { label: "Isı Yalıtım Bariyeri", value: "24 mm" },
+                        { label: "Cam Kalınlığı", value: "20 - 28 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            },
+            {
+                name: "RG-500",
+                description: "Yalıtımlı Hebeschiebe Sürme Sistem: Kaldır-Sür mekanizmasıyla geniş açıklıklarda konforlu kullanım.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/surme-sistemler/rg-500.jpg",
+                technicalDetails: {
+                    features: [
+                        "Daha iyi su , hava yalıtımı ve enerji tasarrufu",
+                        "Üretim ve montaj kolaylığı",
+                        "HBSB mekanizma ile 250 kg. kanat taşıma kapasitesi",
+                        "Paslanmaz çelik ray ve bu ray üzerinde hareket eden özel rulmanlarla yüksek dayanım ve kullanım konforu",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "94,5 mm" },
+                        { label: "Kanat Genişliği", value: "38 mm" },
+                        { label: "Orta Kanat Genişliği", value: "51 mm" },
+                        { label: "Orta Kanat Yüksekliği", value: "94 mm" },
+                        { label: "Kasa Yüksekliği", value: "42,9 mm" },
+                        { label: "Isı Yalıtım Bariyeri", value: "24 mm" },
+                        { label: "Cam Kalınlığı", value: "20 - 28 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            }
         ]
     },
     {
-        id: "c60",
-        title: "C60 Yalıtımlı Seri",
+        id: "yalitimsiz-surme-rg",
+        title: "Yalıtımsız Sürme Serisi",
         items: [
-            { name: "C60 Kapı ve Pencere", description: "Yüksek ısı ve ses yalıtımı sağlayan, enerji tasarruflu binalar için tasarlanmış polyamid bariyerli kapı ve pencere sistemi.", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" }
+             {
+                name: "RG-200",
+                description: "Yalıtımsız Sürme Sistem: İç mekan bölmeleri ve balkon kapatmaları için ideal ekonomik sürme sistem.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/surme-sistemler/rg-200.jpg",
+                technicalDetails: {
+                    features: [
+                        "Üretim ve montaj kolaylığı",
+                        "Müşteri isteğine bağlı sineklik kasa profili",
+                        "Paslanmaz çelik ray ve bu ray üzerinde hareket eden özel rulmanlarla yüksek dayanım ve kullanım konforu",
+                        "Özel olarak tasarlanmış yüksek dayanımlı çok noktadan kilitleme sistemi",
+                        "Yalıtımı minimalize etmek için kanat birleşimi sağlayan orta kenet tasarımı ve kıl fitiller",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü",
+                        "En iyi su , hava yalıtımı ve enerji tasarrufu"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "75 mm" },
+                        { label: "Kanat Genişliği", value: "31,9 mm" },
+                        { label: "Orta Kanat Genişliği", value: "38,5 mm" },
+                        { label: "Orta Kanat Yüksekliği", value: "81,5 mm" },
+                        { label: "Kasa Yüksekliği", value: "44 mm" },
+                        { label: "Cam Kalınlığı", value: "20 - 22 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            },
+             {
+                name: "RG-400",
+                description: "Yalıtımsız Sürme Sistem: Pratik kullanım sağlayan estetik sürme doğrama çözümü.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/surme-sistemler/rg-400.jpg",
+                technicalDetails: {
+                    features: [
+                        "En iyi su , hava yalıtımı ve enerji tasarrufu",
+                        "Ağır yük taşımaya müsait rulmanlar",
+                        "Rahat ve hızlı bir sürme için özel çelik ray ve rulman , sıfıra yakın sürtünme",
+                        "Üretim ve montaj kolaylığı",
+                        "Müşteri isteğine bağlı sineklik kasa profili"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "94,5 mm" },
+                        { label: "Kanat Genişliği", value: "38 mm" },
+                        { label: "Orta Kanat Genişliği", value: "51 mm" },
+                        { label: "Orta Kanat Yüksekliği", value: "94 mm" },
+                        { label: "Kasa Yüksekliği", value: "42,9 mm" },
+                        { label: "Cam Kalınlığı", value: "20 - 28 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120 kg" }
+                    ]
+                }
+            }
         ]
     },
     {
-        id: "cephe",
-        title: "Cephe Sistemleri",
+        id: "acilir-seri-rg",
+        title: "Açılır Seri",
         items: [
-            { name: "Giydirme Cephe", description: "Silikon, kapaklı ve yarı kapaklı giydirme cephe uygulamaları için yüksek mukavemetli alüminyum profil çözümleri.", image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true" }
-        ]
-    },
-    {
-        id: "ofis",
-        title: "Ofis Bölme Sistemleri",
-        items: [
-             { name: "Cam Bölme", description: "Modern ofisler için şeffaf, modüler ve ses yalıtımlı cam bölme duvar profilleri ve aksesuarları.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" }
-        ]
-    }
-];
-
-export const SOLAR_SECTIONS: ProductSection[] = [
-    {
-        id: "konstruksiyon",
-        title: "Solar Konstrüksiyon",
-        items: [
-            { name: "Arazi Tipi Montaj", description: "Güneş enerjisi santralleri için dayanıklı ve hızlı monte edilebilen arazi tipi konstrüksiyon sistemleri.", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" },
-            { name: "Çatı Tipi Montaj", description: "Eğimli ve düz çatılar için özel tasarlanmış, sızdırmazlık garantili solar montaj profilleri.", image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=600&q=80" }
-        ]
-    },
-    {
-        id: "baglanti",
-        title: "Çatı Bağlantı Elemanları",
-        items: [
-            { name: "Kanca ve Klipsler", description: "Farklı kiremit ve çatı tiplerine uygun paslanmaz çelik bağlantı kancaları ve panel tutucu klipsler.", image: "https://images.unsplash.com/photo-1621905252507-b355f6a38029?auto=format&fit=crop&w=600&q=80" }
+             {
+                name: "RG-600",
+                description: "Yalıtımlı Açılır Sistem: Kapı ve pencere uygulamaları için yüksek yalıtımlı açılır sistem.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/acilir-sistemler/rg-600.jpg",
+                technicalDetails: {
+                    features: [
+                        "Geniş ve dar profil seçenekleri ile üstün seviyede performans çözümler",
+                        "Kasaya montaj edilen conta ile ısı yalıtımlı bariyerinin birleşmesi sonucunda minimum sızdırmazlık ve ses yalıtımı",
+                        "Özel olarak tasarlanmış ayarlanabilir kilit karşılıkları",
+                        "Mükemmel dizayn ile en iyi ısı yalıtım değerleri imkanı",
+                        "Üçlü cam ve jaluzili cam uygulayabilme imkanı",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "71,7 mm" },
+                        { label: "Kasa Yüksekliği", value: "64,2 mm" },
+                        { label: "Cam Kalınlığı", value: "16-48 mm" },
+                        { label: "Isı Yalıtım Bariyeri", value: "24 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120-200 kg" }
+                    ]
+                }
+            },
+             {
+                name: "RG-700",
+                description: "Yalıtımsız Açılır Sistem: Vitrin ve iç mekan kapı uygulamaları için tasarlanmış açılır seri.",
+                image: "https://rigelaluminyum.com/images/urun-gruplari/acilir-sistemler/rg-700.jpg",
+                technicalDetails: {
+                    features: [
+                        "Geniş ve dar profil seçenekleri ile üstün seviyede performans çözümler",
+                        "Özel olarak tasarlanmış ayarlanabilir kilit karşılıkları",
+                        "Farklı renk seçenekleri ile alüminyumun modern ve estetik görünümü",
+                        "Üretim ve montaj kolaylığı"
+                    ],
+                    specifications: [
+                        { label: "Kanat Yüksekliği", value: "71,7 mm" },
+                        { label: "Kasa Yüksekliği", value: "64,2 mm" },
+                        { label: "Kasa Genişliği", value: "55 mm" },
+                        { label: "Cam Kalınlığı", value: "16-48 mm" },
+                        { label: "Kanat Taşıma Kapasitesi", value: "120-200 kg" }
+                    ]
+                }
+            }
         ]
     }
 ];
@@ -361,8 +704,8 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
             { 
                 name: "LR-3100 - Linea Rossa", 
                 description: "Yalıtımlı Sürme Sistemi: Yüksek ısı bariyerli, modern mimari için ideal sürme sistemi.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp",
-                technicalDetails: {
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3100.jpg?raw=true",
+                 technicalDetails: {
                     features: [
                         "Daha İyi Su, Hava Yalıtımı ve Enerji Tasarrufu",
                         "Üretim ve Montaj Kolaylığı",
@@ -386,10 +729,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-3200 - Linea Rossa", 
-                description: "Yalıtımlı Sürme Sistemi: Geniş açıklıklar için tasarlanmış yüksek performanslı seri. Modern mimaride; İtalyan tarzını harmanlayarak tasarlanan, aksesuar özellikleri ile ön planda tutulan LR 3200 ile tanışmaya hazır olun.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3200.webp",
+            {
+                name: "LR-3200 - Linea Rossa",
+                description: "Yalıtımlı Sürme Sistemi: Geniş açıklıklar için tasarlanmış yüksek performanslı seri. Modern mimaride; İtalyan tarzını harmanlayarak tasarlanan, aksesuar özellikleri ile ön planda tutulan LR 3200 ile tanışmaya hazır olun.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3200.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Daha İyi Su, Hava Yalıtımı ve Enerji Tasarrufu",
@@ -416,10 +759,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-3300 - Linea Rossa", 
-                description: "Yalıtımlı Sürme Sistemi: Yalıtım ve sızdırmazlık problemini tamamen ortadan kaldıran bir sistem. Alüminyumun güç ile mükemmel birleşimi sizlere geniş açıklıklar ve ferah mekanlar sunuluyor.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3300.webp",
+            {
+                name: "LR-3300 - Linea Rossa",
+                description: "Yalıtımlı Sürme Sistemi: Yalıtım ve sızdırmazlık problemini tamamen ortadan kaldıran bir sistem. Alüminyumun güç ile mükemmel birleşimi sizlere geniş açıklıklar ve ferah mekanlar sunuluyor.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3300.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Daha İyi Su, Hava Yalıtımı ve Enerji Tasarrufu",
@@ -428,7 +771,7 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         "Kullanım Kolaylığı",
                         "Sorunsuz, Basit Mekanik Çözümler",
                         "Sürme Doğramanın Rahatlığı ile Menteşeli Doğramanın Yalıtım Performansını Bir Arada Çözen Mükemmel Endüstriyel Tasarım",
-                        "Yüksek Korozyon ve \"ultraviyole\" dayanımı",
+                        "Yüksek Korozyon ve ultraviyole dayanımı",
                         "Gümüş, Bronz Renkli Eloksal Yüzeyler ile Metalin Modern ve Estetik Görünümü",
                         "Özel Dizayn Edilmiş Farklı Konseptlerde Toz Boya ve Ahşap Görünüm Seçenekleri"
                     ],
@@ -443,10 +786,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-3400 - Linea Rossa", 
-                description: "Yalıtımlı Sürme Sistemi: Mükemmel hava ve su sızdırmazlığı iddiamızda gerçekçiyiz. Zorlu iklim koşulları ile mücadele etmek isteyen bir ruh var.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3400.webp",
+            {
+                name: "LR-3400 - Linea Rossa",
+                description: "Yalıtımlı Sürme Sistemi: Mükemmel hava ve su sızdırmazlığı iddiamızda gerçekçiyiz. Zorlu iklim koşulları ile mücadele etmek isteyen bir ruh var.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3400.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Kaldır-Sür ve Normal Sürme Yapma İmkanı",
@@ -464,10 +807,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-3500 - Linea Rossa", 
-                description: "Yalıtımlı Sürme Sistemi: O bir efsane. Her zaman lider kaldır Sür Sistem'de iddiası çok yükseklere, 400 kg'lık camlar bize hafif olduğunu fısıldıyor.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3500.webp",
+            {
+                name: "LR-3500 - Linea Rossa",
+                description: "Yalıtımlı Sürme Sistemi: O bir efsane. Her zaman lider kaldır Sür Sistem'de iddiası çok yükseklere, 400 kg'lık camlar bize hafif olduğunu fısıldıyor.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3500.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Daha İyi Su, Hava Yalıtımı ve Enerji Tasarrufu",
@@ -488,10 +831,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-3700 - Linea Rossa", 
-                description: "Yalıtımlı Sürme Sistemi: Minimal Sürme Sistemleri'nde gelişen teknolojiden korkmayarak tasarlandı. Referans projelerde Profesyonellikle uygulandı.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3700.webp",
+             {
+                name: "LR-3700 - Linea Rossa",
+                description: "Yalıtımlı Sürme Sistemi: Minimal Sürme Sistemleri'nde gelişen teknolojiden korkmayarak tasarlandı. Referans projelerde Profesyonellikle uygulandı.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3700.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Üst ve Alt Kilitleme Sistemi Sayesinde Güvenlik Ön Plana Alınmıştır.",
@@ -507,17 +850,17 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Orta Dikme Genişliği", value: "23 mm" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "yalitimsiz-surme",
         title: "Yalıtımsız Sürme Sistemleri",
         items: [
-            { 
-                name: "LR-2100 - Linea Rossa", 
-                description: "Yalıtımsız Sürme Sistemi: Ekonomik ve fonksiyonel, iç mekan ve balkon kapatmaları için ideal.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2100.webp",
+            {
+                name: "LR-2100 - Linea Rossa",
+                description: "Yalıtımsız Sürme Sistemi: Ekonomik ve fonksiyonel, iç mekan ve balkon kapatmaları için ideal.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-2100.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Geniş Profil Seçenekleri ile Optimum Çözümler",
@@ -541,65 +884,21 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-2200 - Linea Rossa", 
-                description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2200.webp",
-                technicalDetails: {
-                     features: [
-                        "Üst ve Alt Kilitleme Sistemi Sayesinde Güvenlik Ön Plana Alınmıştır.",
-                        "Kasa ve Kanat Profilinin Duvar İçine Gömülmesi Sayesinde Dış Ortamın Manzarasının Evinizin İçindeyken Bile Hissetmenizi Sağlamaktadır.",
-                        "Her Kanatta Çift Yönde Bulunan Rulmanlar Sayesinde 800kg Kanat Taşıma Kapasitesi",
-                        "Üç Cam Uygulama İmkanı",
-                        "Yüksek Isı ve Ses Performansı"
-                    ],
-                    specifications: [
-                        { label: "Kasa Genişliği", value: "129 mm" },
-                        { label: "Kasa Yüksekliği", value: "50 mm" },
-                        { label: "Kanat Genişliği", value: "42 mm" },
-                        { label: "Orta Dikme Genişliği", value: "23 mm" }
-                    ]
-                }
-            },
-            { 
-                name: "LR-2200 - Linea Rossa", 
-                description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-2200.webp",
-                technicalDetails: {
-                     features: [
-                        "Üretim ve Montaj Kolaylığı",
-                        "Kolay ve Yumuşak Bir Sürme İçin Özel Çelik Ray ve Rulman Sıfıra Yakın Sürtünme",
-                        "Ağır Yük Taşımaya Müsait Rulmanlar",
-                        "Kilit Karşılığı Sürme Kasanın İçine Monte Edilebilen Tekli veya Çoklu Kilit Uygulanabilirliği",
-                        "Özel Takozu Sayesinde Daha Mukavemetli Toplama Olanağı",
-                        "Sistem İçinde Çözülmüş Özel Sineklik Tasarımı",
-                        "Projeye Uygun Özel Tasarım ve Seçenekleri",
-                        "Paslanmaz Çelik Ray ve Bu Ray Üzerinde Hareket Eden Özel Rulmanlarla Yüksek Dayanım ve Kullanım Konforu",
-                        "Özel Dizayn Edilmiş ve Yüksek Dayanımlı Çok Noktadan Kilitleme Sistemi",
-                        "Polyamit Profillerle Boşluksuz Orta Kenet Detayı",
-                        "Gümüş, Bronz Renkli Eloksal Yüzeyler ile Metalin Modern ve Estetik Görünümü",
-                        "Özel Dizayn Edilmiş Farklı Konseptlerde Toz Boya ve Ahşap Görünüm Seçenekleri"
-                    ],
-                    specifications: [
-                        { label: "Kanat Genişliği", value: "38 mm" },
-                        { label: "Kanat Yüksekliği", value: "92,5 mm" },
-                        { label: "Profil Et Kalınlığı", value: "1,3 - 1,8 mm" },
-                        { label: "Cam Kalınlığı", value: "20 – 26 mm" },
-                        { label: "Max. Kanat Taşıma Kapasitesi", value: "120 kg" },
-                        { label: "Profil Geometrik Düzgünlük", value: "EN ISO 12020-2 Compliant" }
-                    ]
-                }
-            },
+            {
+                name: "LR-2200 - Linea Rossa",
+                description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-2200.jpg?raw=true"
+            }
         ]
     },
     {
         id: "stick-cephe",
         title: "Stick Cephe Sistemleri",
         items: [
-            { 
-                name: "LR-9200 - Linea Rossa", 
-                description: "Stick Cephe Sistemi: Silikon ve kapaklı cephe uygulamaları için çok yönlü profil sistemi.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9200.webp",
+            {
+                name: "LR-9200 - Linea Rossa",
+                description: "Stick Cephe Sistemi: Silikon ve kapaklı cephe uygulamaları için çok yönlü profil sistemi.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-9200.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "50 mm Profil Genişliğinde Düşey ve Yatay Profiller",
@@ -611,15 +910,14 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         "Bina Dış Görünümünde Sınırsız Renk ve Alternatiflerine Uygundur."
                     ],
                     specifications: [
-                        { label: "Profil Genişliği", value: "50 mm" },
-                        { label: "Uygulama", value: "Stick ve Kapaklı" }
+                        { label: "Profil Genişliği", value: "50 mm" }
                     ]
                 }
             },
-            { 
-                name: "LR-9300 - Linea Rossa", 
-                description: "Stick Cephe Sistemi: Yüksek katlı binalarda rüzgar yüküne dayanıklı güçlendirilmiş cephe.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9300.webp",
+            {
+                name: "LR-9300 - Linea Rossa",
+                description: "Stick Cephe Sistemi: Yüksek katlı binalarda rüzgar yüküne dayanıklı güçlendirilmiş cephe.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-9300.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "60 mm Profil Genişliğinde Düşey ve Yatay Profiller",
@@ -631,20 +929,21 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ],
                     specifications: [
                         { label: "Profil Genişliği", value: "60 mm" },
-                        { label: "Cam Uygulama", value: "945 mm'ye kadar" }
+                        { label: "Cam Uygulama", value: "945 mm'ye kadar" },
+                        { label: "Uygulama", value: "Stick ve Kapaklı" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "panel-cephe",
         title: "Panel Cephe Sistemleri",
         items: [
-            { 
-                name: "LR-9500 - Linea Rossa", 
-                description: "Panel Cephe Sistemi: Linea Rossa tasarım ekibi, Türkiye'nin en prestijli kulelerini giydiriyor. Mistral kırmızı halıda yapı sektörünün yıldızı haline geldi.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-9500.webp",
+             {
+                name: "LR-9500 - Linea Rossa",
+                description: "Panel Cephe Sistemi: Linea Rossa tasarım ekibi, Türkiye'nin en prestijli kulelerini giydiriyor. Mistral kırmızı halıda yapı sektörünün yıldızı haline geldi.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-9500.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Bu proje Türkiye de soğuk Bükme perde duvar sistemi montajında birinci olacak.",
@@ -656,17 +955,17 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Performans", value: "Ekstrem Test Onaylı" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "katlanir-kapi",
         title: "Katlanır Kapı Sistemleri",
         items: [
-            { 
-                name: "LR-6100 - Linea Rossa", 
-                description: "Katlanır Kapı Sistemi: Mekanları tamamen birleştiren, eşiksiz veya eşikli katlanır sistem.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-6100.webp",
+            {
+                name: "LR-6100 - Linea Rossa",
+                description: "Katlanır Kapı Sistemi: Mekanları tamamen birleştiren, eşiksiz veya eşikli katlanır sistem.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-6100.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Üst Taşıyıcı Rulmanlar Sayesinde Geniş Kanat Yapabilme İmkanı",
@@ -683,17 +982,17 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Kanat Yüksekliği", value: "71/32,5mm" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "acilir-yalitimli",
         title: "Açılır Yalıtımlı Sistemler",
         items: [
-            { 
-                name: "LR-5100 - Linea Rossa", 
-                description: "Açılır Yalıtımlı Sistem: Standart ve çift açılım pencereler için üstün ısı yalıtımı. Sadece yalıtım ve sızdırmazlık değil, aynı zamanda yaşam konforu ve estetik anlamına da gelir.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-5100.webp",
+            {
+                name: "LR-5100 - Linea Rossa",
+                description: "Açılır Yalıtımlı Sistem: Standart ve çift açılım pencereler için üstün ısı yalıtımı. Sadece yalıtım ve sızdırmazlık değil, aynı zamanda yaşam konforu ve estetik anlamına da gelir.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-5100.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Geniş Profil Seçenekleri ile Optimum Çözümler",
@@ -715,17 +1014,17 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Isı Yalıtımı EN ISO 10077-2", value: "Uf=2,3 W/m2K" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "acilir-yalitimsiz",
         title: "Açılır Yalıtımsız Sistemler",
         items: [
-            { 
-                name: "LR-4100 - Linea Rossa", 
-                description: "Açılır Yalıtımsız Sistem: Vitrin ve ara bölmeler için ekonomik doğrama çözümü.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-4100.webp",
+             {
+                name: "LR-4100 - Linea Rossa",
+                description: "Açılır Yalıtımsız Sistem: Vitrin ve ara bölmeler için ekonomik doğrama çözümü.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-4100.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Alaşım: AlMgSi (EN AW 6063)",
@@ -742,10 +1041,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-4500 - Linea Rossa", 
-                description: "Açılır Yalıtımsız Sistem: Ofis bölmeleri ve iç kapılar için modern tasarımlı seri.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-4500.webp",
+            {
+                name: "LR-4500 - Linea Rossa",
+                description: "Açılır Yalıtımsız Sistem: Ofis bölmeleri ve iç kapılar için modern tasarımlı seri.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-4500.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Alaşım: AlMgSi (EN AW 6063)",
@@ -761,17 +1060,17 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Sızdırmazlık", value: "3 Kademeli Conta Uygulaması" }
                     ]
                 }
-            },
+            }
         ]
     },
     {
         id: "zip-pergola",
         title: "Zip Screen & Pergola",
         items: [
-            { 
-                name: "LR-8300 - Linea Rossa", 
-                description: "Zip Screen: Dış cephe gölgelendirmesi için rüzgara dayanıklı fermuarlı perde sistemi. Yağmur Koruması, Güneş / UV Koruması sağlar.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-8300.webp",
+            {
+                name: "LR-8300 - Linea Rossa",
+                description: "Zip Screen: Dış cephe gölgelendirmesi için rüzgara dayanıklı fermuarlı perde sistemi. Yağmur Koruması, Güneş / UV Koruması sağlar.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-8300.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "Zip Screen Şık Tasarımı İle Tüketiciye Çözüm Sunan Bir Sistemdir.",
@@ -791,10 +1090,10 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                     ]
                 }
             },
-            { 
-                name: "LR-8700 - Linea Rossa", 
-                description: "Bioclimatic Pergola: Dört mevsim kullanım sağlayan, hareketli lamelli alüminyum pergola. Yağmur, Güneş ve UV Koruması.", 
-                image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-8700.webp",
+            {
+                name: "LR-8700 - Linea Rossa",
+                description: "Bioclimatic Pergola: Dört mevsim kullanım sağlayan, hareketli lamelli alüminyum pergola. Yağmur, Güneş ve UV Koruması.",
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-8700.jpg?raw=true",
                 technicalDetails: {
                     features: [
                         "285 Kg/m² Kar Yüküne Ve 128 Km/Saate Kadar Rüzgar Direncine Sahip Olacak Şekilde Tasarlanmıştır.",
@@ -810,7 +1109,538 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
                         { label: "Malzeme", value: "EN AIN 6063 - T5" }
                     ]
                 }
+            }
+        ]
+    }
+];
+
+export const PIMAPEN_SECTIONS: ProductSection[] = [
+    {
+        id: "nirvana",
+        title: "Nirvana Serisi",
+        items: [
+            {
+                name: "Nirvana Premium",
+                description: "Maksimum performans ve estetik arayanlar için geliştirilmiş, üst segment PVC pencere sistemi. Üstün ısı ve ses yalıtımı sağlar.",
+                image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
+                technicalDetails: {
+                    features: [
+                        "A Sınıfı et kalınlığı",
+                        "44 mm'ye kadar cam uygulanabilme",
+                        "Üstün ses yalıtımı"
+                    ],
+                    specifications: [
+                        { label: "Odacık Sayısı", value: "6" },
+                        { label: "Conta", value: "EPDM / TPE" }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        id: "carisma",
+        title: "Carisma Serisi",
+        items: [
+            {
+                name: "Pimapen Carisma",
+                description: "70 mm profil genişliği ve 5 odacıklı yapısıyla ideal ısı ve ses yalıtımı sağlayan ekonomik ve estetik seri.",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
+                technicalDetails: {
+                    features: [
+                        "5 odacıklı tasarım",
+                        "Dekoratif cam çıtası seçenekleri",
+                        "Yüksek su sızdırmazlığı"
+                    ],
+                    specifications: [
+                        { label: "Profil Genişliği", value: "70 mm" },
+                        { label: "Sınıf", value: "B Sınıfı (TS EN 12608)" }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        id: "surgulu",
+        title: "Sürgülü Kapı & Pencere Sistemleri",
+        items: [
+            {
+                name: "Pimapen Infinity",
+                description: "Geniş açıklıklar için tasarlanmış, kaldır sür (Hebeschiebe) özellikli yüksek yalıtımlı PVC sürme sistemi.",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+                technicalDetails: {
+                    features: [
+                        "Kolay ve sessiz çalışma",
+                        "Yüksek hava ve su yalıtımı",
+                        "Geniş manzaralı açıklıklar"
+                    ],
+                    specifications: [
+                        { label: "Kasa Genişliği", value: "170 mm" },
+                        { label: "Kanat Genişliği", value: "70 mm" }
+                    ]
+                }
             },
+            {
+                name: "Dynamic Sürme",
+                description: "Basit sürme mantığıyla çalışan, balkon ve teraslar için pratik ve ekonomik çözüm.",
+                image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80",
+                technicalDetails: {
+                    features: [
+                        "Çift raylı kasa",
+                        "Özel fırça conta sistemi",
+                        "Sineklik entegrasyonu"
+                    ],
+                    specifications: [
+                        { label: "Kasa Genişliği", value: "120 mm" },
+                        { label: "Cam Kalınlığı", value: "4-20-24 mm" }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        id: "panjur-kepenk",
+        title: "Panjur & Kepenk Sistemleri",
+        items: [
+            {
+                name: "Pimapen Panjur",
+                description: "Pencerelerinizle tam uyumlu, ısı ve ses yalıtımına katkı sağlayan, manuel veya motorlu panjur sistemleri.",
+                image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true",
+                technicalDetails: {
+                    features: [
+                        "PVC ve Alüminyum lamel seçenekleri",
+                        "Gizli kutu detayı",
+                        "Uzaktan kumanda imkanı"
+                    ],
+                    specifications: [
+                        { label: "Kutu Boyutları", value: "165x165 / 200x200 mm" },
+                        { label: "Lamel", value: "37 mm / 55 mm" }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        id: "donanim",
+        title: "Pencere ve Kapı Donanım Sistemleri",
+        items: [
+             {
+                name: "Pimapen Donanımları",
+                description: "Pencere sistemlerinin performansını artıran, güvenlikli ve uzun ömürlü ispanyolet, kol ve menteşe grupları.",
+                image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80",
+                technicalDetails: {
+                    features: [
+                        "Paslanmaya karşı direnç",
+                        "Çocuk emniyet kilidi",
+                        "Hırsızlığa karşı güvenlikli mantar başlı pimler"
+                    ],
+                    specifications: [
+                        { label: "Malzeme", value: "Paslanmaz Çelik / Zamak" },
+                        { label: "Garanti", value: "2 Yıl" }
+                    ]
+                }
+            }
+        ]
+    }
+];
+
+export const PANJUR_SECTIONS: ProductSection[] = [
+    {
+        id: "lameller",
+        title: "Lameller",
+        items: [
+            {
+                name: "39 mm",
+                description: "Alüminyum Poliüretan Dolgulu Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39LAMEL.png",
+                code: "PAB.39N.SY"
+            },
+            {
+                name: "45 mm",
+                description: "Alüminyum Poliüretan Dolgulu Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39LAMEL.png",
+                code: "PAB.45N.SY"
+            },
+            {
+                name: "55 mm",
+                description: "Alüminyum Poliüretan Dolgulu Eko Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/55LAMEL.png",
+                code: "PAB.55E.SY"
+            },
+            {
+                name: "55 mm",
+                description: "Alüminyum Poliüretan Dolgulu Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/55LAMEL.png",
+                code: "PAB.55N.SY"
+            },
+            {
+                name: "34 mm",
+                description: "Alüminyum Ekstrüzyon Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/34MMEXT.png",
+                code: "EAL.034.CD"
+            },
+            {
+                name: "45 mm",
+                description: "Alüminyum Ekstrüzyon Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/45MMEXT.png",
+                code: "EAL.045.CD"
+            },
+            {
+                name: "55 mm",
+                description: "Alüminyum Ekstrüzyon Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/55MMEXT.png",
+                code: "EAL.055.CD"
+            },
+            {
+                name: "55 mm",
+                description: "Alüminyum Ekstrüzyon Gözlü Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/55GOZLUYENI.png",
+                code: "EAL.055.GZ"
+            },
+            {
+                name: "62 mm",
+                description: "Alüminyum Ekstrüzyon Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/62MMEXT.png",
+                code: "EAL.062.CD"
+            },
+            {
+                name: "62 mm",
+                description: "Alüminyum Ekstrüzyon Gözlü Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/62mm_gozlu-Black.png",
+                code: "EAL.062.GZ"
+            }
+        ]
+    },
+    {
+        id: "kutular",
+        title: "Kutular",
+        items: [
+            {
+                name: "137 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.137"
+            },
+            {
+                name: "165 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.165"
+            },
+            {
+                name: "180 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.180"
+            },
+            {
+                name: "205 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.205"
+            },
+            {
+                name: "250 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.250"
+            }
+        ]
+    },
+    {
+        id: "yan-kapaklar",
+        title: "Yan Kapaklar",
+        items: [
+            {
+                name: "137 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.137.045"
+            },
+            {
+                name: "165 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.165.045"
+            }
+        ]
+    },
+    {
+        id: "alt-parcalar",
+        title: "Alt Parçalar",
+        items: [
+             {
+                name: "34 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/34_Alt_Parca.png",
+                code: "EAP.34.S"
+            },
+            {
+                name: "39 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39_Alt_Parca.png",
+                code: "EAP.39.S"
+            },
+            {
+                name: "39K mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39K_Alt_Parca.png.png",
+                code: "EAP.39K.S"
+            },
+            {
+                name: "50 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/50_Alt_Parca.png",
+                code: "EAP.50.S"
+            },
+            {
+                name: "55K mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/55K_Alt_Parca.png",
+                code: "EAP.55K.S"
+            },
+            {
+                name: "77 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/77_Alt_Parca.png.png",
+                code: "EAP.77.S"
+            },
+            {
+                name: "100 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/100_Alt_Parca.png.png",
+                code: "EAP.100.S"
+            }
+        ]
+    },
+    {
+        id: "yan-orta-raylar",
+        title: "Yan & Orta Raylar",
+        items: [
+             {
+                name: "30 mm U",
+                description: "Alüminyum Ekstrüzyon Dikmesiz U",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/30_Dikmesiz_U.png",
+                code: "EYR.030.U"
+            },
+             {
+                name: "54 mm",
+                description: "Alüminyum Ekstrüzyon Yan Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/54_Dikme.png",
+                code: "EYR.054.ND"
+            },
+            {
+                name: "58 mm",
+                description: "Alüminyum Ekstrüzyon Yan Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/58_Dikme.png",
+                code: "EYR.058.ND"
+            },
+            {
+                name: "60 mm",
+                description: "Alüminyum Ekstrüzyon Yan Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/60_Dikme.png",
+                code: "EYR.060.ND"
+            },
+            {
+                name: "60x100 mm",
+                description: "Alüminyum Ekstrüzyon Yan Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/60x100_Dikme-scaled.png",
+                code: "EYR.60100.ND"
+            },
+            {
+                name: "62 mm",
+                description: "Alüminyum Ekstrüzyon Yan Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/62_Dikme.png",
+                code: "EYR.062.ND"
+            },
+            {
+                name: "90 mm",
+                description: "Alüminyum Ekstrüzyon Orta Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/90_Ortadikme.png",
+                code: "EOR.090.OD"
+            },
+            {
+                name: "100 mm",
+                description: "Alüminyum Ekstrüzyon Orta Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/100_Ortadikme.png",
+                code: "EOR.100.OD"
+            }
+        ]
+    },
+    {
+        id: "tambur-borulari",
+        title: "Tambur Boruları",
+        items: [
+            {
+                name: "Sekizgen Boru",
+                description: "40mm / 60mm / 70mm Seçenekleri",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/tambur.png",
+                code: "TMB.OCT"
+            },
+             {
+                name: "Yuvarlak Boru",
+                description: "Çelik Tambur Borusu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/yuvarlak-boru.png",
+                code: "TMB.RND"
+            }
+        ]
+    }
+];
+
+export const KEPENK_SECTIONS: ProductSection[] = [
+    {
+        id: "kepenk-lamelleri",
+        title: "Kepenk Lamelleri",
+        items: [
+            {
+                name: "77 mm",
+                description: "Alüminyum Poliüretan Dolgulu Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/77LAMEL.png",
+                code: "KP.77.PL"
+            },
+            {
+                name: "95 mm",
+                description: "Alüminyum Poliüretan Dolgulu Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/95LAMELYENI-1.png",
+                code: "KP.95.PL"
+            },
+            {
+                name: "77 mm",
+                description: "Alüminyum Ekstrüzyon Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/77NORMALEKTRU.png",
+                code: "KP.77.EK"
+            },
+            {
+                name: "77 mm Gözlü",
+                description: "Alüminyum Ekstrüzyon Gözlü Lamel",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/77mm_gozlu-Black.png",
+                code: "KP.77.GZ"
+            }
+        ]
+    },
+    {
+        id: "kepenk-kutulari",
+        title: "Kutular",
+        items: [
+            {
+                name: "300 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.300"
+            },
+            {
+                name: "330 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.330"
+            },
+             {
+                name: "350 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KUTU.png",
+                code: "KUT.350"
+            },
+            {
+                name: "400 mm",
+                description: "Alüminyum Kutu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/400Kutu.png",
+                code: "KUT.400"
+            }
+        ]
+    },
+    {
+        id: "kepenk-yan-kapaklar",
+        title: "Yan Kapaklar",
+        items: [
+            {
+                name: "300 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.300"
+            },
+            {
+                name: "330 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.330"
+            },
+            {
+                name: "350 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.350"
+            },
+            {
+                name: "400 mm",
+                description: "Alüminyum Yan Kapak",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/KAPAK.png",
+                code: "YK.400"
+            }
+        ]
+    },
+    {
+        id: "kepenk-alt-parcalar",
+        title: "Alt Parçalar",
+        items: [
+            {
+                name: "39 mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39_Alt_Parca.png",
+                code: "EAP.39.S"
+            },
+            {
+                name: "39K mm",
+                description: "Alüminyum Ekstrüzyon Alt Parça",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/39K_Alt_Parca.png.png",
+                code: "EAP.39K.S"
+            }
+        ]
+    },
+    {
+        id: "kepenk-raylar",
+        title: "Yan & Orta Raylar",
+        items: [
+            {
+                name: "90 mm",
+                description: "Alüminyum Ekstrüzyon Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/90_Dikme.png",
+                code: "EYR.090"
+            },
+            {
+                name: "150 mm",
+                description: "Alüminyum Ekstrüzyon Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/150_Dikme.png",
+                code: "EYR.150"
+            },
+            {
+                name: "54 mm U",
+                description: "Alüminyum Ekstrüzyon Dikmesiz U",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/54_Dikmesiz_U.png",
+                code: "EYR.054.U"
+            },
+            {
+                name: "Standart Dikme",
+                description: "Alüminyum Ekstrüzyon Dikme",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/dikme.png",
+                code: "EYR.STD"
+            }
+        ]
+    },
+    {
+        id: "kepenk-tamburlar",
+        title: "Tambur Boruları",
+        items: [
+            {
+                name: "Sekizgen Boru",
+                description: "Çelik Tambur Borusu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/tambur.png",
+                code: "TMB.OCT"
+            },
+            {
+                name: "Yuvarlak Boru",
+                description: "Çelik Tambur Borusu",
+                image: "https://www.aksekiyapi.com/wp-content/uploads/2025/06/yuvarlak-boru.png",
+                code: "TMB.RND"
+            }
         ]
     }
 ];
@@ -853,108 +1683,6 @@ export const PARTNERS: Partner[] = [
     { name: "Schüco", logo: "https://github.com/xbarisx2/logo/blob/main/sch%C3%BCco.jpeg?raw=true" }
 ];
 
-export const PIMAPEN_SECTIONS: ProductSection[] = [
-    {
-        id: "pvc-pencere-kapi",
-        title: "PVC Pencere ve Kapı Sistemleri",
-        items: [
-            {
-                name: "Pimapen Nirvana",
-                description: "Üstün ses ve ısı yalıtımı sağlayan, inovatif teknik özelliklere sahip 'Pasif Ev' sertifikalı seri.",
-                image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
-                 technicalDetails: {
-                    features: ["6 odacıklı profil yapısı", "3 contalı sızdırmazlık sistemi", "Yüksek rüzgar direnci"],
-                    specifications: [{ label: "Profil Genişliği", value: "80 mm" }, { label: "Uf Değeri", value: "0.95 W/m2K" }]
-                }
-            }
-        ]
-    },
-    {
-        id: "nirvana",
-        title: "Nirvana Serisi",
-        items: [
-             {
-                name: "Nirvana Premium",
-                description: "Maksimum performans ve estetik arayanlar için geliştirilmiş, üst segment PVC pencere sistemi.",
-                image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true",
-                technicalDetails: {
-                    features: ["A Sınıfı et kalınlığı", "44 mm'ye kadar cam uygulanabilme", "Üstün ses yalıtımı"],
-                    specifications: [{ label: "Odacık Sayısı", value: "6" }, { label: "Conta", value: "EPDM / TPE" }]
-                }
-            }
-        ]
-    },
-    {
-        id: "carisma",
-        title: "Carisma Serisi",
-        items: [
-            {
-                name: "Pimapen Carisma",
-                description: "70 mm profil genişliği ve 5 odacıklı yapısıyla ideal ısı ve ses yalıtımı sağlayan ekonomik seri.",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80",
-                technicalDetails: {
-                    features: ["5 odacıklı tasarım", "Dekoratif cam çıtası seçenekleri", "Yüksek su sızdırmazlığı"],
-                    specifications: [{ label: "Profil Genişliği", value: "70 mm" }, { label: "Sınıf", value: "B Sınıfı (TS EN 12608)" }]
-                }
-            }
-        ]
-    },
-    {
-        id: "surgulu",
-        title: "Sürgülü Kapı & Pencere Sistemleri",
-        items: [
-            {
-                name: "Pimapen Infinity",
-                description: "Geniş açıklıklar için tasarlanmış, kaldır-sür (Hebeşbeş) özellikli yüksek yalıtımlı PVC sürme sistemi.",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-                 technicalDetails: {
-                    features: ["Kolay ve sessiz çalışma", "Yüksek hava ve su yalıtımı", "Geniş manzaralı açıklıklar"],
-                    specifications: [{ label: "Kasa Genişliği", value: "170 mm" }, { label: "Kanat Genişliği", value: "70 mm" }]
-                }
-            },
-            {
-                name: "Dynamic Sürme",
-                description: "Basit sürme mantığıyla çalışan, balkon ve teraslar için pratik ve ekonomik çözüm.",
-                image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80",
-                technicalDetails: {
-                    features: ["Çift raylı kasa", "Özel fırça conta sistemi", "Sineklik entegrasyonu"],
-                    specifications: [{ label: "Kasa Genişliği", value: "120 mm" }, { label: "Cam Kalınlığı", value: "4-20-24 mm" }]
-                }
-            }
-        ]
-    },
-    {
-        id: "panjur-kepenk",
-        title: "Panjur & Kepenk Sistemleri",
-        items: [
-            {
-                name: "Pimapen Panjur",
-                description: "Pencerelerinizle tam uyumlu, ısı ve ses yalıtımı na katkı sağlayan, manuel veya motorlu panjur sistemleri.",
-                image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true",
-                technicalDetails: {
-                    features: ["PVC ve Alüminyum lamel seçenekleri", "Gizli kutu detayı", "Uzaktan kumanda imkanı"],
-                    specifications: [{ label: "Kutu Boyutları", value: "165x165 / 200x200 mm" }, { label: "Lamel", value: "37 mm / 55 mm" }]
-                }
-            }
-        ]
-    },
-    {
-        id: "donanim",
-        title: "Pencere ve Kapı Donanım Sistemleri",
-        items: [
-             {
-                name: "Pimapen Donanımları",
-                description: "Pimapen sistemlerinin performansını artıran, güvenlikli ve uzun ömürlü ispanyolet, kol ve menteşe grupları.",
-                image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80",
-                technicalDetails: {
-                    features: ["Paslanmaya karşı direnç", "Çocuk emniyet kilidi", "Hırsızlığa karşı güvenlikli mantar başlı pimler"],
-                    specifications: [{ label: "Malzeme", value: "Paslanmaz Çelik / Zamak" }, { label: "Garanti", value: "2 Yıl" }]
-                }
-            }
-        ]
-    }
-];
-
 export const BLOG_POSTS: BlogPost[] = [
     {
         slug: "aluminyum-cephe-sistemlerinin-avantajlari",
@@ -968,49 +1696,6 @@ export const BLOG_POSTS: BlogPost[] = [
             { type: 'p', text: "Alüminyum cephe sistemleri, günümüz mimarisinin vazgeçilmez unsurlarından biri haline gelmiştir. Hafifliği, dayanıklılığı ve estetik görünümü ile hem yeni binalarda hem de yenileme projelerinde sıklıkla tercih edilmektedir." },
              { type: 'h2', text: "Neden Alüminyum Cephe?" },
              { type: 'p', text: "Alüminyum, yüksek korozyon direnci ve hafif yapısı sayesinde bina yükünü artırmadan uzun ömürlü bir çözüm sunar. Ayrıca geri dönüştürülebilir olması, sürdürülebilir mimari projelerde tercih sebebidir." }
-        ]
-    },
-    {
-        slug: "kis-bahcesi-ile-dort-mevsim-konfor",
-        title: "Kış Bahçesi ile Dört Mevsim Konfor",
-        author: "İnter Akdeniz Ekibi",
-        date: "10 Aralık 2023",
-        image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=800&q=80",
-        category: "Doğrama Çözümler",
-        excerpt: "Evinizin bahçesini veya terasını kışın da kullanmak ister misiniz? Kış bahçesi sistemleri ile yaşam alanınızı genişletin ve doğayla iç içe olun.",
-        content: [
-            { type: 'p', text: "Kış bahçeleri, cam ve alüminyum profillerin mükemmel uyumuyla oluşturulan, ısı yalıtımlı özel yaşam alanlarıdır. Yağmur, kar veya rüzgar demeden dış mekan keyfini iç mekana taşırsınız." },
-            { type: 'h2', text: "Isı Yalıtımlı Sistemlerin Önemi" },
-            { type: 'p', text: "Kış bahçesi yaptırırken dikkat edilmesi gereken en önemli husus, kullanılan profillerin ve camların ısı yalıtım değerleridir. İnter Akdeniz olarak, yüksek yalıtımlı alüminyum sistemler kullanarak enerji tasarrufu sağlıyoruz." }
-        ]
-    },
-    {
-        slug: "pvc-ve-aluminyum-dograma-farklari",
-        title: "PVC ve Alüminyum Doğrama Arasındaki Farklar",
-        author: "Teknik Uzman Mehmet Demir",
-        date: "22 Ocak 2024",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-        category: "Teknik Bilgiler",
-        excerpt: "Pencere ve kapı seçimi yaparken PVC mi yoksa alüminyum mu tercih etmelisiniz? İki malzemenin avantajlarını ve dezavantajlarını sizin için karşılaştırdık.",
-        content: [
-            { type: 'p', text: "İnşaat sektöründe en çok kullanılan iki doğrama malzemesi PVC ve alüminyumdur. Her ikisinin de kendine özgü avantajları vardır ve proje gereksinimlerine göre seçim yapılmalıdır." },
-            { type: 'h3', text: "Alüminyum Doğrama" },
-            { type: 'p', text: "Alüminyum, daha geniş açıklıkları geçebilen, daha ince profil kesitlerine sahip ve çok daha uzun ömürlü bir malzemedir. Renk solması yapmaz ve modern mimaride estetik bir görünüm sunar." },
-            { type: 'h3', text: "PVC Doğrama" },
-            { type: 'p', text: "PVC ise genellikle daha ekonomik bir çözüm sunar ve yüksek ısı yalıtım değerlerine sahiptir. Ancak büyük açıklıklarda alüminyum kadar rijit değildir." }
-        ]
-    },
-    {
-        slug: "linea-rossa-neden-tercih-edilmeli",
-        title: "Linea Rossa: Neden Tercih Edilmeli?",
-        author: "Mimar Ayşe Yılmaz",
-        date: "05 Şubat 2024",
-        image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp",
-        category: "Doğrama Çözümler",
-        excerpt: "İtalyan tasarımı ve üstün mühendisliğin birleşimi Linea Rossa sistemleri, projelerinize nasıl değer katar? Özellikleri ve avantajlarını inceliyoruz.",
-        content: [
-            { type: 'p', text: "Linea Rossa, sadece bir alüminyum profil değil, bir yaşam tarzıdır. Minimalist tasarımı, yüksek taşıma kapasitesi ve mükemmel yalıtım değerleri ile lüks konut projelerinin vazgeçilmezidir." },
-            { type: 'p', text: "Özellikle sürme sistemlerde sunduğu konfor ve estetik, mekanlarınızın değerini artırır. Paslanmaz çelik raylar üzerinde sessizce hareket eden kanatlar, kullanıcı deneyimini üst seviyeye taşır." }
         ]
     }
 ];
@@ -1035,5 +1720,5 @@ export const MEDIA_IMAGES: MediaImage[] = [
     { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0019.jpg?raw=true', alt: 'Proje Uygulaması 17' },
     { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0020.jpg?raw=true', alt: 'Proje Uygulaması 18' },
     { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0021.jpg?raw=true', alt: 'Proje Uygulaması 19' },
-    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0022.jpg?raw=true', alt: 'Proje Uygulaması 20' },
+    { src: 'https://github.com/xbarisx2/logo/blob/main/blog/IMG-20251127-WA0022.jpg?raw=true', alt: 'Proje Uygulaması 20' }
 ];

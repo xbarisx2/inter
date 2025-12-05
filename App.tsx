@@ -8,7 +8,10 @@ import ProductsPage from './pages/ProductsPage';
 import LineaRossaPage from './pages/LineaRossaPage';
 import PimapenPage from './pages/PimapenPage';
 import AluminumPage from './pages/AluminumPage';
-import SolarPage from './pages/SolarPage';
+import PanjurPage from './pages/PanjurPage';
+import KepenkPage from './pages/KepenkPage';
+import PergolaPage from './pages/PergolaPage';
+import ZipPerdePage from './pages/ZipPerdePage';
 import ReferencesPage from './pages/ReferencesPage';
 import MediaPage from './pages/MediaPage';
 import BlogPage from './pages/BlogPage';
@@ -56,15 +59,21 @@ const App: React.FC = () => {
             case 'Kurumsal':
                 return <CorporatePage />;
             case 'Ürünlerimiz':
-                return <ProductsPage />;
+                return <ProductsPage setCurrentPage={handleSetCurrentPage} />;
             case 'Linea Rossa':
                 return <LineaRossaPage />;
             case 'Pimapen':
                 return <PimapenPage />;
             case 'Alüminyum':
                 return <AluminumPage />;
-            case 'Solar':
-                return <SolarPage />;
+            case 'Panjur':
+                return <PanjurPage />;
+            case 'Kepenk':
+                return <KepenkPage />;
+            case 'Pergola':
+                return <PergolaPage />;
+            case 'ZipPerde':
+                return <ZipPerdePage />;
             case 'Referanslarımız':
                 return <ReferencesPage />;
             case 'İş Ortaklarımız':

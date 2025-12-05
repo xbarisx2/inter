@@ -1,5 +1,5 @@
 
-export type Page = 'Ana Sayfa' | 'Kurumsal' | 'Ürünlerimiz' | 'İş Ortaklarımız' | 'Referanslarımız' | 'Medya' | 'Blog' | 'İletişim' | 'Linea Rossa' | 'Pimapen' | 'Alüminyum' | 'Solar';
+export type Page = 'Ana Sayfa' | 'Kurumsal' | 'Ürünlerimiz' | 'İş Ortaklarımız' | 'Referanslarımız' | 'Medya' | 'Blog' | 'İletişim' | 'Linea Rossa' | 'Pimapen' | 'Alüminyum' | 'Panjur' | 'Kepenk' | 'Pergola' | 'ZipPerde';
 
 export interface SubLinkItem {
     name: string;
@@ -19,11 +19,20 @@ export interface TechnicalDetails {
     specifications: { label: string; value: string; }[]; // Key-value pairs for technical specs
 }
 
+export interface ProductCategory {
+    id: string;
+    title: string;
+    image: string;
+    description?: string;
+    page?: Page; // Link to specific internal page if available
+}
+
 export interface Product {
     name: string;
     description: string;
     image: string;
     technicalDetails?: TechnicalDetails; // Optional technical details
+    code?: string; // Product code (e.g., PAB.39N.SY)
 }
 
 export interface ProductSection {

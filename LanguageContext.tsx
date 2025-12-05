@@ -26,7 +26,8 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         document.documentElement.lang = language;
     }, [language]);
 
-    const data = language === 'tr' ? trData : enData;
+    // Ensure enData has the same shape, or fallback to trData for missing keys if necessary
+    const data = language === 'tr' ? trData : (enData as unknown as typeof trData);
 
     // Helper for UI labels
     const t = (key: keyof typeof trData.UI_LABELS.TR) => {

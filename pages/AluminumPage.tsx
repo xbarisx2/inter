@@ -30,22 +30,22 @@ const AluminumPage: React.FC = () => {
             
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{language === 'tr' ? 'Alüminyum Profil Sistemleri' : 'Aluminum Profile Systems'}</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+                        {language === 'tr' ? 'Alüminyum Mimari Sistemleri' : 'Aluminum Architectural Systems'}
+                    </h1>
                     <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">
-                        {language === 'tr' ? 'Estetik, dayanıklı ve fonksiyonel alüminyum çözümleri.' : 'Aesthetic, durable and functional aluminum solutions.'}
+                        {language === 'tr' ? 'Modern yapılar için yenilikçi, dayanıklı ve estetik çözümler.' : 'Innovative, durable and aesthetic solutions for modern structures.'}
                     </p>
                 </div>
             </div>
             
             <div className="py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                     <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{language === 'tr' ? 'Geniş Ürün Yelpazesi' : 'Wide Product Range'}</h2>
-                        <div className="w-20 h-1 bg-brand-blue-600 mx-auto mb-6"></div>
+                     <div className="text-center mb-16 max-w-4xl mx-auto">
                         <p className="text-gray-600 leading-relaxed text-lg">
                            {language === 'tr' 
-                            ? "İnter Akdeniz Alüminyum olarak, her türlü mimari ihtiyaca uygun, yüksek kaliteli alüminyum profil sistemleri sunuyoruz. Yalıtımlı ve yalıtımsız serilerden, ofis bölme ve cephe sistemlerine kadar geniş bir ürün gamı ile projelerinize değer katıyoruz."
-                            : "As İnter Akdeniz Aluminum, we offer high quality aluminum profile systems suitable for all kinds of architectural needs. We add value to your projects with a wide product range from insulated and non-insulated series to office partition and facade systems."}
+                            ? "İnter Akdeniz Alüminyum, her koşula uygun yüksek kaliteli kapı ve pencere sistemleri ile müşterilerine estetik, dayanıklılık ve enerji verimliliği sağlar. Geniş ürün yelpazemiz ile projelerinizin her detayına en uygun çözümü sunuyoruz. Sistemlerimizde sürme, açılır ve hebeschiebe serileri yer almakta olup, talebe göre ısı yalıtımlı ve ısı yalıtımsız opsiyonlarımız mevcuttur."
+                            : "Inter Akdeniz Aluminum provides aesthetics, durability and energy efficiency to its customers with high quality door and window systems suitable for all conditions. We offer the most suitable solution for every detail of your projects with our wide product range. Our systems include sliding, opening and lift & slide series, and heat insulated and non-insulated options are available upon request."}
                         </p>
                     </div>
                 </div>
@@ -55,32 +55,41 @@ const AluminumPage: React.FC = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
                     {data.ALUMINUM_SECTIONS.map((section) => (
                         <div key={section.id} id={section.id} className="scroll-mt-32">
-                            <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 border-l-4 border-brand-blue-600 pl-4">{section.title}</h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+                            <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 text-center border-b-4 border-brand-blue-600 w-fit mx-auto pb-2 px-4">{section.title}</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {section.items.map((product, index) => {
                                     const whatsappUrl = `${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${product.name} hakkında teklif almak istiyorum.`)}`;
                                     return (
-                                        <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
-                                            <div className="relative">
-                                                <img src={product.image} alt={product.name} className="h-72 w-full object-cover transition-all duration-500" />
-                                                <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
+                                        <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                                            <div className="relative h-64 overflow-hidden">
+                                                <img 
+                                                    src={product.image} 
+                                                    alt={product.name} 
+                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                                                    <span className="text-white font-bold text-lg">{t('examine')}</span>
+                                                </div>
                                             </div>
-                                            <div className="p-8 flex-grow flex flex-col">
-                                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                                                <p className="text-gray-600 flex-grow leading-relaxed">{product.description}</p>
+                                            <div className="p-6 flex-grow flex flex-col text-center">
+                                                <h3 className="text-2xl font-black text-white drop-shadow-md absolute top-48 left-0 right-0">{product.name}</h3>
+                                                {/* Text Overlay Style Fix */}
+                                                <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
                                                 
-                                                <div className="mt-8 grid grid-cols-2 gap-4">
+                                                <p className="text-gray-600 flex-grow text-sm mb-6">{product.description}</p>
+                                                
+                                                <div className="grid grid-cols-2 gap-3">
                                                     <button
                                                         onClick={() => openModal(product)}
-                                                        className="border-2 border-gray-300 text-gray-700 font-bold py-3 px-4 hover:bg-gray-100 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
+                                                        className="border border-brand-blue-900 text-brand-blue-900 font-bold py-2 px-4 hover:bg-brand-blue-50 transition-colors rounded text-sm"
                                                     >
-                                                        {t('detailInfoButton')}
+                                                        {t('examine')}
                                                     </button>
                                                     <a 
                                                         href={whatsappUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="border-2 border-brand-blue-900 bg-brand-blue-900 text-white font-bold py-3 px-4 hover:bg-brand-blue-800 transition-all duration-300 uppercase text-xs tracking-wide text-center rounded-sm"
+                                                        className="bg-brand-blue-900 text-white font-bold py-2 px-4 hover:bg-brand-blue-800 transition-colors rounded text-sm"
                                                     >
                                                         {t('offer')}
                                                     </a>

@@ -187,7 +187,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                                 style={{backgroundImage: `url('${cat.image}')`}}
                                 role="img"
                                 aria-label={cat.title}
-                                loading="lazy"
                             ></div>
                             <div className="absolute inset-0 bg-brand-blue-900/40 group-hover:bg-brand-blue-900/70 transition-colors duration-300"></div>
                             
