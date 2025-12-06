@@ -87,7 +87,8 @@ const App: React.FC = () => {
         const suffix = " | İnter Akdeniz Antalya";
 
         if (currentPage === 'Blog' && activePostSlug) {
-            const post = data.BLOG_POSTS.find(p => p.slug === activePostSlug);
+            // Safety check for data.BLOG_POSTS
+            const post = data.BLOG_POSTS ? data.BLOG_POSTS.find(p => p.slug === activePostSlug) : null;
             if (post) {
                 pageTitle = `${post.title}${suffix}`;
                 pageDescription = post.excerpt;
@@ -96,83 +97,83 @@ const App: React.FC = () => {
                 pageDescription = "Alüminyum doğrama, PVC sistemler, cam balkon ve cephe giydirme hakkında teknik bilgiler ve Antalya yapı sektörü haberleri.";
             }
         } else {
-            // Main Pages SEO Mapping
+            // Main Pages SEO Mapping - Targeting specific keywords
             switch(currentPage) {
                 case 'Ana Sayfa':
-                    pageTitle = `İnter Akdeniz | Dünya Standartlarında Alüminyum Cephe & Doğrama Sistemleri`;
-                    pageDescription = "Antalya'da Linea Rossa, Alüminyum Cephe, Cam Balkon, PVC Doğrama, Kış Bahçesi ve Otomasyon sistemlerinde uluslararası standartlarda üretim ve uygulama çözümleri.";
+                    pageTitle = `İnter Akdeniz | Linea Rossa, Pimapen, Panjur & Cephe Sistemleri`;
+                    pageDescription = "Antalya'da Linea Rossa, Pimapen, Alüminyum Mimari Sistemler, Panjur, Kepenk, Pergola, Zip Perde, Akıllı Çatı ve Cam Balkon çözümlerinde lider firma.";
                     break;
                 case 'Kurumsal':
-                    pageTitle = `Kurumsal | 20 Yıllık Tecrübe ve Güven${suffix}`;
-                    pageDescription = "İnter Akdeniz Alüminyum; sektördeki 20 yılı aşkın tecrübesi, uzman mühendis kadrosu ve yüksek teknoloji üretim parkuru ile Antalya'nın lider firmasıdır.";
+                    pageTitle = `Kurumsal | İnter Akdeniz Alüminyum Antalya`;
+                    pageDescription = "20 yılı aşkın tecrübe ile Antalya'da alüminyum ve PVC sektöründe öncü çözüm ortağınız. Kalite ve güvenin adresi.";
                     break;
                 case 'Ürünlerimiz':
-                    pageTitle = `Ürünlerimiz | Mimari Alüminyum & PVC Sistemleri${suffix}`;
-                    pageDescription = "Linea Rossa, Pimapen, Alüminyum Doğrama, Cephe Giydirme, Panjur, Kepenk, Pergola ve daha fazlası. Geniş ürün yelpazemizi inceleyin.";
+                    pageTitle = `Alüminyum Mimari Sistemleri & PVC Ürünler${suffix}`;
+                    pageDescription = "Linea Rossa, Pimapen, Cephe, Panjur, Kepenk, Pergola, Tente ve daha fazlası. Tüm mimari sistem ürünlerimizi inceleyin.";
                     break;
                 case 'Linea Rossa':
-                    pageTitle = `Linea Rossa Antalya Yetkili Üretici Bayii${suffix}`;
-                    pageDescription = "İtalyan tasarımı Linea Rossa alüminyum sistemleri. Yüksek ısı yalıtımlı sürme ve kapı pencereler ile mekanlarınıza prestij katın. Antalya yetkili bayi.";
+                    pageTitle = `Linea Rossa Antalya | Alüminyum Mimari Sistemleri Yetkili Bayii`;
+                    pageDescription = "Antalya Linea Rossa yetkili üretici bayii. Yalıtımlı sürme, kaldırsür ve kapı pencere sistemlerinde İtalyan tasarımı ve üstün performans.";
                     break;
                 case 'Pimapen':
-                    pageTitle = `Pimapen Antalya Yetkili Bayii | PVC Pencere${suffix}`;
-                    pageDescription = "Antalya Pimapen PVC pencere ve kapı sistemleri. Nirvana ve Carisma serisi ile üstün ısı ve ses yalıtımı sağlayan PVC doğrama çözümleri.";
+                    pageTitle = `Pimapen Antalya | PVC Kapı ve Pencere Sistemleri`;
+                    pageDescription = "Antalya Pimapen yetkili bayii. Nirvana ve Carisma serisi PVC pencere, kapı ve sürme sistemleri ile evinizde üstün ısı yalıtımı sağlayın.";
                     break;
                 case 'Alüminyum':
-                    pageTitle = `Alüminyum Doğrama & Mimari Sistemler${suffix}`;
-                    pageDescription = "Antalya alüminyum doğrama imalatı. Isı yalıtımlı kapı, pencere ve sürme sistemleri ile modern mimari projelere değer katıyoruz.";
+                    pageTitle = `Alüminyum Mimari Sistemleri | Doğrama & Cephe`;
+                    pageDescription = "Modern yapılar için alüminyum mimari sistemler. Yalıtımlı alüminyum doğrama, kapı, pencere ve sürme sistemleri imalatı.";
                     break;
                 case 'Panjur':
-                    pageTitle = `Otomatik Panjur Sistemleri | Güvenlik & Konfor${suffix}`;
-                    pageDescription = "Antalya motorlu panjur sistemleri. Isı yalıtımlı lamel seçenekleri ve uzaktan kumandalı kullanım ile evinizde maksimum konfor sağlayın.";
+                    pageTitle = `Panjur Sistemleri Antalya | Otomatik & Motorlu Panjur`;
+                    pageDescription = "Antalya panjur sistemleri. Ev ve iş yerleriniz için güvenlik, yalıtım ve konfor sağlayan otomatik ve motorlu panjur çözümleri.";
                     break;
                 case 'Kepenk':
-                    pageTitle = `Otomatik Kepenk Sistemleri | İş Yeri Güvenliği${suffix}`;
-                    pageDescription = "Antalya otomatik kepenk imalatı. Mağaza, garaj ve depolar için yüksek güvenlikli, dayanıklı ve estetik sarmal kepenk çözümleri.";
+                    pageTitle = `Kepenk Sistemleri Antalya | Otomatik Mağaza & Garaj Kepengi`;
+                    pageDescription = "Antalya kepenk sistemleri. İş yerleri, mağazalar ve garajlar için yüksek güvenlikli, dayanıklı çelik ve alüminyum otomatik kepenkler.";
                     break;
                 case 'Pergola':
-                    pageTitle = `Pergola & Tente Sistemleri | Bioclimatic${suffix}`;
-                    pageDescription = "Antalya pergola ve tente sistemleri. Işıklı, motorlu, açılır kapanır tavan sistemleri ile dış mekanlarınızı dört mevsim keyifle kullanın.";
+                    pageTitle = `Pergola ve Tente Sistemleri Antalya | Bioklimatik`;
+                    pageDescription = "Antalya pergola ve tente sistemleri. Motorlu, ışıklı, açılır kapanır tavan ve bioklimatik pergola ile dış mekan keyfini dört mevsim yaşayın.";
                     break;
                 case 'ZipPerde':
-                    pageTitle = `Zip Perde Sistemleri | Dış Cephe Gölgelendirme${suffix}`;
-                    pageDescription = "Rüzgara dayanıklı Zip Perde sistemleri. Antalya'nın güneşine karşı modern gölgelendirme ve sineklik çözümleri.";
+                    pageTitle = `Zip Perde Sistemleri Antalya | Dış Cephe Gölgelendirme`;
+                    pageDescription = "Antalya zip perde sistemleri. Rüzgara dayanıklı, fermuarlı dış cephe perdeleri ile güneş kontrolü ve sineklik çözümü.";
                     break;
                 case 'AkıllıÇatı':
-                    pageTitle = `Akıllı Çatı Sistemleri | Hareketli Tavan${suffix}`;
-                    pageDescription = "Antalya akıllı çatı ve bioclimatic sistemler. Teraslarınız için açılır kapanır panel teknolojisi ile konforlu yaşam alanları.";
+                    pageTitle = `Akıllı Çatı Sistemleri Antalya | Hareketli Tavan`;
+                    pageDescription = "Antalya akıllı çatı sistemleri. Teras ve kış bahçeleri için uzaktan kumandalı, açılır kapanır panel tavan teknolojileri.";
                     break;
                 case 'Cephe':
-                    pageTitle = `Cephe Giydirme Sistemleri | Silikon & Kapaklı${suffix}`;
-                    pageDescription = "Antalya alüminyum cephe giydirme. Silikon cephe, kapaklı cephe ve yarı kapaklı sistemler ile binalara modern ve estetik bir kimlik kazandırın.";
+                    pageTitle = `Cephe Sistemleri Antalya | Silikon & Kapaklı Giydirme`;
+                    pageDescription = "Antalya cephe sistemleri. Silikon cephe, kapaklı cephe ve yarı kapaklı alüminyum giydirme cephe sistemleri ile modern binalar.";
                     break;
                 case 'Giyotin':
-                    pageTitle = `Giyotin Cam Balkon Sistemleri | Motorlu Küpeşte${suffix}`;
-                    pageDescription = "Antalya giyotin cam sistemleri. Dikey hareketli, uzaktan kumandalı cam balkon çözümleri ile kesintisiz manzara ve konfor.";
+                    pageTitle = `Giyotin Cam Balkon Sistemleri Antalya | Motorlu Küpeşte`;
+                    pageDescription = "Antalya giyotin cam sistemleri. Dikey hareketli, motorlu ve kumandalı cam balkon (küpeşte) sistemleri ile kesintisiz manzara.";
                     break;
                 case 'Kompozit':
-                    pageTitle = `Alüminyum Kompozit Panel Cephe Kaplama${suffix}`;
-                    pageDescription = "Antalya alüminyum kompozit panel uygulama. Binalarınız için uzun ömürlü, modern, renkli ve estetik dış cephe kaplama çözümleri.";
+                    pageTitle = `Alüminyum Kompozit Sistemler Antalya | Cephe Kaplama`;
+                    pageDescription = "Antalya alüminyum kompozit panel kaplama. Binalarınız için estetik, renkli ve dayanıklı dış cephe kompozit sistemleri.";
                     break;
                 case 'Referanslarımız':
-                    pageTitle = `Referanslarımız | Tamamlanan Projeler${suffix}`;
-                    pageDescription = "Antalya ve Türkiye genelinde tamamladığımız otel, konut ve ticari projeler. Kalitemizin kanıtı olan güçlü referanslarımızı inceleyin.";
+                    pageTitle = `Referanslarımız | Tamamlanan Alüminyum & PVC Projeleri`;
+                    pageDescription = "İnter Akdeniz güvencesiyle tamamlanan otel, konut ve ticari projeler. Antalya ve çevresindeki güçlü referanslarımız.";
                     break;
                 case 'İş Ortaklarımız':
-                    pageTitle = `İş Ortaklarımız & Çözüm Ortaklarımız${suffix}`;
-                    pageDescription = "Linea Rossa, Pimapen, Schüco, Somfy gibi dünya markalarıyla güçlü iş birliklerimiz sayesinde projelerinize kalite katıyoruz.";
+                    pageTitle = `İş Ortaklarımız | Linea Rossa, Pimapen, Somfy`;
+                    pageDescription = "Sektörün lider markaları Linea Rossa, Pimapen, Schüco ve Somfy ile güçlü iş birliklerimiz sayesinde projelerinize kalite katıyoruz.";
                     break;
                 case 'Medya':
-                    pageTitle = `Medya Galeri | Proje Görselleri${suffix}`;
-                    pageDescription = "Antalya alüminyum doğrama, cam balkon, korkuluk ve cephe giydirme uygulama görselleri. Proje galerimizden ilham alın.";
+                    pageTitle = `Medya Galeri | Proje Görselleri ve Uygulamalar`;
+                    pageDescription = "Uygulamasını yaptığımız alüminyum doğrama, cephe, panjur ve cam balkon projelerinden görseller.";
                     break;
                 case 'Blog':
-                    pageTitle = `Blog & Sektörel Bilgiler${suffix}`;
-                    pageDescription = "Alüminyum ve PVC sektöründeki yenilikler, teknik makaleler ve şirketimizden haberler.";
+                    pageTitle = `Blog | Sektörel Bilgiler & Haberler`;
+                    pageDescription = "Alüminyum ve PVC sistemleri hakkında teknik bilgiler, avantajlar ve sektörden güncel haberler.";
                     break;
                 case 'İletişim':
-                    pageTitle = `İletişim | Bize Ulaşın & Teklif Alın${suffix}`;
-                    pageDescription = "Antalya alüminyum, cam balkon ve PVC doğrama ihtiyaçlarınız için bizimle iletişime geçin. Adres, telefon ve yol tarifi.";
+                    pageTitle = `İletişim | İnter Akdeniz Antalya - Teklif Alın`;
+                    pageDescription = "Antalya alüminyum ve PVC sistemleri için bizimle iletişime geçin. Ücretsiz keşif ve fiyat teklifi için arayın.";
                     break;
                 default:
                     pageTitle = `${currentPage}${suffix}`;

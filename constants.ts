@@ -1,3 +1,4 @@
+
 import type { NavLink, Product, Reference, BlogPost, Partner, ProductSection, MediaImage, ProductCategory } from './types';
 
 // UI TRANSLATIONS & STATIC CONTENT
@@ -637,7 +638,31 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
             {
                 name: "LR-3100",
                 description: "Yalıtımlı Sürme Sistemi: Yüksek ısı bariyerli, modern mimari için ideal sürme sistemi.",
-                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3100.jpg?raw=true"
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3100.jpg?raw=true",
+                technicalDetails: {
+                    features: [
+                        "Daha İyi Su, Hava Yalıtımı ve Enerji Tasarrufu",
+                        "Üretim ve Montaj Kolaylığı",
+                        "%50 Azaltılmış Orta Kenet ile Minimal Mimari Çözüm",
+                        "Sistem İçinde Çözülmüş Özel Sineklik Tasarımı",
+                        "Projeye Uygun Özel tasarım ve Seçenekleri",
+                        "Paslanmaz Çelik Ray ve Bu Ray Üzerinde Hareket Eden Özel Rulmanlarla Yüksek Dayanım ve Kullanım Konforu",
+                        "Özel Dizayn Edilmiş ve Yüksek Dayanımlı Çok Noktadan Kilitleme Sistemi",
+                        "Polyamit Profillerle Boşluksuz Orta Kenet Detayı",
+                        "Gümüş, Bronz Renkli Eloksal Yüzeyler ile Metalin Modern ve Estetik Görünümü",
+                        "Özel Dizayn Edilmiş Farklı Konseptlerde Toz Boya ve Ahşap Görünüm Seçenekleri"
+                    ],
+                    specifications: [
+                        { label: "Kanat Genişliği", value: "32 mm" },
+                        { label: "Kanat Yüksekliği", value: "75 mm" },
+                        { label: "Kasa Yüksekliği", value: "44 mm" },
+                        { label: "Kenetli Orta Kanat Genişliği", value: "34 – 78,5 mm" },
+                        { label: "Cam Kalınlığı", value: "20 – 22 mm" },
+                        { label: "Max. Kanat Taşıma Kapasitesi", value: "120 kg" },
+                        { label: "Yalıtım Köprüsü", value: "20 mm" },
+                        { label: "Isı Yalıtımı", value: "EN ISO 10077-2: Uf=3,8 W/m2K" }
+                    ]
+                }
             },
             {
                 name: "LR-3200",
@@ -797,7 +822,31 @@ export const LINEA_ROSSA_SECTIONS: ProductSection[] = [
             {
                 name: "LR-2200",
                 description: "Yalıtımsız Sürme Sistemi: Pratik kullanım ve kolay montaj sağlayan sürme serisi.",
-                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-2200.jpg?raw=true"
+                image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-2200.jpg?raw=true",
+                technicalDetails: {
+                    features: [
+                        "Üretim ve Montaj Kolaylığı",
+                        "Kolay ve Yumuşak Bir Sürme İçin Özel Çelik Ray ve Rulman Sıfıra Yakın Sürtünme",
+                        "Ağır Yük Taşımaya Müsait Rulmanlar",
+                        "Kilit Karşılığı Sürme Kasanın İçine Monte Edilebilen Tekli veya Çoklu Kilit Uygulanabilirliği",
+                        "Özel Takozu Sayesinde Daha Mukavemetli Toplama Olanağı",
+                        "Sistem İçinde Çözülmüş Özel Sineklik Tasarımı",
+                        "Projeye Uygun Özel Tasarım ve Seçenekleri",
+                        "Paslanmaz Çelik Ray ve Bu Ray Üzerinde Hareket Eden Özel Rulmanlarla Yüksek Dayanım ve Kullanım Konforu",
+                        "Özel Dizayn Edilmiş ve Yüksek Dayanımlı Çok Noktadan Kilitleme Sistemi",
+                        "Polyamit Profillerle Boşluksuz Orta Kenet Detayı",
+                        "Gümüş, Bronz Renkli Eloksal Yüzeyler ile Metalin Modern ve Estetik Görünümü",
+                        "Özel Dizayn Edilmiş Farklı Konseptlerde Toz Boya ve Ahşap Görünüm Seçenekleri"
+                    ],
+                    specifications: [
+                        { label: "Kanat Genişliği", value: "38 mm" },
+                        { label: "Kanat Yüksekliği", value: "92,5 mm" },
+                        { label: "Profil Et Kalınlığı", value: "1,3 - 1,8 mm" },
+                        { label: "Cam Kalınlığı", value: "20 – 26 mm" },
+                        { label: "Max. Kanat Taşıma Kapasitesi", value: "120 kg" },
+                        { label: "Profil Geometrik Düzgünlük", value: "EN ISO 12020-2 Compliant" }
+                    ]
+                }
             }
         ]
     },
