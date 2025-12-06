@@ -50,23 +50,73 @@ const updateMetaDescription = (content: string) => {
 };
 
 const App: React.FC = () => {
-    const [currentPage, setCurrentPage] = useState<Page>('Ana Sayfa');
-    const [activePostSlug, setActivePostSlug] = useState<string | null>(null);
+    // URL Routing Helpers
+    const getPageFromUrl = (): Page => {
+        const params = new URLSearchParams(window.location.search);
+        const pageParam = params.get('page');
+        // Basic validation - check against known pages would be better but simple string check works for now
+        // if we assume incoming links are valid.
+        // Fallback to 'Ana Sayfa' if not present
+        return (pageParam as Page) || 'Ana Sayfa';
+    };
+
+    const getPostSlugFromUrl = (): string | null => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('post');
+    };
+
+    const [currentPage, setCurrentPage] = useState<Page>(getPageFromUrl);
+    const [activePostSlug, setActivePostSlug] = useState<string | null>(getPostSlugFromUrl);
     const { data } = useLanguage();
+
+    // Handle browser back/forward buttons
+    useEffect(() => {
+        const handlePopState = () => {
+            setCurrentPage(getPageFromUrl());
+            setActivePostSlug(getPostSlugFromUrl());
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
 
     const handleSetCurrentPage = (page: Page) => {
         if (activePostSlug) {
             setActivePostSlug(null);
         }
         setCurrentPage(page);
+
+        // Update URL
+        const url = new URL(window.location.href);
+        url.searchParams.delete('post'); // Clear post slug when changing page
+        if (page === 'Ana Sayfa') {
+            url.searchParams.delete('page');
+        } else {
+            url.searchParams.set('page', page);
+        }
+        window.history.pushState({}, '', url);
+    };
+
+    const handlePostSelect = (slug: string) => {
+        setActivePostSlug(slug);
+        const url = new URL(window.location.href);
+        url.searchParams.set('post', slug);
+        window.history.pushState({}, '', url);
+    };
+
+    const handlePostBack = () => {
+        setActivePostSlug(null);
+        window.scrollTo(0, 0);
+        const url = new URL(window.location.href);
+        url.searchParams.delete('post');
+        window.history.pushState({}, '', url);
     };
     
     // SEO: Update Title and Meta Description based on Page
     useEffect(() => {
-        if (currentPage !== 'Blog') {
-          setActivePostSlug(null);
+        // Scroll to top on page change unless going back from a post detail (handled in handlePostBack)
+        if (!activePostSlug) {
+             window.scrollTo(0, 0);
         }
-        window.scrollTo(0, 0);
 
         // Handle hash scrolling
         const hash = window.location.hash;
@@ -229,13 +279,10 @@ const App: React.FC = () => {
                             return activePostSlug ? (
                                 <BlogPostDetailPage 
                                     slug={activePostSlug} 
-                                    onBack={() => {
-                                        setActivePostSlug(null);
-                                        window.scrollTo(0, 0);
-                                    }} 
+                                    onBack={handlePostBack}
                                 />
                             ) : (
-                                <BlogPage onPostSelect={(slug) => setActivePostSlug(slug)} />
+                                <BlogPage onPostSelect={handlePostSelect} />
                             );
                         case 'İletişim':
                             return <ContactPage />;
