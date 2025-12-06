@@ -32,7 +32,8 @@ const handleLinkClick = (
     } else {
         window.scrollTo(0, 0);
         if (window.location.hash) {
-             history.pushState("", document.title, window.location.pathname + window.location.search);
+             // Remove hash without reloading
+             history.pushState(null, "", window.location.pathname + window.location.search);
         }
     }
 

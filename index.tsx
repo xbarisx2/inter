@@ -1,5 +1,6 @@
+
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import { LanguageProvider } from './LanguageContext';
 
@@ -51,7 +52,7 @@ const rootElement = document.getElementById('root');
 if (!rootElement) {
   console.error("FATAL ERROR: Could not find 'root' element in DOM. React cannot mount.");
 } else {
-  const root = ReactDOM.createRoot(rootElement);
+  const root = createRoot(rootElement);
   root.render(
     <React.StrictMode>
       <ErrorBoundary>

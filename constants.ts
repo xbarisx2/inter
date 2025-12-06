@@ -455,7 +455,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     {
         id: "linea-rossa-cat",
         title: "LINEA ROSSA Sistemleri",
-        image: "https://esaaluminyum.com.tr/aluminyum/linea-rossa/index/lr-3100.webp",
+        image: "https://github.com/xbarisx2/logo/blob/main/linea/lr-3100.jpg?raw=true",
         description: "İtalyan tasarımı ve üstün teknolojinin buluştuğu nokta. Yüksek performanslı sürme ve cephe sistemleri.",
         page: "Linea Rossa"
     },
