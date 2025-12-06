@@ -93,14 +93,14 @@ const App: React.FC = () => {
         } else {
             url.searchParams.set('page', page);
         }
-        window.history.pushState({}, '', url);
+        window.history.pushState({}, '', url.toString());
     };
 
     const handlePostSelect = (slug: string) => {
         setActivePostSlug(slug);
         const url = new URL(window.location.href);
         url.searchParams.set('post', slug);
-        window.history.pushState({}, '', url);
+        window.history.pushState({}, '', url.toString());
     };
 
     const handlePostBack = () => {
@@ -108,7 +108,7 @@ const App: React.FC = () => {
         window.scrollTo(0, 0);
         const url = new URL(window.location.href);
         url.searchParams.delete('post');
-        window.history.pushState({}, '', url);
+        window.history.pushState({}, '', url.toString());
     };
     
     // SEO: Update Title and Meta Description based on Page
