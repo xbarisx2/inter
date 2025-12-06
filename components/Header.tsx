@@ -186,7 +186,7 @@ const MobileSubMenuItem: React.FC<{ item: SubLinkItem; setCurrentPage: (page: Pa
 
 
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
-    const { data, language, setLanguage, t } = useLanguage();
+    const { data, t } = useLanguage();
     const NAVIGATION_LINKS = data.NAVIGATION_LINKS; // Get translated links
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -212,10 +212,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         } else {
             setExpandedMobileMenu(name);
         }
-    };
-
-    const toggleLanguage = () => {
-        setLanguage(language === 'tr' ? 'en' : 'tr');
     };
 
     return (
@@ -251,17 +247,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                                     <InstagramIcon className="w-4 h-4" />
                                     <span className="text-xs">{t('followUs')}</span>
                                 </a>
-                                {/* Language Switcher */}
-                                <button 
-                                    onClick={toggleLanguage}
-                                    className={`text-xs font-bold border rounded px-2 py-0.5 transition-colors ${
-                                        !isHomePage 
-                                            ? 'border-gray-500 hover:bg-gray-700' 
-                                            : 'border-brand-blue-900 text-brand-blue-900 hover:bg-brand-blue-100'
-                                    }`}
-                                >
-                                    {language === 'tr' ? 'EN' : 'TR'}
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -284,7 +269,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                         {/* Desktop Menu */}
                         <nav className="hidden md:flex md:items-center h-full">
                             <ul className="flex items-center space-x-2 lg:space-x-6 h-full">
-                                 {NAVIGATION_LINKS.map(link => (
+                                 {NAVIGATION_LINKS?.map(link => (
                                     <NavItem 
                                         key={link.name} 
                                         link={link} 
@@ -304,15 +289,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                             </a>
                         </nav>
                         
-                        {/* Mobile Toggle & Lang */}
+                        {/* Mobile Toggle */}
                         <div className="md:hidden flex items-center gap-4 z-[101]">
-                             <button 
-                                onClick={toggleLanguage}
-                                className="text-sm font-bold border border-gray-400 rounded px-2 py-1"
-                            >
-                                {language === 'tr' ? 'EN' : 'TR'}
-                            </button>
-
                             <button 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
                                 className="p-2 rounded-md transition-colors focus:outline-none text-gray-900 bg-white/50 backdrop-blur-sm"
@@ -330,7 +308,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     {isMenuOpen && (
                         <>
                             <nav className="flex flex-col space-y-1 mt-4">
-                                {NAVIGATION_LINKS.map(link => {
+                                {NAVIGATION_LINKS?.map(link => {
                                     const hasSublinks = link.subLinks && link.subLinks.length > 0;
                                     const isExpanded = expandedMobileMenu === link.name;
                                     const isActive = currentPage === link.page || currentPage === link.name;

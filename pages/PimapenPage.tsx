@@ -6,7 +6,7 @@ import ProductModal from '../components/ProductModal';
 import type { Product } from '../types';
 
 const PimapenPage: React.FC = () => {
-    const { data, t, language } = useLanguage();
+    const { data, t } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const PimapenPage: React.FC = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Pimapen Sistemleri</h1>
                     <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">
-                        {language === 'tr' ? 'Pencerenin adı, kalitenin ve konforun adresi.' : 'The name of the window, the address of quality and comfort.'}
+                        Pencerenin adı, kalitenin ve konforun adresi.
                     </p>
                 </div>
             </div>
@@ -40,12 +40,10 @@ const PimapenPage: React.FC = () => {
             <div className="py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{language === 'tr' ? "Türkiye'nin Penceresi Pimapen" : "Pimapen: Turkey's Window"}</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Türkiye'nin Penceresi Pimapen</h2>
                         <div className="w-20 h-1 bg-brand-blue-600 mx-auto mb-6"></div>
                         <p className="text-gray-600 leading-relaxed text-lg">
-                           {language === 'tr' 
-                            ? "Pimapen, üstün ısı ve ses yalıtımı sağlayan PVC pencere ve kapı sistemleri ile yaşam alanlarınıza değer katar. Enerji tasarrufu, güvenlik ve estetiği bir araya getiren yenilikçi serilerimizle her türlü mimari ihtiyaca uygun çözümler sunuyoruz."
-                            : "Pimapen adds value to your living spaces with PVC window and door systems that provide superior heat and sound insulation. We offer solutions suitable for all kinds of architectural needs with our innovative series that combine energy saving, security, and aesthetics."}
+                           Pimapen, üstün ısı ve ses yalıtımı sağlayan PVC pencere ve kapı sistemleri ile yaşam alanlarınıza değer katar. Enerji tasarrufu, güvenlik ve estetiği bir araya getiren yenilikçi serilerimizle her türlü mimari ihtiyaca uygun çözümler sunuyoruz.
                         </p>
                     </div>
                 </div>
@@ -53,11 +51,11 @@ const PimapenPage: React.FC = () => {
 
             <div className="pb-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-                    {data.PIMAPEN_SECTIONS.map((section) => (
+                    {data.PIMAPEN_SECTIONS?.map((section) => (
                         <div key={section.id} id={section.id} className="scroll-mt-32">
                             <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 border-l-4 border-brand-blue-600 pl-4">{section.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-                                {section.items.map((product, index) => {
+                                {section.items?.map((product, index) => {
                                     const whatsappUrl = `${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${product.name} hakkında teklif almak istiyorum.`)}`;
                                     return (
                                         <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">

@@ -1,9 +1,8 @@
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import * as trData from './constants';
-import * as enData from './data_en';
 
-type Language = 'tr' | 'en';
+type Language = 'tr';
 
 interface LanguageContextType {
     language: Language;
@@ -15,23 +14,18 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    // Try to get language from localStorage, default to 'tr'
-    const [language, setLanguage] = useState<Language>(() => {
-        const saved = localStorage.getItem('app-language');
-        return (saved === 'en' || saved === 'tr') ? saved : 'tr';
-    });
+    // Force language to 'tr'
+    const language: Language = 'tr';
 
-    useEffect(() => {
-        localStorage.setItem('app-language', language);
-        document.documentElement.lang = language;
-    }, [language]);
+    // No-op for setLanguage as we only support TR
+    const setLanguage = () => {};
 
-    // Ensure enData has the same shape, or fallback to trData for missing keys if necessary
-    const data = language === 'tr' ? trData : (enData as unknown as typeof trData);
+    // Always use Turkish data
+    const data = trData;
 
-    // Helper for UI labels
+    // Helper for UI labels - Always fetch TR
     const t = (key: keyof typeof trData.UI_LABELS.TR) => {
-        const labels = trData.UI_LABELS[language.toUpperCase() as 'TR' | 'EN'];
+        const labels = trData.UI_LABELS.TR;
         return labels[key] || key;
     };
 

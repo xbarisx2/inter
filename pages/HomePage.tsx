@@ -10,90 +10,92 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
-    const { data, t, language } = useLanguage();
+    const { data, t } = useLanguage();
     const { PRODUCTS, REFERENCES, HERO_SLIDES } = data;
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
+        if (!HERO_SLIDES || HERO_SLIDES.length === 0) return;
         const slideInterval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
         }, 5000);
         return () => clearInterval(slideInterval);
-    }, [HERO_SLIDES]); // Dependency changed to array itself
+    }, [HERO_SLIDES]);
 
-    const featuredProducts = PRODUCTS.slice(0, 3);
-    const displayedReferences = REFERENCES.slice(0, 15);
+    const featuredProducts = PRODUCTS?.slice(0, 3) || [];
+    const displayedReferences = REFERENCES?.slice(0, 15) || [];
 
-    // Expanded Category Grid - Text needs to be dynamic based on language
     const categoryGrid = [
         { 
-            title: language === 'tr' ? "Alüminyum Mimari Sistemleri" : "Aluminum Architectural Systems", 
+            title: "Alüminyum Mimari Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Panjur Sistemleri" : "Shutter Systems", 
+            title: "Panjur Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/panjur-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Kepenk Sistemleri" : "Roller Shutter Systems", 
+            title: "Kepenk Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/kepenk-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Pergola ve Tente Sistemleri" : "Pergola and Awning Systems", 
-            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true",
+            title: "Pergola ve Tente Sistemleri", 
+            image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pergola-sistemler.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Zip Perde Sistemleri" : "Zip Screen Systems", 
+            title: "Zip Perde Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/zip_05-1.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Akıllı Çatı Sistemleri" : "Smart Roof Systems", 
+            title: "Akıllı Çatı Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/Makas_Akilli_Cati-e1749810492326.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Cephe Sistemleri" : "Facade Systems", 
+            title: "Cephe Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-cephe-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Cam Balkon Sistemleri" : "Glass Balcony Systems", 
+            title: "Cam Balkon Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Giyotin Cam Balkon Sistemleri" : "Guillotine Glass Systems", 
+            title: "Giyotin Cam Balkon Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/giyotin-cam-balkon-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Alüminyum Kompozit Sistemler" : "Aluminum Composite Systems", 
+            title: "Alüminyum Kompozit Sistemler", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/aluminyum-kompozit-sistemler.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "Korkuluk Sistemleri" : "Railing Systems", 
+            title: "Korkuluk Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/aluminyum-korkuluk.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
         { 
-            title: language === 'tr' ? "PVC Kapı, Pencere Sistemleri" : "PVC Door, Window Systems", 
+            title: "PVC Kapı, Pencere Sistemleri", 
             image: "https://github.com/xbarisx2/logo/blob/main/anasayfa/pvc-dograma-sistemleri.jpg?raw=true", 
             page: 'Ürünlerimiz' as Page 
         },
     ];
 
+    if (!HERO_SLIDES || HERO_SLIDES.length === 0) return null;
+
     return (
         <>
             {/* HERO SECTION */}
             <section className="relative h-screen bg-brand-blue-950 overflow-hidden">
-                {HERO_SLIDES.map((slide, index) => (
+                {HERO_SLIDES?.map((slide, index) => (
                     <div 
                         key={index}
                         className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
@@ -110,14 +112,14 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center pt-24 md:pt-20">
                     <div className="max-w-4xl border-l-8 border-brand-blue-500 pl-6 md:pl-12 py-4 animate-fade-in-up">
-                        <h2 className="text-white text-base md:text-xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase mb-2 md:mb-4 text-brand-blue-400 drop-shadow-md">
+                        <h2 className="text-white text-base md:text-xl font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase mb-2 md:mb-4 drop-shadow-md">
                             İNTER AKDENİZ ALÜMİNYUM
                         </h2>
                         <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white leading-tight md:leading-none mb-4 md:mb-6 tracking-tight drop-shadow-2xl">
-                            {HERO_SLIDES[currentSlide].title}
+                            {HERO_SLIDES[currentSlide]?.title}
                         </h1>
                         <p className="text-gray-200 text-base md:text-2xl font-light max-w-2xl mb-8 md:mb-10 border-b border-gray-500 pb-8 md:pb-10 drop-shadow-lg">
-                            {HERO_SLIDES[currentSlide].subtitle}
+                            {HERO_SLIDES[currentSlide]?.subtitle}
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
@@ -133,7 +135,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 
                 {/* Scroll Indicator */}
                 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/50 z-20">
-                    <span className="text-xs tracking-widest uppercase mb-2">{language === 'tr' ? 'Aşağı Kaydır' : 'Scroll Down'}</span>
+                    <span className="text-xs tracking-widest uppercase mb-2">Aşağı Kaydır</span>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7-7-7"></path></svg>
                 </div>
             </section>
@@ -145,22 +147,22 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <LightBulbIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Projelendirme' : 'Planning'}</h4>
-                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Mimari teknik detay' : 'Architectural details'}</p>
+                                <h4 className="font-bold text-lg uppercase">Projelendirme</h4>
+                                <p className="text-xs text-blue-200 opacity-70">Mimari teknik detay</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <HardHatIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Üretim' : 'Production'}</h4>
-                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Yüksek teknoloji parkuru' : 'High-tech machinery'}</p>
+                                <h4 className="font-bold text-lg uppercase">Üretim</h4>
+                                <p className="text-xs text-blue-200 opacity-70">Yüksek teknoloji parkuru</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer">
                             <ShieldCheckIcon className="w-10 h-10 mr-4 opacity-80 flex-shrink-0" />
                             <div>
-                                <h4 className="font-bold text-lg uppercase">{language === 'tr' ? 'Montaj' : 'Installation'}</h4>
-                                <p className="text-xs text-blue-200 opacity-70">{language === 'tr' ? 'Uzman ekip garantisi' : 'Expert team guarantee'}</p>
+                                <h4 className="font-bold text-lg uppercase">Montaj</h4>
+                                <p className="text-xs text-blue-200 opacity-70">Uzman ekip garantisi</p>
                             </div>
                         </div>
                         <div className="p-8 flex items-center justify-center md:justify-start group hover:bg-brand-blue-800 transition-colors cursor-pointer bg-brand-blue-950">
@@ -208,29 +210,25 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                         <div>
                             <span className="block text-sm font-bold text-brand-blue-600 tracking-widest uppercase mb-2">{t('corporate')}</span>
                             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                                {language === 'tr' ? 'ÇÖZÜM ODAKLI MİMARİ SİSTEMLER' : 'SOLUTION ORIENTED ARCHITECTURAL SYSTEMS'}
+                                ÇÖZÜM ODAKLI MİMARİ SİSTEMLER
                             </h2>
                             <div className="h-1 w-20 bg-brand-blue-600 mb-8"></div>
                             
                             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 font-light">
-                                {language === 'tr' 
-                                    ? "İnter Akdeniz Alüminyum, 20 yılı aşkın süredir sektörde edindiği tecrübeyi, Linea Rossa Milano kalitesiyle birleştirerek projelere değer katmaktadır." 
-                                    : "With over 20 years of experience in the sector, İnter Akdeniz Aluminum adds value to projects by combining it with Linea Rossa Milano quality."}
+                                İnter Akdeniz Alüminyum, 20 yılı aşkın süredir sektörde edindiği tecrübeyi, Linea Rossa Milano kalitesiyle birleştirerek projelere değer katmaktadır.
                             </p>
                             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-light">
-                                {language === 'tr'
-                                    ? "Antalya merkezli firmamız, Türkiye'nin ve dünyanın dört bir yanına alüminyum cephe, doğrama ve özel tasarım mimari çözümler sunmaktadır."
-                                    : "Based in Antalya, our company offers aluminum facade, joinery and custom design architectural solutions to all around Turkey and the world."}
+                                Antalya merkezli firmamız, Türkiye'nin ve dünyanın dört bir yanına alüminyum cephe, doğrama ve özel tasarım mimari çözümler sunmaktadır.
                             </p>
                             
                             <div className="grid grid-cols-2 gap-8 mb-10">
                                 <div className="border-l-4 border-gray-200 pl-4">
                                     <span className="block text-3xl font-bold text-brand-blue-900">500+</span>
-                                    <span className="text-gray-500 text-xs uppercase tracking-wide">{language === 'tr' ? 'Proje' : 'Projects'}</span>
+                                    <span className="text-gray-500 text-xs uppercase tracking-wide">Proje</span>
                                 </div>
                                 <div className="border-l-4 border-gray-200 pl-4">
                                     <span className="block text-3xl font-bold text-brand-blue-900">20+</span>
-                                    <span className="text-gray-500 text-xs uppercase tracking-wide">{language === 'tr' ? 'Yıl Deneyim' : 'Years Experience'}</span>
+                                    <span className="text-gray-500 text-xs uppercase tracking-wide">Yıl Deneyim</span>
                                 </div>
                             </div>
                             
@@ -248,7 +246,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                             />
                             <div className="absolute -bottom-10 -left-10 bg-brand-blue-900 text-white p-8 hidden md:block shadow-xl">
                                 <p className="text-2xl font-bold leading-none">
-                                    GLOBAL <br/> {language === 'tr' ? 'VİZYON' : 'VISION'}
+                                    GLOBAL <br/> VİZYON
                                 </p>
                             </div>
                         </div>
@@ -271,7 +269,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                        {featuredProducts.map((product, index) => (
+                        {featuredProducts?.map((product, index) => (
                             <div key={index} className="group relative h-72 md:h-80 overflow-hidden cursor-pointer border border-gray-100">
                                 <img 
                                     src={product.image} 
@@ -293,8 +291,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                          <div className="group relative h-72 md:h-80 bg-brand-blue-950 flex items-center justify-center text-center cursor-pointer overflow-hidden">
                              <div className="absolute inset-0 border-8 border-brand-blue-900 transition-all duration-300 group-hover:border-brand-blue-500"></div>
                              <div className="p-8">
-                                <h3 className="text-3xl font-black text-white mb-2">{language === 'tr' ? 'PROJELERİNİZ' : 'YOUR PROJECTS'}</h3>
-                                <p className="text-gray-400 mb-6">{language === 'tr' ? 'Sizin için en uygun çözümü bulalım.' : 'Let us find the best solution for you.'}</p>
+                                <h3 className="text-3xl font-black text-white mb-2">PROJELERİNİZ</h3>
+                                <p className="text-gray-400 mb-6">Sizin için en uygun çözümü bulalım.</p>
                                 <a href={COMPANY_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="text-white font-bold underline decoration-brand-blue-500 underline-offset-4 hover:text-brand-blue-400 transition-colors">
                                     {t('offer')}
                                 </a>

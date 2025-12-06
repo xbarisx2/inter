@@ -4,7 +4,7 @@ import { COMPANY_INFO } from '../constants';
 import { useLanguage } from '../LanguageContext';
 
 const PanjurPage: React.FC = () => {
-    const { data, language, t } = useLanguage();
+    const { data } = useLanguage();
     const sections = data.PANJUR_SECTIONS;
     const [activeTab, setActiveTab] = useState(sections[0].id);
 
@@ -16,7 +16,7 @@ const PanjurPage: React.FC = () => {
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        {language === 'tr' ? 'Panjur Sistemleri' : 'Shutter Systems'}
+                        Panjur Sistemleri
                     </h1>
                 </div>
             </div>
@@ -28,9 +28,7 @@ const PanjurPage: React.FC = () => {
                     {/* Description Text */}
                     <div className="text-center max-w-4xl mx-auto mb-10">
                         <p className="text-gray-600 leading-relaxed text-lg">
-                            {language === 'tr' 
-                                ? "Modern mimarinin vazgeçilmez bir unsuru olan panjur sistemleri, estetik ve fonksiyonelliği mükemmel bir şekilde birleştirir. Yaşam alanlarınızı dış etkenlere karşı koruyarak güvenlik ve mahremiyet sağlarken, sunduğu üstün yalıtım özellikleriyle konforu en üst seviyeye çıkarır ve enerji tasarrufuna katkıda bulunur."
-                                : "Shutter systems, an indispensable element of modern architecture, combine aesthetics and functionality perfectly. While providing security and privacy by protecting your living spaces against external factors, it maximizes comfort with its superior insulation features and contributes to energy saving."}
+                            Modern mimarinin vazgeçilmez bir unsuru olan panjur sistemleri, estetik ve fonksiyonelliği mükemmel bir şekilde birleştirir. Yaşam alanlarınızı dış etkenlere karşı koruyarak güvenlik ve mahremiyet sağlarken, sunduğu üstün yalıtım özellikleriyle konforu en üst seviyeye çıkarır ve enerji tasarrufuna katkıda bulunur.
                         </p>
                     </div>
 
@@ -43,7 +41,7 @@ const PanjurPage: React.FC = () => {
                             className="inline-flex items-center bg-brand-red-600 text-white font-bold py-3 px-8 rounded hover:bg-brand-red-700 transition-colors shadow-lg"
                         >
                             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            {language === 'tr' ? 'Kataloğu İncele' : 'View Catalog'}
+                            Kataloğu İncele
                         </a>
                     </div>
 

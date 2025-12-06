@@ -4,9 +4,9 @@ import { COMPANY_INFO } from '../constants';
 import { useLanguage } from '../LanguageContext';
 
 const KepenkPage: React.FC = () => {
-    const { data, language, t } = useLanguage();
+    const { data } = useLanguage();
     const sections = data.KEPENK_SECTIONS;
-    const content = data.KEPENK_CONTENT[language === 'tr' ? 'TR' : 'EN'];
+    const content = data.KEPENK_CONTENT.TR; // Force TR
     const [activeTab, setActiveTab] = useState(sections[0].id);
 
     const activeSection = sections.find(s => s.id === activeTab) || sections[0];
@@ -17,7 +17,7 @@ const KepenkPage: React.FC = () => {
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        {language === 'tr' ? 'Kepenk Sistemleri' : 'Roller Shutter Systems'}
+                        Kepenk Sistemleri
                     </h1>
                 </div>
             </div>
@@ -29,9 +29,7 @@ const KepenkPage: React.FC = () => {
                     {/* Description Text */}
                     <div className="text-center max-w-4xl mx-auto mb-10">
                         <p className="text-gray-600 leading-relaxed text-lg">
-                            {language === 'tr' 
-                                ? "Özellikle iş yerleri, depolar ve garajlar için tasarlanan kepenk sistemleri, fiziksel güvenliği en üst düzeye çıkaran profesyonel çözümler sunar. Sağlam yapısı ve üstün koruma özellikleriyle, değerli varlıklarınızı dış etkenlere ve izinsiz girişlere karşı tam koruma altına alır."
-                                : "Designed especially for workplaces, warehouses, and garages, roller shutter systems offer professional solutions that maximize physical security. With its robust structure and superior protection features, it provides full protection for your valuable assets against external factors and unauthorized access."}
+                            Özellikle iş yerleri, depolar ve garajlar için tasarlanan kepenk sistemleri, fiziksel güvenliği en üst düzeye çıkaran profesyonel çözümler sunar. Sağlam yapısı ve üstün koruma özellikleriyle, değerli varlıklarınızı dış etkenlere ve izinsiz girişlere karşı tam koruma altına alır.
                         </p>
                     </div>
 
@@ -44,7 +42,7 @@ const KepenkPage: React.FC = () => {
                             className="inline-flex items-center bg-brand-blue-600 text-white font-bold py-3 px-8 rounded hover:bg-brand-blue-700 transition-colors shadow-lg"
                         >
                             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            {language === 'tr' ? 'Kataloğu İncele' : 'View Catalog'}
+                            Kataloğu İncele
                         </a>
                     </div>
 
@@ -91,7 +89,7 @@ const KepenkPage: React.FC = () => {
                     <div className="grid md:grid-cols-3 gap-12 border-t pt-16 mt-16">
                         <div className="md:col-span-1">
                             <h2 className="text-2xl font-bold text-brand-blue-900 mb-6">
-                                {language === 'tr' ? 'Kepenk Sistemleri' : 'Shutter Systems'}
+                                Kepenk Sistemleri
                             </h2>
                         </div>
                         <div className="md:col-span-2 space-y-8">

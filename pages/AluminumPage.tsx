@@ -6,7 +6,7 @@ import ProductModal from '../components/ProductModal';
 import type { Product } from '../types';
 
 const AluminumPage: React.FC = () => {
-    const { data, t, language } = useLanguage();
+    const { data, t } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,10 +31,10 @@ const AluminumPage: React.FC = () => {
             <div className="bg-brand-blue-900 text-white py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        {language === 'tr' ? 'Alüminyum Mimari Sistemleri' : 'Aluminum Architectural Systems'}
+                        Alüminyum Mimari Sistemleri
                     </h1>
                     <p className="mt-4 text-lg text-blue-100 max-w-2xl mx-auto font-light">
-                        {language === 'tr' ? 'Modern yapılar için yenilikçi, dayanıklı ve estetik çözümler.' : 'Innovative, durable and aesthetic solutions for modern structures.'}
+                        Modern yapılar için yenilikçi, dayanıklı ve estetik çözümler.
                     </p>
                 </div>
             </div>
@@ -43,9 +43,7 @@ const AluminumPage: React.FC = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="text-center mb-16 max-w-4xl mx-auto">
                         <p className="text-gray-600 leading-relaxed text-lg">
-                           {language === 'tr' 
-                            ? "İnter Akdeniz Alüminyum, her koşula uygun yüksek kaliteli kapı ve pencere sistemleri ile müşterilerine estetik, dayanıklılık ve enerji verimliliği sağlar. Geniş ürün yelpazemiz ile projelerinizin her detayına en uygun çözümü sunuyoruz. Sistemlerimizde sürme, açılır ve hebeschiebe serileri yer almakta olup, talebe göre ısı yalıtımlı ve ısı yalıtımsız opsiyonlarımız mevcuttur."
-                            : "Inter Akdeniz Aluminum provides aesthetics, durability and energy efficiency to its customers with high quality door and window systems suitable for all conditions. We offer the most suitable solution for every detail of your projects with our wide product range. Our systems include sliding, opening and lift & slide series, and heat insulated and non-insulated options are available upon request."}
+                           İnter Akdeniz Alüminyum, her koşula uygun yüksek kaliteli kapı ve pencere sistemleri ile müşterilerine estetik, dayanıklılık ve enerji verimliliği sağlar. Geniş ürün yelpazemiz ile projelerinizin her detayına en uygun çözümü sunuyoruz. Sistemlerimizde sürme, açılır ve hebeschiebe serileri yer almakta olup, talebe göre ısı yalıtımlı ve ısı yalıtımsız opsiyonlarımız mevcuttur.
                         </p>
                     </div>
                 </div>
@@ -53,11 +51,11 @@ const AluminumPage: React.FC = () => {
 
             <div className="pb-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-                    {data.ALUMINUM_SECTIONS.map((section) => (
+                    {data.ALUMINUM_SECTIONS?.map((section) => (
                         <div key={section.id} id={section.id} className="scroll-mt-32">
                             <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-900 mb-8 text-center border-b-4 border-brand-blue-600 w-fit mx-auto pb-2 px-4">{section.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {section.items.map((product, index) => {
+                                {section.items?.map((product, index) => {
                                     const whatsappUrl = `${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${product.name} hakkında teklif almak istiyorum.`)}`;
                                     return (
                                         <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">

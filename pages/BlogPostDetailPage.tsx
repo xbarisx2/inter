@@ -40,7 +40,7 @@ interface BlogPostDetailPageProps {
 }
 
 const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack }) => {
-    const { data, t, language } = useLanguage();
+    const { data, t } = useLanguage();
     const post = data.BLOG_POSTS.find(p => p.slug === slug);
     
     const [comments, setComments] = useState<Comment[]>([]);
@@ -163,7 +163,7 @@ const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({ slug, onBack })
                                 <div className="ml-4">
                                     <div className="flex items-center">
                                         <p className="font-semibold text-gray-800">{comment.author}</p>
-                                        <span className="text-xs text-gray-500 ml-3">{new Date(comment.date).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                        <span className="text-xs text-gray-500 ml-3">{new Date(comment.date).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                     </div>
                                     <p className="text-gray-600 mt-1">{comment.text}</p>
                                 </div>
