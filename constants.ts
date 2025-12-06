@@ -570,7 +570,7 @@ export const REFERENCES: Reference[] = [
     { name: "Semus", logo: "https://github.com/xbarisx2/logo/blob/main/semus.jpeg?raw=true" },
     { name: "İlhanlar İnşaat", logo: "https://image.pollinations.ai/prompt/modern%20construction%20logo%20ILHANLAR%20INSAAT%20white%20background" },
     { name: "Kustur Mimarlık", logo: "https://image.pollinations.ai/prompt/creative%20architecture%20logo%20KUSTUR%20MIMARLIK%20white%20background" },
-    { name: "İdea Yapı", logo: "https://github.com/xbarisx2/logo/blob/main/%C4%B1dea.jpeg?raw=true" },
+    { name: "İdea Mimarlık", logo: "https://github.com/xbarisx2/logo/blob/main/%C4%B1dea.jpeg?raw=true" },
     { name: "Sert-San", logo: "https://github.com/xbarisx2/logo/blob/main/sert%20san.jpeg?raw=true" },
     { name: "TK İnşaat", logo: "https://image.pollinations.ai/prompt/building%20construction%20logo%20TK%20INSAAT%20white%20background" },
     { name: "Cam Saş", logo: "https://github.com/xbarisx2/logo/blob/main/cam%20sa%C5%9F.jpeg?raw=true" },
